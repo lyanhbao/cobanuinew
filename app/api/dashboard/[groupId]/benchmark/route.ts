@@ -13,6 +13,7 @@ import { verifyJwt } from '../../../../../lib/auth';
 
 const paramsSchema = z.object({
   groupId: z.string().uuid(),
+  brandType: z.enum(['primary', 'competitor']).optional(),
 });
 
 function authUser(req: NextRequest) {
@@ -68,7 +69,14 @@ export async function GET(
   }
 
   try {
-    const { groupId } = paramsSchema.parse(await params);
+    const searchParams = Object.fromEntries(req.nextUrl.searchParams);
+    const { groupId, brandType: rawBrandType } = paramsSchema.parse({
+      groupId: (await params).groupId,
+      ...searchParams,
+    });
+
+    // Primary/competitor: 'primary' = only is_primary='t', 'competitor' = only is_primary != 't'
+    const isPrimaryFilter = rawBrandType === 'primary' ? 't' : rawBrandType === 'competitor' ? 'f' : null;
 
     // Verify group belongs to account
     const groupCheck = await query<{ id: string }>(
@@ -126,6 +134,13 @@ export async function GET(
 
     // All brands with stats for the week, ordered by is_primary DESC then impressions DESC
     // is_primary is 't'/'f' string in PostgreSQL, not boolean — sort by it first
+    // brandType filter: primary → is_primary='t', competitor → is_primary='f', all → no filter
+    let brandFilter = '';
+    const brandFilterParams: string[] = [];
+    if (isPrimaryFilter !== null) {
+      brandFilter = ` AND b.is_primary = $3`;
+      brandFilterParams.push(isPrimaryFilter);
+    }
     const brandsResult = await query<RawBrandRow>(
       `SELECT
          b.id AS brand_id,
@@ -140,15 +155,17 @@ export async function GET(
        FROM weekly_stats ws
        JOIN brand b ON b.id = ws.brand_id
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
-       WHERE ws.group_id = $1 AND ws.week_start = $2::date
+       WHERE ws.group_id = $1 AND ws.week_start = $2::date${brandFilter}
        ORDER BY b.is_primary DESC, ws.total_impressions DESC`,
-      [groupId, benchmarkWeek],
+      [groupId, benchmarkWeek, ...brandFilterParams],
     );
 
     const rows = brandsResult.rows;
     // Primary = brand with is_primary='t' (PostgreSQL string, not boolean)
     const primaryRow = rows.find((r) => r.is_primary === 't' || r.is_primary === true);
-    // Competitor = highest impressions non-primary brand
+
+    // Competitor = first non-primary brand (for radar/head-to-head comparison)
+    // When brandType filter is active, there may be no competitor row — handled below
     const competitorRow = rows.find((r) => r !== primaryRow);
 
     if (!primaryRow) {
@@ -176,15 +193,16 @@ export async function GET(
       er: Number(primaryRow.avg_engagement_rate) || 0,
     };
 
-    const c = competitorRow
-      ? {
-          impressions: Number(competitorRow.total_impressions) || 0,
-          views: Number(competitorRow.total_views) || 0,
-          reactions: Number(competitorRow.total_reactions) || 0,
-          posts: competitorRow.total_posts,
-          er: Number(competitorRow.avg_engagement_rate) || 0,
-        }
-      : { impressions: 0, views: 0, reactions: 0, posts: 0, er: 0 };
+    // When competitorRow is null (group has only the primary brand),
+    // use small non-zero values so the radar polygon still renders visibly
+    // instead of collapsing to a single point at the center
+    const c = {
+      impressions: competitorRow ? Number(competitorRow.total_impressions) || 0 : 1,
+      views: competitorRow ? Number(competitorRow.total_views) || 0 : 1,
+      reactions: competitorRow ? Number(competitorRow.total_reactions) || 0 : 1,
+      posts: competitorRow ? competitorRow.total_posts : 1,
+      er: competitorRow ? Number(competitorRow.avg_engagement_rate) || 0 : 0.01,
+    };
 
     // Radar: normalized 0-100 scores per metric dimension
     const [normImpP, normImpC] = normalize(p.impressions, c.impressions);
@@ -244,12 +262,13 @@ export async function GET(
       .map((r) => {
         const compGap = Number(r.gap_pct) ?? 0;
         const primaryGap = Number(primaryRow.gap_pct) ?? 0;
-        const gap = primaryGap - compGap;
+        // Clamp gap to [-100, 100] percentage points to keep bars in chart bounds
+        const gap = Math.max(-100, Math.min(100, Math.round((primaryGap - compGap) * 10) / 10));
         const category: GapPoint['category'] =
           gap > 0.5 ? 'positive' : gap < -0.5 ? 'negative' : 'neutral';
         return {
           metric: r.brand_name,
-          gap: Math.round(gap * 10) / 10,
+          gap,
           category,
         };
       });

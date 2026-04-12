@@ -11,7 +11,12 @@ import { z } from "zod";
 import { weekLabel } from "../../../../../lib/week-format";
 import { verifyJwt } from "../../../../../lib/auth";
 
-const paramsSchema = z.object({ groupId: z.string().uuid() });
+const paramsSchema = z.object({
+  groupId: z.string().uuid(),
+  week: z.string().optional(),
+  platform: z.enum(['youtube', 'facebook', 'tiktok']).optional(),
+  brandType: z.enum(['primary', 'competitor']).optional(),
+});
 
 function authUser(req: NextRequest) {
   const auth = req.headers.get("Authorization");
@@ -29,16 +34,28 @@ interface SovRow {
 }
 
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ groupId: string }> },
 ): Promise<NextResponse> {
-  const payload = authUser(_req);
+  const payload = authUser(req);
   if (!payload) {
     return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
   }
 
   try {
-    const { groupId } = paramsSchema.parse(await params);
+    const { groupId, week: requestedWeek, platform, brandType } = paramsSchema.parse({
+      ...Object.fromEntries(req.nextUrl.searchParams),
+      ...await params,
+    });
+
+    // Build dynamic filter conditions
+    // Platform filter: applied on post table (JOIN via brand)
+    // BrandType filter: applied on brand.is_primary
+    const platformFilter = platform ? `AND p.platform = $3` : '';
+    const brandTypeFilter =
+      brandType === 'primary' ? `AND b.is_primary = 't'`
+      : brandType === 'competitor' ? `AND b.is_primary = 'f'`
+      : '';
 
     // Verify group belongs to account
     const groupCheck = await query<{ id: string }>(
@@ -49,23 +66,62 @@ export async function GET(
       return NextResponse.json({ success: false, error: "Group not found" }, { status: 404 });
     }
 
-    const weekRows = await query<WeekRow>(
-      `SELECT week_start::text AS week_start, week_number, year
-       FROM weekly_stats WHERE group_id = $1 ORDER BY week_start DESC LIMIT 1`,
-      [groupId],
-    );
+    let weekStart: string;
+    let weekNumber: number;
+    let weekYear: number;
 
-    if (weekRows.rows.length === 0) {
-      return NextResponse.json({
-        success: true,
-        data: { week: null, kpis: null, sov: [], network_breakdown: [], insights: [] },
-      });
+    if (requestedWeek) {
+      // Use the week requested by the client
+      const weekInfoRow = await query<WeekRow>(
+        `SELECT week_start::text AS week_start, week_number, year
+         FROM weekly_stats WHERE group_id = $1 AND week_start = $2::date LIMIT 1`,
+        [groupId, requestedWeek],
+      );
+      if (weekInfoRow.rows.length === 0) {
+        // Requested week doesn't exist — fall back to latest
+        const fallbackRow = await query<WeekRow>(
+          `SELECT week_start::text AS week_start, week_number, year
+           FROM weekly_stats WHERE group_id = $1 ORDER BY week_start DESC LIMIT 1`,
+          [groupId],
+        );
+        if (fallbackRow.rows.length === 0) {
+          return NextResponse.json({
+            success: true,
+            data: { week: null, kpis: null, sov: [], network_breakdown: [], insights: [] },
+          });
+        }
+        const fb = fallbackRow.rows[0]!;
+        weekStart = fb.week_start;
+        weekNumber = fb.week_number;
+        weekYear = fb.year;
+      } else {
+        const w = weekInfoRow.rows[0]!;
+        weekStart = w.week_start;
+        weekNumber = w.week_number;
+        weekYear = w.year;
+      }
+    } else {
+      // No week requested — use latest
+      const weekRows = await query<WeekRow>(
+        `SELECT week_start::text AS week_start, week_number, year
+         FROM weekly_stats WHERE group_id = $1 ORDER BY week_start DESC LIMIT 1`,
+        [groupId],
+      );
+      if (weekRows.rows.length === 0) {
+        return NextResponse.json({
+          success: true,
+          data: { week: null, kpis: null, sov: [], network_breakdown: [], insights: [] },
+        });
+      }
+      const w = weekRows.rows[0]!;
+      weekStart = w.week_start;
+      weekNumber = w.week_number;
+      weekYear = w.year;
     }
 
-    const week = weekRows.rows[0]!;
-    const weekStart = week.week_start;
+    const weekInfo = { label: weekLabel(weekStart), start: weekStart, number: weekNumber, year: weekYear };
 
-    // KPIs: aggregate from weekly_stats for impressions/views/reactions
+    // KPIs: aggregate from post table (supports platform filter via JOIN)
     // avg_engagement_rate = SUM(reactions) / SUM(impressions) * 100
     const kpiRows = await query<{
       total_impressions: string;
@@ -73,12 +129,13 @@ export async function GET(
       total_reactions: string;
     }>(
       `SELECT
-         COALESCE(SUM(ws.total_impressions), 0) AS total_impressions,
-         COALESCE(SUM(ws.total_views), 0) AS total_views,
-         COALESCE(SUM(ws.total_reactions), 0) AS total_reactions
-       FROM weekly_stats ws
-       WHERE ws.group_id = $1 AND ws.week_start = $2::date`,
-      [groupId, weekStart],
+         COALESCE(SUM(p.impressions), 0)::bigint AS total_impressions,
+         COALESCE(SUM(p.views), 0)::bigint AS total_views,
+         COALESCE(SUM(p.reactions), 0)::bigint AS total_reactions
+       FROM post p
+       JOIN brand b ON b.curated_brand_id = p.curated_brand_id
+       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformFilter}`,
+      [groupId, weekStart, ...(platform ? [platform] : [])],
     );
     const kpi = kpiRows.rows[0]!;
     const totalImpressions = Number(kpi.total_impressions) || 1;
@@ -90,12 +147,13 @@ export async function GET(
       `SELECT COUNT(*)::int AS count
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date`,
-      [groupId, weekStart],
+       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformFilter}`,
+      [groupId, weekStart, ...(platform ? [platform] : [])],
     );
     const totalPosts = postCountRows.rows[0]?.count ?? 0;
 
     // SOV: impressions per brand (LEFT JOIN to include all brands)
+    // Platform filter: brand qualifies if it has posts on the selected platform this week
     const sovRows = await query<SovRow>(
       `SELECT
          b.id AS brand_id,
@@ -106,6 +164,10 @@ export async function GET(
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
        LEFT JOIN weekly_stats ws ON ws.brand_id = b.id AND ws.week_start = $2::date
        WHERE b.group_id = $1
+         AND (
+           ${platform ? `EXISTS (SELECT 1 FROM post p2 JOIN brand b2 ON b2.curated_brand_id = p2.curated_brand_id WHERE b2.id = b.id AND p2.week_start = $2::date AND p2.platform = '${platform}')` : '1=1'}
+         )
+         AND (${brandTypeFilter || '1=1'})
        GROUP BY b.id, cb.name, b.is_primary
        ORDER BY SUM(ws.total_impressions) DESC NULLS LAST`,
       [groupId, weekStart],
@@ -121,19 +183,19 @@ export async function GET(
 
     const primarySov = sov.find((s) => s.is_primary)?.sov_pct ?? null;
 
-    // Network breakdown: from post table grouped by platform
+    // Network breakdown: from post table grouped by platform (supports platform filter)
     const netRows = await query<{ platform: string; impressions: string }>(
       `SELECT
          p.platform,
          COALESCE(SUM(p.impressions), 0)::bigint AS impressions
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date
+       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformFilter}
        GROUP BY p.platform`,
-      [groupId, weekStart],
+      [groupId, weekStart, ...(platform ? [platform] : [])],
     );
 
-    const networkBreakdown = netRows.rows.map((r) => {
+    const network_breakdown = netRows.rows.map((r) => {
       const imp = Number(r.impressions);
       return {
         platform: r.platform,
@@ -152,6 +214,7 @@ export async function GET(
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
        WHERE ws.group_id = $1 AND ws.week_start = $2::date
          AND ws.gap_pct IS NOT NULL
+         AND (${brandTypeFilter || '1=1'})
        ORDER BY ws.gap_pct DESC
        LIMIT 5`,
       [groupId, weekStart],
@@ -173,12 +236,7 @@ export async function GET(
     return NextResponse.json({
       success: true,
       data: {
-        week: {
-          label: weekLabel(weekStart),
-          start: weekStart,
-          number: week.week_number,
-          year: week.year,
-        },
+        week: weekInfo,
         kpis: {
           total_impressions: Number(kpi.total_impressions),
           total_views: Number(kpi.total_views),
@@ -188,7 +246,7 @@ export async function GET(
           sov_primary: primarySov,
         },
         sov,
-        network_breakdown: networkBreakdown,
+        network_breakdown,
         insights,
       },
     });

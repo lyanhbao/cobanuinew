@@ -18,7 +18,7 @@ export function useDashboardData<T>(
   error: string | null;
   refetch: () => void;
 } {
-  const { groupId, selectedWeek, isReady } = useApp();
+  const { groupId, selectedWeek, isReady, filters } = useApp();
   const { fetchWithAuth } = useAuth();
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
@@ -38,7 +38,12 @@ export function useDashboardData<T>(
     setLoading(true);
     setError(null);
 
-    const url = `/api/dashboard/${groupId}/${endpoint}`;
+    const params = new URLSearchParams();
+    if (selectedWeek) params.set('week', selectedWeek);
+    if (filters.platform !== 'all') params.set('platform', filters.platform);
+    if (filters.brandType !== 'all') params.set('brandType', filters.brandType);
+    const qs = params.toString();
+    const url = `/api/dashboard/${groupId}/${endpoint}${qs ? `?${qs}` : ''}`;
     fetchWithAuth(url)
       .then((r) => r.json())
       .then((d) => {
@@ -59,7 +64,7 @@ export function useDashboardData<T>(
       })
       .finally(() => setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [groupId, selectedWeek, isReady, endpoint, tick, ...deps]);
+  }, [groupId, selectedWeek, isReady, filters, endpoint, tick, ...deps]);
 
   return { data, loading, error, refetch };
 }

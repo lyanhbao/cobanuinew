@@ -12,6 +12,8 @@ import { verifyJwt } from '../../../../../lib/auth';
 
 const paramsSchema = z.object({
   groupId: z.string().uuid(),
+  platform: z.enum(['youtube', 'facebook', 'tiktok']).optional(),
+  brandType: z.enum(['primary', 'competitor']).optional(),
 });
 
 function authUser(req: NextRequest) {
@@ -52,7 +54,17 @@ export async function GET(
   }
 
   try {
-    const { groupId } = paramsSchema.parse(await params);
+    const searchParams = Object.fromEntries(req.nextUrl.searchParams);
+    const { groupId, platform, brandType } = paramsSchema.parse({
+      groupId: (await params).groupId,
+      ...searchParams,
+    });
+
+    const platformFilter = platform ? `AND p.platform = '${platform}'` : '';
+    const brandTypeFilter =
+      brandType === 'primary' ? `AND b.is_primary = 't'`
+      : brandType === 'competitor' ? `AND b.is_primary = 'f'`
+      : '';
 
     // Verify group belongs to account
     const groupCheck = await query<{ id: string }>(
@@ -114,7 +126,7 @@ export async function GET(
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
        LEFT JOIN weekly_stats ws ON ws.brand_id = b.id
          AND ws.week_start IN ($2::date, $2::date - INTERVAL '7 days')
-       WHERE b.group_id = $1
+       WHERE b.group_id = $1 ${brandTypeFilter}
        ORDER BY b.is_primary DESC, ws.total_impressions DESC NULLS LAST`,
       [groupId, weekStart],
     );

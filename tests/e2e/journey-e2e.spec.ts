@@ -142,6 +142,23 @@ test.describe('J7 — Dashboard Overview (authenticated + client selected)', () 
     if (page.url().includes('/onboarding')) {
       test.skip(true, 'Account has no clients yet — onboarding required');
     }
+
+    // Wait for bootstrap to complete (loading spinner to disappear)
+    try {
+      await page.waitForFunction(
+        () => {
+          const spinner = document.querySelector('[class*="animate-spin"]');
+          const sidebar = document.querySelector('aside');
+          const main = document.querySelector('main');
+          return (!spinner) && (!!sidebar || !!main);
+        },
+        { timeout: 30_000 },
+      );
+    } catch {
+      // Bootstrap timed out — continue and let individual tests fail if needed
+    }
+    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForTimeout(500);
   });
 
   test('Dashboard layout renders with sidebar and header tabs', async ({ page }) => {

@@ -8,7 +8,6 @@ import DashboardSidebar from '@/components/dashboard/sidebar';
 import DashboardHeader from '@/components/dashboard/header';
 import DashboardFilterBar from '@/components/dashboard/filter-bar';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Skeleton } from '@/components/ui/skeleton';
 import type { Group, WeekStart } from '@/lib/types';
 import { toWeekStart } from '@/lib/types';
 import { cn } from '@/lib/utils';
@@ -24,17 +23,26 @@ const TABS = [
 
 /**
  * Bootstraps the dashboard: loads client → groups, auto-selects the first
- * group, then passes everything to AppContext before rendering pages.
- * This ensures groupId is available BEFORE any page component mounts and
- * fires its data-fetching useEffect.
+ * group, then signals that data fetching can proceed.
+ *
+ * The effect fires when both isAuthenticated AND clientId are stable (truthy).
+ * React hooks run synchronously during render, so if clientId is set via
+ * setClientId and then the dashboard navigates, the next render will have
+ * clientId already set and isAuthenticated=true, so the effect fires.
  */
 function useDashboardBootstrap() {
-  const { setClientId, setGroupId, setSelectedWeek, clientId, groupId, availableWeeks, setAvailableWeeks, setReady } = useApp();
+  const { setClientId, setGroupId, setSelectedWeek, clientId, groupId, isReady, setAvailableWeeks, setReady } = useApp();
   const { fetchWithAuth, isAuthenticated } = useAuth();
   const [groups, setGroups] = useState<Group[]>([]);
   const [bootstrapLoading, setBootstrapLoading] = useState(true);
 
-  // Set clientId from localStorage once authenticated
+  // Keep refs so async callbacks always read current state
+  const clientIdRef = useRef<string | null>(clientId);
+  const groupIdRef = useRef<string | null>(groupId);
+  clientIdRef.current = clientId;
+  groupIdRef.current = groupId;
+
+  // Hydrate clientId from localStorage once authenticated.
   useEffect(() => {
     if (!isAuthenticated) return;
     if (clientId) return;
@@ -49,58 +57,63 @@ function useDashboardBootstrap() {
     }
   }, [isAuthenticated, clientId, setClientId]);
 
-  // Fetch groups when clientId is available, auto-select first
+  // Bootstrap effect: fires when both isAuthenticated and clientId are truthy.
+  // This handles the race where:
+  //   1. Dashboard mounts with clientId=null, isAuthenticated=false
+  //   2. Auth hydrates → isAuthenticated=true, clientId=null → skip (no clientId)
+  //   3. select-client sets clientId → state updates → render with clientId truthy
+  //   4. Effect fires → bootstrap proceeds
   useEffect(() => {
-    if (!clientId) return;
-    fetchWithAuth(`/api/clients/${clientId}/groups`)
+    if (!isAuthenticated || !clientId) return;
+
+    const currentClientId = clientIdRef.current;
+    if (!currentClientId) return;
+
+    // Fetch groups
+    fetchWithAuth(`/api/clients/${currentClientId}/groups`)
       .then((r) => (r.ok ? r.json() : { data: [] }))
       .then((d) => {
         const list: Group[] = d.data ?? [];
         setGroups(list);
-        if (list.length > 0 && !groupId) {
+        const currentGroupId = groupIdRef.current;
+        if (list.length > 0 && !currentGroupId) {
           setGroupId(list[0]!.id);
         }
       })
       .catch(() => setGroups([]));
-  }, [clientId, groupId, setGroupId, fetchWithAuth]);
 
-  // Fetch real week range from backend and update AppContext.
-  // Runs only after groupId is set (groups effect has completed setGroupId).
-  // This ordering guarantees groupId is stable before useDashboardData fires.
-  useEffect(() => {
-    if (!clientId || !isAuthenticated) return;
-    if (!groupId) return; // wait for group to be auto-selected first
+    // Fetch weeks (group-agnostic)
     fetchWithAuth('/api/dashboard/weeks')
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => {
-        if (!d?.data?.minWeek) return;
-        const { minWeek, maxWeek } = d.data;
-        // Generate weeks from minWeek to maxWeek (or now if maxWeek is null)
-        const end = maxWeek ? new Date(maxWeek + 'T00:00:00Z') : new Date();
-        const start = new Date(minWeek + 'T00:00:00Z');
-        const weeks: WeekStart[] = [];
-        const cur = new Date(start);
-        while (cur <= end) {
-          weeks.push(toWeekStart(cur));
-          cur.setDate(cur.getDate() + 7);
+        if (d?.data?.minWeek) {
+          const { minWeek, maxWeek } = d.data;
+          const end = maxWeek ? new Date(maxWeek + 'T00:00:00Z') : new Date();
+          const start = new Date(minWeek + 'T00:00:00Z');
+          const weeks: WeekStart[] = [];
+          const cur = new Date(start);
+          while (cur <= end) {
+            weeks.push(toWeekStart(cur));
+            cur.setDate(cur.getDate() + 7);
+          }
+          if (weeks.length > 0) {
+            setAvailableWeeks(weeks);
+            setSelectedWeek(weeks[weeks.length - 1]!);
+          }
         }
-        if (weeks.length > 0) {
-          setAvailableWeeks(weeks);
-          // Default to latest week (last in array)
-          setSelectedWeek(weeks[weeks.length - 1]!);
-        }
-        // Signal that bootstrap is complete — this unblocks useDashboardData hooks
         setReady(true);
       })
-      .catch(() => {});
-  }, [clientId, isAuthenticated, groupId, fetchWithAuth, setAvailableWeeks, setSelectedWeek, setReady]);
+      .catch(() => {
+        setReady(true);
+      });
+  }, [isAuthenticated, clientId, fetchWithAuth, setGroupId, setAvailableWeeks, setSelectedWeek, setReady]);
 
-  // Track bootstrap completion to hide the loading spinner
+  // Track bootstrap completion
   useEffect(() => {
-    if (groups.length > 0 && isAuthenticated) {
+    if (isReady && isAuthenticated) {
       setBootstrapLoading(false);
     }
-  }, [groups, isAuthenticated]);
+  }, [isReady, isAuthenticated]);
 
   return { groups, bootstrapLoading };
 }

@@ -98,6 +98,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     clearSession();
     setUser(null);
     setToken(null);
+    // Clear stale app state (clientId/groupId) so fresh login starts clean
+    try {
+      localStorage.removeItem('coban_app_state');
+    } catch {
+      // ignore
+    }
   }, []);
 
   const fetchWithAuth = useCallback(

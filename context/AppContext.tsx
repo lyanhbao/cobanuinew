@@ -6,6 +6,18 @@ import { toWeekStart, isoWeekNumber } from '@/lib/types';
 
 const STORAGE_KEY = 'coban_app_state';
 
+// ─── Filter types ───────────────────────────────────────────────────────────────
+
+export type Platform = 'all' | 'youtube' | 'facebook' | 'tiktok';
+export type BrandType = 'all' | 'primary' | 'competitor';
+
+export interface DashboardFilters {
+  platform: Platform;
+  brandType: BrandType;
+}
+
+// ─── App State ──────────────────────────────────────────────────────────────────
+
 interface AppState {
   clientId: ClientId | null;
   groupId: GroupId | null;
@@ -13,6 +25,8 @@ interface AppState {
   availableWeeks: WeekStart[];
   /** Set true once groups + weeks have been bootstrapped from the backend. */
   isReady: boolean;
+  /** Active dashboard filters */
+  filters: DashboardFilters;
 }
 
 interface AppContextValue extends AppState {
@@ -21,6 +35,7 @@ interface AppContextValue extends AppState {
   setSelectedWeek: (week: WeekStart | null) => void;
   setAvailableWeeks: (weeks: WeekStart[]) => void;
   setReady: (ready: boolean) => void;
+  setFilters: (filters: Partial<DashboardFilters>) => void;
   reset: () => void;
 }
 
@@ -30,6 +45,7 @@ const defaultState: AppState = {
   selectedWeek: null,
   availableWeeks: [],
   isReady: false,
+  filters: { platform: 'all', brandType: 'all' },
 };
 
 function buildDefaultState(): AppState {
@@ -102,11 +118,13 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   }, [state]);
 
   const setClientId = useCallback((id: ClientId | null) => {
+    // Reset groupId and isReady when client changes — forces fresh bootstrap
+    // This prevents stale groupId from a previous session causing blank pages
     setState((s) => ({ ...s, clientId: id, groupId: null, isReady: false }));
   }, []);
 
   const setGroupId = useCallback((id: GroupId | null) => {
-    setState((s) => ({ ...s, groupId: id }));
+    setState((s) => ({ ...s, groupId: id, isReady: false }));
   }, []);
 
   const setSelectedWeek = useCallback((week: WeekStart | null) => {
@@ -121,12 +139,34 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setState((s) => ({ ...s, isReady: ready }));
   }, []);
 
+  const setFilters = useCallback((filters: Partial<DashboardFilters>) => {
+    setState((s) => ({ ...s, filters: { ...s.filters, ...filters } }));
+  }, []);
+
   const reset = useCallback(() => {
-    setState((s) => ({ ...s, clientId: null, groupId: null, selectedWeek: null, isReady: false }));
+    setState((s) => ({
+      ...s,
+      clientId: null,
+      groupId: null,
+      selectedWeek: null,
+      isReady: false,
+      filters: { platform: 'all', brandType: 'all' },
+    }));
   }, []);
 
   return (
-    <AppContext.Provider value={{ ...state, setClientId, setGroupId, setSelectedWeek, setAvailableWeeks, setReady, reset }}>
+    <AppContext.Provider
+      value={{
+        ...state,
+        setClientId,
+        setGroupId,
+        setSelectedWeek,
+        setAvailableWeeks,
+        setReady,
+        setFilters,
+        reset,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

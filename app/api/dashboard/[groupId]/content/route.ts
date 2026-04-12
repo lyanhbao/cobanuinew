@@ -11,6 +11,8 @@ import { verifyJwt } from '../../../../../lib/auth';
 
 const paramsSchema = z.object({
   groupId: z.string().uuid(),
+  platform: z.enum(['youtube', 'facebook', 'tiktok']).optional(),
+  brandType: z.enum(['primary', 'competitor']).optional(),
 });
 
 function authUser(req: NextRequest) {
@@ -22,6 +24,8 @@ function authUser(req: NextRequest) {
 interface WeekInfo {
   label: string;
   start: string;
+  number: number;
+  year: number;
 }
 
 /**
@@ -78,7 +82,17 @@ export async function GET(
   }
 
   try {
-    const { groupId } = paramsSchema.parse(await params);
+    const searchParams = Object.fromEntries(req.nextUrl.searchParams);
+    const { groupId, platform, brandType } = paramsSchema.parse({
+      groupId: (await params).groupId,
+      ...searchParams,
+    });
+
+    const platformFilter = platform ? `AND p.platform = '${platform}'` : '';
+    const brandTypeFilter =
+      brandType === 'primary' ? `AND b.is_primary = 't'`
+      : brandType === 'competitor' ? `AND b.is_primary = 'f'`
+      : '';
 
     // Verify group belongs to account
     const groupCheck = await query<{ id: string }>(
@@ -107,10 +121,12 @@ export async function GET(
     }
 
     const week = weekResult.rows[0]!;
-    const weekStart = week.week_start; // raw "YYYY-MM-DD" string
+    const weekStart = week.week_start;
     const weekInfo: WeekInfo = {
       label: weekLabel(weekStart),
       start: weekStart,
+      number: week.week_number,
+      year: week.year,
     };
 
     // Format performance: aggregate from post table by platform × format
@@ -131,7 +147,7 @@ export async function GET(
          COUNT(*)::int AS total_posts
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date
+       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformFilter}
        GROUP BY p.platform, format
        ORDER BY p.platform, total_impressions DESC`,
       [groupId, weekStart],
@@ -153,7 +169,7 @@ export async function GET(
       `SELECT p.content
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date`,
+       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformFilter}`,
       [groupId, weekStart],
     );
 
@@ -186,7 +202,7 @@ export async function GET(
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date
+       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformFilter}
        ORDER BY p.impressions DESC
        LIMIT 20`,
       [groupId, weekStart],

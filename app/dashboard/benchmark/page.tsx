@@ -472,6 +472,7 @@ export default function BenchmarkPage() {
                     axisLine={false}
                     tickLine={false}
                     tickFormatter={(v: number) => `${v > 0 ? '+' : ''}${v}pp`}
+                    domain={[-100, 100]}
                   />
                   <Tooltip content={<GapTooltip />} />
                   <Bar dataKey="gap" name="Gap (pp)" radius={[4, 4, 0, 0]}>

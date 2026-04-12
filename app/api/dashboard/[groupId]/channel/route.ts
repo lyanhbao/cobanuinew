@@ -25,6 +25,8 @@ const PLATFORMS = ['youtube', 'facebook', 'tiktok'] as const;
 interface WeekInfo {
   label: string;
   start: string;
+  number: number;
+  year: number;
 }
 
 export async function GET(
@@ -67,10 +69,12 @@ export async function GET(
     }
 
     const week = weekResult.rows[0]!;
-    const weekStart = week.week_start; // raw "YYYY-MM-DD" string
+    const weekStart = week.week_start;
     const weekInfo: WeekInfo = {
       label: weekLabel(weekStart),
       start: weekStart,
+      number: week.week_number,
+      year: week.year,
     };
 
     // Per-platform KPIs: aggregate from post table for accuracy
@@ -299,7 +303,7 @@ export async function GET(
       tiktok: counts.tiktok,
     }));
 
-    return NextResponse.json({ success: true, data: { platforms: platformsResult, format_mix: topFormatMix, cadence: posting_cadence } });
+    return NextResponse.json({ success: true, data: { week: weekInfo, platforms: platformsResult, format_mix: topFormatMix, cadence: posting_cadence } });
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Failed to load channel data';
     return NextResponse.json({ success: false, error: message }, { status: 500 });

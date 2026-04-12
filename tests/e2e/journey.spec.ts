@@ -41,7 +41,10 @@ function freshEmail(label: string) { return `coban_${label}_${RUN_TS}@test.com`;
  * Uses waitForResponse + waitForURL to ensure the async router.push('/select-client') completes.
  */
 async function loginAs(page: Page, email: string, password: string) {
+  // Clear localStorage so the bootstrap always starts fresh
   await page.goto(`${BASE}/auth/login`);
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
   await page.waitForLoadState('domcontentloaded');
   await page.locator('#email').fill(email);
   await page.locator('#password').fill(password);
@@ -201,29 +204,58 @@ async function completeOnboarding(
 /**
  * Select the first available client card on /select-client, or skip if on /onboarding.
  */
-async function selectFirstClient(page: Page) {
+async function selectFirstClient(page: Page): Promise<boolean> {
   if (page.url().includes('/onboarding')) {
-    test.skip(true, 'No clients — on /onboarding');
-    return;
+    return false;
   }
   const firstCard = page.locator('[class*="card"]').first();
   if (await firstCard.isVisible({ timeout: 3_000 }).catch(() => false)) {
     await firstCard.click({ force: true });
   }
+  // Wait for navigation to dashboard
   await page.waitForURL(/\/dashboard/, { timeout: 10_000 }).catch(() => {});
+  // CRITICAL: Wait for the loading spinner to disappear (bootstrap must complete).
+  // The bootstrap fetches groups and weeks from the API. The dashboard layout
+  // renders a spinner while bootstrapLoading=true. We must wait for it to
+  // disappear before any test tries to interact with the dashboard UI.
+  try {
+    await page.waitForFunction(
+      () => {
+        // Bootstrap is done when: loading spinner is gone AND sidebar OR main content is visible
+        const spinner = document.querySelector('[class*="animate-spin"]');
+        const sidebar = document.querySelector('aside');
+        const main = document.querySelector('main');
+        return (!spinner) && (!!sidebar || !!main);
+      },
+      { timeout: 30_000 },
+    );
+  } catch {
+    // If the spinner is still visible after 30s, take a screenshot for debugging
+    await page.screenshot({ path: 'test-results/bootstrap-timeout.png' });
+  }
+  // Wait for any pending network requests (API calls for dashboard data)
+  await page.waitForLoadState('networkidle').catch(() => {});
+  // Small settle time for React renders
+  await page.waitForTimeout(500);
+  return true;
 }
 
 /**
  * Enter the dashboard (login → select client → dashboard/overview).
  */
-async function enterDashboard(page: Page) {
+async function enterDashboard(page: Page): Promise<boolean> {
   const cred = loadCredentials();
   if (!cred) {
     test.skip(true, 'No test credentials — run signup tests first in this file');
-    return;
+    return false;
   }
   await loginAs(page, cred.email, cred.password);
-  await selectFirstClient(page);
+  const selected = await selectFirstClient(page);
+  if (!selected) {
+    test.skip(true, 'No clients — stuck on /onboarding');
+    return false;
+  }
+  return true;
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -576,7 +608,7 @@ test.describe('J6 — Onboarding Wizard', () => {
 
 test.describe('J7 — Dashboard (authenticated)', () => {
   test('Dashboard layout: sidebar + tab navigation visible', async ({ page }) => {
-    await enterDashboard(page);
+    if (!await enterDashboard(page)) return;
     // Navigate to overview and verify key structural elements
     await page.goto(`${BASE}/dashboard/overview`);
     await page.waitForLoadState('networkidle');
@@ -589,7 +621,7 @@ test.describe('J7 — Dashboard (authenticated)', () => {
   });
 
   test('Overview page renders KPI area (cards or empty state)', async ({ page }) => {
-    await enterDashboard(page);
+    if (!await enterDashboard(page)) return;
     await page.goto(`${BASE}/dashboard/overview`);
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(2_000);
@@ -609,7 +641,7 @@ test.describe('J7 — Dashboard (authenticated)', () => {
     ['Trends', '/dashboard/trends'],
   ] as const) {
     test(`Tab: click "${tab}" → URL changes to ${path}`, async ({ page }) => {
-      await enterDashboard(page);
+      if (!await enterDashboard(page)) return;
       await page.goto(`${BASE}/dashboard/overview`);
       await page.waitForLoadState('networkidle');
       const tabBtn = page.locator(`[role="tab"]:has-text("${tab}")`);
@@ -618,7 +650,7 @@ test.describe('J7 — Dashboard (authenticated)', () => {
     });
 
     test(`Tab: direct navigation ${path} renders without crash`, async ({ page }) => {
-      await enterDashboard(page);
+      if (!await enterDashboard(page)) return;
       await page.goto(`${BASE}${path}`);
       await page.waitForLoadState('networkidle');
       await expect(page.locator('body')).toBeVisible();
@@ -626,9 +658,9 @@ test.describe('J7 — Dashboard (authenticated)', () => {
   }
 
   test('No console errors on Overview page', async ({ page }) => {
+    if (!await enterDashboard(page)) return;
     const errors: string[] = [];
     page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
-    await enterDashboard(page);
     await page.goto(`${BASE}/dashboard/overview`);
     await page.waitForLoadState('networkidle');
     const realErrors = errors.filter(e =>
@@ -645,14 +677,14 @@ test.describe('J7 — Dashboard (authenticated)', () => {
 
 test.describe('J8 — Client Settings', () => {
   test('Settings page loads for authenticated user', async ({ page }) => {
-    await enterDashboard(page);
+    if (!await enterDashboard(page)) return;
     await page.goto(`${BASE}/dashboard/settings`);
     await page.waitForLoadState('networkidle');
     await expect(page.locator('body')).toBeVisible();
   });
 
   test('No crash on /dashboard/settings', async ({ page }) => {
-    await enterDashboard(page);
+    if (!await enterDashboard(page)) return;
     await page.goto(`${BASE}/dashboard/settings`);
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(1_000);
@@ -667,7 +699,7 @@ test.describe('J8 — Client Settings', () => {
 
 test.describe('J9 — Add/Remove Competitor', () => {
   test('Groups page loads and shows groups or empty state', async ({ page }) => {
-    await enterDashboard(page);
+    if (!await enterDashboard(page)) return;
     await page.goto(`${BASE}/dashboard/groups`);
     await page.waitForLoadState('networkidle');
     const hasGroups =
@@ -677,7 +709,7 @@ test.describe('J9 — Add/Remove Competitor', () => {
   });
 
   test('"New Group" button opens create dialog', async ({ page }) => {
-    await enterDashboard(page);
+    if (!await enterDashboard(page)) return;
     await page.goto(`${BASE}/dashboard/groups`);
     await page.waitForLoadState('networkidle');
     const newGroupBtn = page.locator('button:has-text("New Group"), button:has-text("Create your first group")').first();
@@ -690,7 +722,7 @@ test.describe('J9 — Add/Remove Competitor', () => {
   });
 
   test('Create new group flow', async ({ page }) => {
-    await enterDashboard(page);
+    if (!await enterDashboard(page)) return;
     await page.goto(`${BASE}/dashboard/groups`);
     await page.waitForLoadState('networkidle');
     const newGroupBtn = page.locator('button:has-text("New Group"), button:has-text("Create your first group")').first();
@@ -708,7 +740,7 @@ test.describe('J9 — Add/Remove Competitor', () => {
   });
 
   test('Groups page sidebar link navigates correctly', async ({ page }) => {
-    await enterDashboard(page);
+    if (!await enterDashboard(page)) return;
     const groupsLink = page.locator('aside a[href="/dashboard/groups"]').first();
     if (await groupsLink.isVisible({ timeout: 3_000 }).catch(() => false)) {
       await groupsLink.click();
@@ -723,7 +755,7 @@ test.describe('J9 — Add/Remove Competitor', () => {
 
 test.describe('J11 — Export / Report', () => {
   test('Dashboard pages load without crash (data-dependent)', async ({ page }) => {
-    await enterDashboard(page);
+    if (!await enterDashboard(page)) return;
     for (const path of ['/dashboard/overview', '/dashboard/rankings', '/dashboard/channel']) {
       await page.goto(`${BASE}${path}`);
       await page.waitForLoadState('networkidle');
