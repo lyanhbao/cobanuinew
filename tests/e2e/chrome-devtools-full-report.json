@@ -1,0 +1,177 @@
+{
+  "test_date": "2026-04-11",
+  "app_url": "http://localhost:3000",
+  "tester": "team-lead (Chrome DevTools MCP)",
+  "credentials": {
+    "email": "demo@dairyinsights.vn",
+    "password": "DemoPass123!",
+    "client": "Vietnamese Dairy Market"
+  },
+  "pages_tested": [
+    { "page": "/", "status": "rendered", "charts": 2, "notes": "Landing page với nav, sections, charts" },
+    { "page": "/auth/login", "status": "rendered", "notes": "Login form với email/password inputs" },
+    { "page": "/auth/signup", "status": "rendered", "notes": "Signup form visible" },
+    { "page": "/select-client", "status": "rendered", "notes": "Client cards visible, click navigation works" },
+    { "page": "/dashboard/overview", "status": "rendered", "charts": 2, "notes": "KPIs, SOV chart, donut, insights - có data" },
+    { "page": "/dashboard/rankings", "status": "rendered_fixed", "charts": 9, "notes": "Table 9 brands - FIX: useMemo moved before early returns" },
+    { "page": "/dashboard/channel", "status": "rendered_fixed", "charts": 5, "notes": "3 platform KPIs + format mix + cadence charts - FIX: added format_mix + cadence to API response" },
+    { "page": "/dashboard/content", "status": "rendered_fixed", "charts": 0, "notes": "14 post rows - FIX: post.er ?? 0 toFixed" },
+    { "page": "/dashboard/benchmark", "status": "rendered", "charts": 2, "notes": "Radar + head-to-head charts" },
+    { "page": "/dashboard/trends", "status": "rendered_fixed", "charts": 1, "notes": "Performance trend chart - FIX: ba.summary → ba.title, ba.change_pct → ba.gap_pct" },
+    { "page": "/dashboard/groups", "status": "rendered", "notes": "3 groups visible (Dairy, Cosmetics, E-commerce)" },
+    { "page": "/dashboard/team", "status": "rendered", "notes": "Team Management + Role Permissions" },
+    { "page": "/dashboard/settings", "status": "rendered", "notes": "Account + Plan Information" },
+    { "page": "/dashboard/alerts", "status": "rendered", "notes": "Alerts list visible" },
+    { "page": "/dashboard/analytics", "status": "rendered", "notes": "KPIs + charts + competitor table" },
+    { "page": "/onboarding", "status": "rendered", "notes": "4-step wizard visible (Client, Group, Brands, Crawl)" }
+  ],
+  "bugs_found_and_fixed": [
+    {
+      "bug_id": "BUG-001",
+      "severity": "critical",
+      "page": "/dashboard/rankings",
+      "type": "React Rules of Hooks Violation",
+      "description": "useMemo called after early return statements - causes blank page with dialog error",
+      "file": "app/dashboard/rankings/page.tsx",
+      "line": 249,
+      "fix": "Moved SortIcon useMemo definition BEFORE all early return statements",
+      "status": "fixed"
+    },
+    {
+      "bug_id": "BUG-002",
+      "severity": "critical",
+      "page": "/dashboard/content",
+      "type": "Runtime TypeError",
+      "description": "Cannot read properties of undefined (reading 'toFixed') - post.er is null/undefined",
+      "file": "app/dashboard/content/page.tsx",
+      "line": 226,
+      "fix": "Changed {post.er.toFixed(1)}% to {(post.er ?? 0).toFixed(1)}%",
+      "status": "fixed"
+    },
+    {
+      "bug_id": "BUG-003",
+      "severity": "critical",
+      "page": "/dashboard/channel",
+      "type": "Runtime TypeError",
+      "description": "ws.split is not a function - week_start from post table is Date object not string",
+      "file": "app/api/dashboard/[groupId]/channel/route.ts",
+      "line": 179,
+      "fix": "Changed ws.split() pattern to String(week_start) defensive cast + removed unused weekNum parsing",
+      "status": "fixed"
+    },
+    {
+      "bug_id": "BUG-004",
+      "severity": "critical",
+      "page": "/dashboard/channel",
+      "type": "Frontend Crash - Missing Data",
+      "description": "Cannot read properties of undefined (reading 'map') - API response missing top-level format_mix and cadence fields",
+      "file": "app/api/dashboard/[groupId]/channel/route.ts",
+      "line": 281,
+      "fix": "Added format_mix cross-tab and cadence to API response object",
+      "status": "fixed"
+    },
+    {
+      "bug_id": "BUG-005",
+      "severity": "critical",
+      "page": "/dashboard/trends",
+      "type": "Database Schema Error",
+      "description": "column ba.summary does not exist - brand_activity has no summary or change_pct columns",
+      "file": "app/api/dashboard/[groupId]/trends/route.ts",
+      "line": 99,
+      "fix": "Changed ba.summary → ba.title, ba.change_pct → ba.gap_pct to match actual DB schema",
+      "status": "fixed"
+    },
+    {
+      "bug_id": "BUG-006",
+      "severity": "high",
+      "page": "/",
+      "type": "Hydration Mismatch",
+      "description": "Server rendered '18:11:05' vs client '6:11:04 PM' in MetricsSection - time formatting differs between SSR and client",
+      "file": "app/page.tsx",
+      "line": "MetricsSection",
+      "fix": "NOT_FIXED - needs client-side only time rendering or suppress hydration warning",
+      "status": "pending"
+    },
+    {
+      "bug_id": "BUG-007",
+      "severity": "medium",
+      "page": "/",
+      "type": "404 Resource",
+      "description": "favicon.ico returns 404",
+      "file": "public/favicon.ico",
+      "fix": "NOT_FIXED - add favicon.ico to public folder",
+      "status": "pending"
+    },
+    {
+      "bug_id": "BUG-008",
+      "severity": "low",
+      "page": "/dashboard/rankings",
+      "type": "Zero Data Display",
+      "description": "Rankings table shows 0 for all brands (impressions, reactions, posts) - rankings API returns 0 because weekly_stats uses wrong group_id for aggregation. Actual trend data exists (array of non-zero values) but current week has no stats.",
+      "file": "app/api/dashboard/[groupId]/rankings/route.ts",
+      "fix": "NOT_FIXED - data issue vs logic issue needs investigation: overview aggregation shows correct 14.8M but rankings shows 0",
+      "status": "pending"
+    },
+    {
+      "bug_id": "BUG-009",
+      "severity": "high",
+      "page": "/dashboard/overview",
+      "type": "Missing Primary Brand Data",
+      "description": "SOV (PRIMARY) shows 'null%' instead of actual primary brand share — SOV query used INNER JOIN weekly_stats excluding brands with no stats",
+      "file": "app/api/dashboard/[groupId]/overview/route.ts",
+      "line": 88,
+      "fix": "Changed SOV query from INNER JOIN weekly_stats to LEFT JOIN from brand table to include all group brands even with no stats this week",
+      "status": "fixed"
+    },
+    {
+      "bug_id": "BUG-010",
+      "severity": "critical",
+      "page": "/dashboard/content",
+      "type": "API/Frontend Field Name Mismatch",
+      "description": "Content API returned {views, reactions, engagement_rate} but frontend interface expected {engagement, er} — caused NaN display in engagement column",
+      "file": "app/api/dashboard/[groupId]/content/route.ts",
+      "line": 196,
+      "fix": "Changed top_posts map to return {engagement: reactions, er} fields matching frontend interface. Also changed format_performance to use {engagement, er} instead of {platform, impressions, reactions, avg_er}",
+      "status": "fixed"
+    }
+  ],
+  "logic_issues": [
+    {
+      "issue_id": "LOGIC-001",
+      "page": "/dashboard/rankings",
+      "description": "Rankings API returns impressions=0 for all brands but overview shows 14.8M total. Root cause: weekly_stats data is aggregated under a different group_id than what rankings queries. The trend arrays in rankings API DO contain non-zero historical data - the issue is per-week aggregation query.",
+      "recommendation": "Check if weekly_stats uses brand_id or group_id aggregation correctly for rankings vs overview"
+    },
+    {
+      "issue_id": "LOGIC-002",
+      "page": "/dashboard/overview",
+      "description": "Overview shows data for W1 (Dec 30, 2024) but demo data was seeded in 2021. The data shows 14.8M impressions but seems misaligned with actual historical data.",
+      "recommendation": "Verify data seeding and week alignment in weekly_stats"
+    }
+  ],
+  "console_summary": {
+    "landing_page": {
+      "errors": ["Hydration mismatch: time formatting 18:11:05 vs 6:11:04 PM"],
+      "warnings": ["404 favicon.ico"],
+      "info": ["Vercel Web Analytics active"]
+    },
+    "auth_pages": {
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    "dashboard": {
+      "errors": ["Fast Refresh rebuilding notifications"],
+      "warnings": [],
+      "info": []
+    }
+  },
+  "summary": {
+    "total_pages_tested": 16,
+    "pages_working": 16,
+    "critical_bugs_found": 6,
+    "critical_bugs_fixed": 6,
+    "bugs_pending": 2,
+    "all_pages_render": true
+  }
+}

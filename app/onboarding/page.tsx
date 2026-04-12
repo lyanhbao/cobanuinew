@@ -1,0 +1,424 @@
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
+import { useApp } from '@/context/AppContext';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Badge } from '@/components/ui/badge';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from '@/components/ui/command';
+import { toast } from 'sonner';
+import {
+  Building2,
+  FolderOpen,
+  Search,
+  ChevronRight,
+  Check,
+  Loader2,
+  Circle,
+} from 'lucide-react';
+import type { Client, Group, CuratedBrand } from '@/lib/types';
+
+type Step = 1 | 2 | 3 | 4;
+
+const STEPS: { label: string; description: string }[] = [
+  { label: 'Client', description: 'Create your client account' },
+  { label: 'Group', description: 'Create a tracking group' },
+  { label: 'Brands', description: 'Select brands to track' },
+  { label: 'Crawl', description: 'Start data ingestion' },
+];
+
+export default function OnboardingPage() {
+  const router = useRouter();
+  const { isAuthenticated, isLoading: authLoading, fetchWithAuth } = useAuth();
+  const { setClientId, setGroupId } = useApp();
+
+  const [step, setStep] = useState<Step>(1);
+  const [submitting, setSubmitting] = useState(false);
+  const [crawlStatus, setCrawlStatus] = useState<'pending' | 'crawling' | 'ready'>('pending');
+
+  // Step 1 — Client
+  const [clientName, setClientName] = useState('');
+  const [clientIndustry, setClientIndustry] = useState('');
+
+  // Step 2 — Group
+  const [groupName, setGroupName] = useState('');
+  const [groupCategory, setGroupCategory] = useState('');
+
+  // Step 3 — Brands
+  const [primaryBrand, setPrimaryBrand] = useState<CuratedBrand | null>(null);
+  const [competitors, setCompetitors] = useState<CuratedBrand[]>([]);
+  const [brandQuery, setBrandQuery] = useState('');
+  const [brandResults, setBrandResults] = useState<CuratedBrand[]>([]);
+  const [searching, setSearching] = useState(false);
+
+  // IDs for flow
+  const [createdClientId, setCreatedClientId] = useState<string | null>(null);
+  const [createdGroupId, setCreatedGroupId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!authLoading && !isAuthenticated) {
+      router.push('/auth/login');
+    }
+  }, [isAuthenticated, authLoading, router]);
+
+  useEffect(() => {
+    if (brandQuery.length < 2) { setBrandResults([]); return; }
+    const timer = setTimeout(() => {
+      setSearching(true);
+      fetch(`/api/curated-brands?q=${encodeURIComponent(brandQuery)}`)
+        .then((r) => r.json())
+        .then((d) => setBrandResults(d.success ? (d.data ?? []) : []))
+        .catch(() => setBrandResults([]))
+        .finally(() => setSearching(false));
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [brandQuery]);
+
+  const handleStep1 = async () => {
+    if (!clientName.trim()) { toast.error('Client name is required'); return; }
+    setSubmitting(true);
+    try {
+      const res = await fetchWithAuth('/api/clients', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: clientName, ...(clientIndustry.trim() ? { industry: clientIndustry } : {}) }),
+      });
+      const d = await res.json();
+      if (!res.ok) throw new Error(d.error ?? 'Failed to create client');
+      setCreatedClientId(d.data?.id ?? d.client?.id);
+      setClientId(d.data?.id ?? d.client?.id);
+      setStep(2);
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : 'Failed to create client');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleStep2 = async () => {
+    if (!groupName.trim()) { toast.error('Group name is required'); return; }
+    if (!createdClientId) { toast.error('No client selected'); return; }
+    setSubmitting(true);
+    try {
+      const res = await fetchWithAuth(`/api/clients/${createdClientId}/groups`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: groupName, ...(groupCategory.trim() ? { benchmark_category: groupCategory } : {}) }),
+      });
+      const d = await res.json();
+      if (!res.ok) throw new Error(d.error ?? 'Failed to create group');
+      setCreatedGroupId(d.data?.id ?? d.group?.id);
+      setGroupId(d.data?.id ?? d.group?.id);
+      setStep(3);
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : 'Failed to create group');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleStep3 = async () => {
+    if (!primaryBrand) { toast.error('Please select a primary brand'); return; }
+    if (!createdGroupId) { toast.error('No group selected'); return; }
+    setSubmitting(true);
+    try {
+      // Add primary brand
+      const primaryRes = await fetchWithAuth(`/api/groups/${createdGroupId}/brands`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ curated_brand_id: primaryBrand.id, is_primary: true }),
+      });
+      if (!primaryRes.ok) {
+        const d = await primaryRes.json().catch(() => ({}));
+        throw new Error(d.error ?? 'Failed to add primary brand');
+      }
+      // Add competitors
+      for (const comp of competitors) {
+        const compRes = await fetchWithAuth(`/api/groups/${createdGroupId}/brands`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ curated_brand_id: comp.id, is_primary: false }),
+        });
+        if (!compRes.ok) {
+          const d = await compRes.json().catch(() => ({}));
+          throw new Error(d.error ?? 'Failed to add competitor brand');
+        }
+      }
+      setStep(4);
+      setCrawlStatus('crawling');
+      await fetchWithAuth(`/api/groups/${createdGroupId}/crawl`, { method: 'POST' });
+      setTimeout(() => setCrawlStatus('ready'), 3000);
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : 'Failed to add brands');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleDone = () => {
+    router.push('/dashboard/overview');
+  };
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Skeleton className="w-64 h-8" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="max-w-2xl mx-auto p-8">
+        {/* Logo */}
+        <div className="mb-10">
+          <h1 className="text-2xl font-display tracking-tight">COBAN</h1>
+        </div>
+
+        {/* Step indicator */}
+        <div className="flex items-center gap-2 mb-12">
+          {STEPS.map((s, i) => {
+            const num = (i + 1) as Step;
+            const isDone = step > num;
+            const isCurrent = step === num;
+            return (
+              <div key={s.label} className="flex items-center gap-2 flex-1">
+                <div className={`flex items-center justify-center w-8 h-8 rounded-full border-2 text-sm font-medium transition-colors
+                  ${isDone ? 'bg-foreground text-background border-foreground' : isCurrent ? 'border-foreground text-foreground' : 'border-border text-muted-foreground'}`}>
+                  {isDone ? <Check className="w-4 h-4" /> : num}
+                </div>
+                <div className="hidden sm:block">
+                  <p className={`text-sm font-medium ${isCurrent ? '' : 'text-muted-foreground'}`}>{s.label}</p>
+                  <p className="text-xs text-muted-foreground">{s.description}</p>
+                </div>
+                {i < STEPS.length - 1 && (
+                  <div className={`flex-1 h-px mx-2 ${step > num ? 'bg-foreground' : 'bg-border'}`} />
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Step 1: Client */}
+        {step === 1 && (
+          <Card className="p-8 bg-card border border-border">
+            <div className="mb-6">
+              <div className="w-12 h-12 rounded-lg bg-foreground/10 flex items-center justify-center mb-4">
+                <Building2 className="w-6 h-6" />
+              </div>
+              <h2 className="text-2xl font-display mb-2">Create Your Client</h2>
+              <p className="text-muted-foreground">Set up your client account to start tracking competitors</p>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Client Name</label>
+                <Input
+                  placeholder="e.g. Vinamilk, Unilever Vietnam"
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Industry (optional)</label>
+                <Input
+                  placeholder="e.g. FMCG, Banking, E-commerce"
+                  value={clientIndustry}
+                  onChange={(e) => setClientIndustry(e.target.value)}
+                />
+              </div>
+              <Button onClick={handleStep1} disabled={submitting} className="w-full mt-2">
+                {submitting ? 'Creating...' : 'Continue'}
+                <ChevronRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </Card>
+        )}
+
+        {/* Step 2: Group */}
+        {step === 2 && (
+          <Card className="p-8 bg-card border border-border">
+            <div className="mb-6">
+              <div className="w-12 h-12 rounded-lg bg-foreground/10 flex items-center justify-center mb-4">
+                <FolderOpen className="w-6 h-6" />
+              </div>
+              <h2 className="text-2xl font-display mb-2">Create Your First Group</h2>
+              <p className="text-muted-foreground">A group organizes brands and competitors for tracking</p>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Group Name</label>
+                <Input
+                  placeholder="e.g. Dairy Segment, Beauty Category"
+                  value={groupName}
+                  onChange={(e) => setGroupName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Benchmark Category (optional)</label>
+                <Input
+                  placeholder="e.g. Beverages, Personal Care"
+                  value={groupCategory}
+                  onChange={(e) => setGroupCategory(e.target.value)}
+                />
+              </div>
+              <Button onClick={handleStep2} disabled={submitting} className="w-full mt-2">
+                {submitting ? 'Creating...' : 'Continue'}
+                <ChevronRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </Card>
+        )}
+
+        {/* Step 3: Brands */}
+        {step === 3 && (
+          <Card className="p-8 bg-card border border-border">
+            <div className="mb-6">
+              <div className="w-12 h-12 rounded-lg bg-foreground/10 flex items-center justify-center mb-4">
+                <Search className="w-6 h-6" />
+              </div>
+              <h2 className="text-2xl font-display mb-2">Select Brands to Track</h2>
+              <p className="text-muted-foreground">Choose your primary brand and competitors from our database</p>
+            </div>
+            <div className="space-y-6">
+              {/* Primary brand */}
+              <div>
+                <label className="block text-sm font-medium mb-2">Primary Brand</label>
+                {primaryBrand ? (
+                  <div className="flex items-center justify-between p-3 border border-border rounded-lg bg-foreground/5">
+                    <div>
+                      <p className="font-medium">{primaryBrand.name}</p>
+                      <p className="text-xs text-muted-foreground">{primaryBrand.advertiser ?? ''}</p>
+                    </div>
+                    <Button variant="ghost" size="sm" onClick={() => setPrimaryBrand(null)}>Remove</Button>
+                  </div>
+                ) : brandResults.length > 0 ? (
+                  <Command className="border border-border rounded-lg">
+                    <CommandInput data-testid="primary-brand-search" placeholder="Search curated brands..." onValueChange={setBrandQuery} />
+                    <CommandList>
+                      <CommandGroup>
+                        {brandResults.map((b) => (
+                          <CommandItem key={b.id} onSelect={() => setPrimaryBrand(b)}>
+                            <div>
+                              <p className="font-medium">{b.name}</p>
+                              <p className="text-xs text-muted-foreground">{b.advertiser ?? ''}</p>
+                            </div>
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                ) : (
+                  <Input
+                    data-testid="primary-brand-search"
+                    placeholder={searching ? "Searching..." : "Start typing to search brands..."}
+                    value={brandQuery}
+                    onChange={(e) => setBrandQuery(e.target.value)}
+                  />
+                )}
+              </div>
+
+              {/* Competitors */}
+              <div>
+                <label className="block text-sm font-medium mb-2">Competitors ({competitors.length})</label>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {competitors.map((c) => (
+                    <Badge key={c.id} variant="secondary" className="gap-1 pr-1">
+                      {c.name}
+                      <button onClick={() => setCompetitors((prev) => prev.filter((x) => x.id !== c.id))} className="ml-1 hover:text-destructive">×</button>
+                    </Badge>
+                  ))}
+                </div>
+                {brandResults.filter((b) => b.id !== primaryBrand?.id && !competitors.some((c) => c.id === b.id)).length > 0 ? (
+                  <Command className="border border-border rounded-lg">
+                    <CommandInput placeholder="Search more brands..." onValueChange={setBrandQuery} />
+                    <CommandList>
+                      <CommandGroup>
+                        {brandResults
+                          .filter((b) => b.id !== primaryBrand?.id && !competitors.some((c) => c.id === b.id))
+                          .map((b) => (
+                            <CommandItem key={b.id} onSelect={() => setCompetitors((prev) => [...prev, b])}>
+                              <div>
+                                <p className="font-medium">{b.name}</p>
+                                <p className="text-xs text-muted-foreground">{b.advertiser ?? ''}</p>
+                              </div>
+                            </CommandItem>
+                          ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                ) : (
+                  <Input
+                    placeholder={searching ? "Searching..." : "Start typing to search brands..."}
+                    value={brandQuery}
+                    onChange={(e) => setBrandQuery(e.target.value)}
+                  />
+                )}
+              </div>
+
+              <Button data-testid="save-brands-button" onClick={handleStep3} disabled={submitting} className="w-full">
+                {submitting ? 'Saving...' : 'Save Brands & Start Crawl'}
+                <ChevronRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </Card>
+        )}
+
+        {/* Step 4: Crawl Status */}
+        {step === 4 && (
+          <Card className="p-8 bg-card border border-border text-center">
+            <div className="flex flex-col items-center gap-4">
+              {crawlStatus === 'pending' && (
+                <>
+                  <Circle className="w-12 h-12 text-muted-foreground animate-pulse" />
+                  <h2 className="text-2xl font-display">Preparing crawl...</h2>
+                  <p className="text-muted-foreground">Setting up data ingestion</p>
+                </>
+              )}
+              {crawlStatus === 'crawling' && (
+                <>
+                  <Loader2 className="w-12 h-12 text-foreground animate-spin" />
+                  <h2 className="text-2xl font-display">Crawling Data</h2>
+                  <p className="text-muted-foreground">Fetching posts from Facebook, YouTube & TikTok</p>
+                  <div className="w-64 h-2 bg-border rounded-full overflow-hidden mt-2">
+                    <div className="h-full bg-foreground animate-pulse rounded-full" style={{ width: '60%' }} />
+                  </div>
+                </>
+              )}
+              {crawlStatus === 'ready' && (
+                <>
+                  <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                    <Check className="w-6 h-6 text-green-600" />
+                  </div>
+                  <h2 className="text-2xl font-display">You're all set!</h2>
+                  <p className="text-muted-foreground">Data ingestion has started. Dashboard will be ready shortly.</p>
+                  <Button onClick={handleDone} className="mt-4">
+                    Go to Dashboard
+                    <ChevronRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </>
+              )}
+            </div>
+          </Card>
+        )}
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,9 @@
+@@ -118,7 +118,7 @@
+     setSubmitting(true);
+     try {
+       const res = await fetchWithAuth(`/api/clients/${createdClientId}/groups`, {
+         method: 'POST',
+         headers: { 'Content-Type: application/json' },
+-        body: JSON.stringify({ name: groupName, benchmark_category: groupCategory }),
++        body: JSON.stringify({ name: groupName, ...(groupCategory.trim() ? { benchmark_category: groupCategory } : {}) }),
+       });
