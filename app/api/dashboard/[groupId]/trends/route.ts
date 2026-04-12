@@ -53,6 +53,7 @@ export async function GET(
     // Use actual max week_start in data instead of CURRENT_DATE (data may be historical)
     interface RawRow {
       week_start: string;
+      brand_id: string;
       brand_name: string;
       total_impressions: string;
     }
@@ -62,7 +63,8 @@ export async function GET(
        )
        SELECT
          ws.week_start::text,
-         cb.name  AS brand_name,
+         b.id           AS brand_id,
+         cb.name         AS brand_name,
          ws.total_impressions
        FROM weekly_stats ws
        JOIN brand b       ON b.id        = ws.brand_id
@@ -77,14 +79,16 @@ export async function GET(
     // Build week-ordered list of rows: { week_start, [brandName]: impressions }
     // Also collect unique brands in order of first appearance.
     const weekMap = new Map<string, Record<string, string | number>>();
-    const brandOrder = new Map<string, true>();
+    const brandOrder = new Map<string, { id: string; name: string }>();
 
     for (const row of rows.rows) {
       if (!weekMap.has(row.week_start)) {
         weekMap.set(row.week_start, { week: weekLabel(row.week_start) });
       }
       weekMap.get(row.week_start)![row.brand_name] = Number(row.total_impressions);
-      brandOrder.set(row.brand_name, true);
+      if (!brandOrder.has(row.brand_id)) {
+        brandOrder.set(row.brand_id, { id: row.brand_id, name: row.brand_name });
+      }
     }
 
     // Last 26 rows
@@ -92,7 +96,7 @@ export async function GET(
     const trend_data = allWeeks.slice(-26);
 
     // Brands in order of appearance in the dataset
-    const brands = Array.from(brandOrder.keys());
+    const brands = Array.from(brandOrder.values());
 
     // ── Anomalies: first try brand_activity, fall back to weekly_stats gap_pct ──
     interface RawAnomaly {

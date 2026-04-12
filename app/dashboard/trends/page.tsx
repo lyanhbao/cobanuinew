@@ -34,7 +34,7 @@ import {
 type MetricKey = 'impressions' | 'views' | 'engagement' | 'posts';
 
 interface TrendsData {
-  brands: string[];
+  brands: Array<{ id: string; name: string }>;
   trend_data: Array<{
     week: string;
     [brand: string]: string | number;
@@ -248,14 +248,15 @@ export default function TrendsPage() {
   // Initialize selected brands once data arrives
   useEffect(() => {
     if (data && !initialized) {
-      setSelectedBrands(data.brands.slice(0, Math.min(3, data.brands.length)));
+      const init = data.brands.slice(0, Math.min(3, data.brands.length)).map((b) => b.id);
+      setSelectedBrands(init);
       setInitialized(true);
     }
-  }, [data, initialized, setSelectedBrands, setInitialized]);
+  }, [data, initialized]);
 
-  const toggleBrand = (brand: string) => {
+  const toggleBrand = (id: string) => {
     setSelectedBrands((prev) =>
-      prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]
+      prev.includes(id) ? prev.filter((b) => b !== id) : [...prev, id]
     );
   };
 
@@ -265,13 +266,19 @@ export default function TrendsPage() {
 
   const { brands, trend_data, anomalies } = data;
 
-  // Build chart lines
-  const activeBrands = selectedBrands.length > 0 ? selectedBrands : brands.slice(0, 1);
-  const chartLines = activeBrands.map((brand, i) => ({
-    brand,
-    color: BRAND_PALETTE[i % BRAND_PALETTE.length],
-    dataKey: brand,
-  }));
+  // Build chart lines — activeBrands are IDs, look up name for Recharts dataKey
+  const activeBrands = selectedBrands.length > 0
+    ? selectedBrands
+    : brands.slice(0, Math.min(1, brands.length)).map((b) => b.id);
+  const chartLines = activeBrands.map((id, i) => {
+    const brandObj = brands.find((b) => b.id === id);
+    return {
+      id,
+      name: brandObj?.name ?? id,
+      color: BRAND_PALETTE[i % BRAND_PALETTE.length],
+      dataKey: brandObj?.name ?? id,
+    };
+  });
 
   return (
     <div className="p-6 space-y-6 noise-overlay">
@@ -303,11 +310,11 @@ export default function TrendsPage() {
             </p>
             <div className="flex flex-wrap gap-3">
               {brands.map((brand, i) => {
-                const isActive = selectedBrands.includes(brand);
+                const isActive = selectedBrands.includes(brand.id);
                 const brandColor = BRAND_PALETTE[i % BRAND_PALETTE.length];
                 return (
                   <label
-                    key={brand}
+                    key={brand.id}
                     className={`
                       flex items-center gap-2.5 text-sm cursor-pointer select-none
                       px-3 py-1.5 rounded-lg border transition-all duration-200
@@ -320,11 +327,11 @@ export default function TrendsPage() {
                   >
                     <Checkbox
                       checked={isActive}
-                      onCheckedChange={() => toggleBrand(brand)}
+                      onCheckedChange={() => toggleBrand(brand.id)}
                       className="data-[state=checked]:bg-foreground data-[state=checked]:border-foreground"
                     />
                     <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: brandColor }} />
-                    <span className={isActive ? 'text-foreground' : 'text-muted-foreground'}>{brand}</span>
+                    <span className={isActive ? 'text-foreground' : 'text-muted-foreground'}>{brand.name}</span>
                   </label>
                 );
               })}
@@ -346,9 +353,9 @@ export default function TrendsPage() {
               </h3>
               <div className="flex items-center gap-4 text-xs">
                 {chartLines.map((l) => (
-                  <div key={l.brand} className="flex items-center gap-1.5">
+                  <div key={l.id} className="flex items-center gap-1.5">
                     <div className="w-4 h-0.5 rounded-full" style={{ backgroundColor: l.color }} />
-                    <span className="text-muted-foreground">{l.brand}</span>
+                    <span className="text-muted-foreground">{l.name}</span>
                   </div>
                 ))}
               </div>
@@ -373,10 +380,10 @@ export default function TrendsPage() {
                 <Tooltip content={<TrendsTooltip />} />
                 {chartLines.map((l) => (
                   <Line
-                    key={l.brand}
+                    key={l.id}
                     type="monotone"
-                    dataKey={l.brand}
-                    name={l.brand}
+                    dataKey={l.dataKey}
+                    name={l.name}
                     stroke={l.color}
                     strokeWidth={2}
                     dot={false}
