@@ -136,7 +136,7 @@ export async function GET(
     if (anomalyRows.rows.length === 0) {
       anomalyRows = await query<RawAnomaly>(
         `SELECT
-           ws.brand_id::text AS id,
+           ws.brand_id::text || '-' || ws.week_start::text AS id,
            cb.name           AS brand_name,
            CASE WHEN ws.gap_pct > 0 THEN 'viral' ELSE 'anomaly' END AS activity_type,
            NULL::text        AS title,
