@@ -2,6 +2,8 @@
  * GET /api/dashboard/[groupId]/benchmark
  * Returns radar, head-to-head, and gap analysis matching the BenchmarkData interface
  * expected by the benchmark page.
+ * Primary = brand with is_primary='t' (FCV-CP-FrieslandCampina-VN)
+ * Competitor = highest impressions non-primary brand (Nutifood-VN)
  */
 import { NextRequest, NextResponse } from 'next/server';
 import { query } from '../../../../../lib/db';
@@ -104,7 +106,8 @@ export async function GET(
     const week = weekResult.rows[0]!;
     const weekStart = week.week_start;
 
-    // All brands with stats for the week, ordered by impressions desc
+    // All brands with stats for the week, ordered by is_primary DESC then impressions DESC
+    // is_primary is 't'/'f' string in PostgreSQL, not boolean — sort by it first
     const brandsResult = await query<RawBrandRow>(
       `SELECT
          b.id AS brand_id,
@@ -120,14 +123,14 @@ export async function GET(
        JOIN brand b ON b.id = ws.brand_id
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
        WHERE ws.group_id = $1 AND ws.week_start = $2::date
-       ORDER BY ws.total_impressions DESC`,
+       ORDER BY b.is_primary DESC, ws.total_impressions DESC`,
       [groupId, weekStart],
     );
 
     const rows = brandsResult.rows;
-    // is_primary is 't'/'f' string in DB, not boolean
-    const primaryRow = rows.find((r) => r.is_primary === true || r.is_primary === 't') ?? rows[0];
-    // competitor = highest-impressions non-primary brand (second in sorted list)
+    // Primary = brand with is_primary='t' (PostgreSQL string, not boolean)
+    const primaryRow = rows.find((r) => r.is_primary === 't' || r.is_primary === true) ?? rows[0];
+    // Competitor = highest impressions non-primary brand
     const competitorRow = rows.find((r) => r !== primaryRow) ?? rows[1];
 
     if (!primaryRow) {
@@ -165,22 +168,21 @@ export async function GET(
         }
       : { impressions: 0, views: 0, reactions: 0, posts: 0, er: 0 };
 
-    // ── Radar: normalized 0-100 scores per metric dimension ──────────────────
-    const [normImpressions] = normalize(p.impressions, c.impressions);
-    const [normViews] = normalize(p.views, c.views);
-    const [normReactions] = normalize(p.reactions, c.reactions);
-    const [normPosts] = normalize(p.posts, c.posts);
-    const [normER] = normalize(p.er, c.er);
+    // Radar: normalized 0-100 scores per metric dimension
+    const [normImpP, normImpC] = normalize(p.impressions, c.impressions);
+    const [normViewP, normViewC] = normalize(p.views, c.views);
+    const [normReactP, normReactC] = normalize(p.reactions, c.reactions);
+    const [normPostP, normPostC] = normalize(p.posts, c.posts);
+    const [normErP, normErC] = normalize(p.er, c.er);
 
     const radar: RadarPoint[] = [
-      { metric: 'Impressions', primary: normImpressions, competitor: 100 },
-      { metric: 'Views', primary: normViews, competitor: 100 },
-      { metric: 'Reactions', primary: normReactions, competitor: 100 },
-      { metric: 'Posts', primary: normPosts, competitor: 100 },
-      { metric: 'Engagement Rate', primary: normER, competitor: 100 },
+      { metric: 'Impressions', primary: normImpP, competitor: normImpC },
+      { metric: 'Views', primary: normViewP, competitor: normViewC },
+      { metric: 'Reactions', primary: normReactP, competitor: normReactC },
+      { metric: 'Posts', primary: normPostP, competitor: normPostC },
+      { metric: 'Engagement Rate', primary: normErP, competitor: normErC },
     ];
 
-    // ── Head-to-head: direct comparison on key metrics ────────────────────────
     const head_to_head: HeadToHeadPoint[] = [
       {
         metric: 'Impressions',
@@ -219,11 +221,8 @@ export async function GET(
       },
     ];
 
-    // ── Gap analysis: primary gap vs each competitor's gap ─────────────────────
-    // gap_pct is the brand's own WoW gap. Here we show the delta between
-    // primary's gap and each competitor's gap as the "metric" label.
     const gap_analysis: GapPoint[] = rows
-      .filter((r) => r.gap_pct !== null && !r.is_primary)
+      .filter((r) => r.gap_pct !== null && r.is_primary !== 't' && r.is_primary !== true)
       .map((r) => {
         const compGap = Number(r.gap_pct) ?? 0;
         const primaryGap = Number(primaryRow.gap_pct) ?? 0;
