@@ -91,7 +91,7 @@ export async function GET(
     const wowResult = await query<{
       brand_id: string;
       brand_name: string;
-      is_primary: boolean;
+      is_primary: boolean | string;
       week_start: string | null;
       total_impressions: string | null;
       total_reactions: string | null;
@@ -138,7 +138,7 @@ export async function GET(
       const entry = byBrand.get(row.brand_id) ?? {
         brand_id: row.brand_id,
         brand_name: row.brand_name,
-        is_primary: row.is_primary,
+        is_primary: row.is_primary === 't' || row.is_primary === true,
         curr_impressions: 0,
         curr_reactions: 0,
         curr_posts: 0,
@@ -187,12 +187,26 @@ export async function GET(
     );
     const totalViews = Number(totalViewsResult.rows[0]?.total) || 1;
 
-    // ── Trend: last 8 weeks of impressions per brand (newest last) ──────────
-    const trendResult = await query<{ brand_id: string; total_impressions: string }>(
-      `SELECT ws.brand_id, ws.total_impressions
+    // ── Trend: last 8 weeks of SOV pct per brand (newest last) ──────────────────
+    // First get total impressions per week for SOV calculation
+    const totalByWeekResult = await query<{ week_start: string; total: string }>(
+      `SELECT ws.week_start::text AS week_start,
+              COALESCE(SUM(ws.total_impressions), 0)::bigint AS total
        FROM weekly_stats ws
-       WHERE ws.group_id = $1
-         AND ws.week_start <= $2::date
+       WHERE ws.group_id = $1 AND ws.week_start <= $2::date
+       GROUP BY ws.week_start
+       ORDER BY ws.week_start ASC`,
+      [groupId, weekStart],
+    );
+    const totalByWeek = new Map<string, number>();
+    for (const row of totalByWeekResult.rows) {
+      totalByWeek.set(row.week_start, Number(row.total));
+    }
+
+    const trendResult = await query<{ brand_id: string; week_start: string; total_impressions: string }>(
+      `SELECT ws.brand_id, ws.week_start::text AS week_start, ws.total_impressions
+       FROM weekly_stats ws
+       WHERE ws.group_id = $1 AND ws.week_start <= $2::date
        ORDER BY ws.brand_id, ws.week_start ASC`,
       [groupId, weekStart],
     );
@@ -200,7 +214,9 @@ export async function GET(
     const trendByBrand = new Map<string, number[]>();
     for (const row of trendResult.rows) {
       const arr = trendByBrand.get(row.brand_id) ?? [];
-      arr.push(Number(row.total_impressions));
+      const weekTotal = totalByWeek.get(row.week_start) || 1;
+      const sov = (Number(row.total_impressions) / weekTotal) * 100;
+      arr.push(Math.round(sov * 100) / 100);
       // Keep only last 8
       if (arr.length > 8) arr.shift();
       trendByBrand.set(row.brand_id, arr);
