@@ -102,14 +102,14 @@ function useDashboardBootstrap() {
     }
   }, [groups, isAuthenticated]);
 
-  return { groups };
+  return { groups, bootstrapLoading };
 }
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
-  const { groups } = useDashboardBootstrap();
+  const { groups, bootstrapLoading } = useDashboardBootstrap();
   const mainRef = useRef<HTMLDivElement>(null);
   const [headerScrolled, setHeaderScrolled] = useState(false);
 
@@ -138,17 +138,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     if (tab) router.push(tab.href);
   };
 
-  if (authLoading) {
+  if (authLoading || bootstrapLoading) {
     return (
-      <div className="flex h-screen bg-background">
-        <DashboardSidebar />
-        <div className="flex-1 flex flex-col overflow-hidden">
-          <div className="border-b border-border bg-card px-6 py-3">
-            <Skeleton className="h-8 w-96" />
-          </div>
-          <div className="flex-1 flex items-center justify-center">
-            <Skeleton className="h-6 w-32" />
-          </div>
+      <div className="flex h-screen items-center justify-center bg-background">
+        <div className="text-center">
+          <div className="mb-4 mx-auto w-8 h-8 border-2 border-border border-t-foreground rounded-full animate-spin" />
+          <p className="text-sm text-muted-foreground">Loading dashboard...</p>
         </div>
       </div>
     );
