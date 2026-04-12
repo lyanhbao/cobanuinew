@@ -1,0 +1,134 @@
+[     266ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     320ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     617ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     621ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     622ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /dashboard/benchmark, path: /dashboard/benchmark} @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     622ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/benchmark color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/benchmark, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776001169831} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[    1228ms] [LOG] [Fast Refresh] done in 806ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   17057ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   17202ms] [LOG] [Fast Refresh] done in 245ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   32898ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   32983ms] [LOG] [Fast Refresh] done in 187ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  283923ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  283961ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  284156ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  284156ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /dashboard/benchmark, path: /dashboard/benchmark} @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  284156ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/benchmark color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/benchmark, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776001453366} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  284194ms] [WARNING] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  284198ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/auth/login, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776001453406} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  284293ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ http://localhost:3000/auth/login:0
+[  313068ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/select-client color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/select-client, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776001482275} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  320319ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/overview color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/overview, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776001489469} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322399ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/rankings color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/rankings, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776001491604} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322466ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322466ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322471ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322471ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322474ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322475ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322478ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322478ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322481ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322481ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322484ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322484ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322488ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322488ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322491ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322491ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322494ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322494ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322549ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322549ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322553ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322553ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322558ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322558ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322561ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322562ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322564ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322564ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322567ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322567ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322570ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322570ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322573ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322573ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322576ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322576ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322605ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322605ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322608ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322608ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322611ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322612ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322615ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322615ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322618ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322618ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322621ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322621ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322624ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322624ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322627ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322627ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322629ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322629ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  323505ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/channel color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/channel, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776001492708} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  324337ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/content color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/content, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776001493543} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  325986ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/benchmark color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/benchmark, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776001495189} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  326607ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/trends color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/trends, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776001495812} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287

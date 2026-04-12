@@ -20,11 +20,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import {
-  LineChart,
-  Line,
-  ResponsiveContainer,
-} from 'recharts';
 import { useDashboardData } from '@/lib/use-dashboard-data';
 import { useScrollReveal } from '@/lib/use-scroll-reveal';
 import { formatVietnamNumber } from '@/lib/vietnam-format';
@@ -67,20 +62,30 @@ const SORT_LABELS: Record<SortKey, string> = {
 // ─── Sparkline ────────────────────────────────────────────────────────────────
 
 function Sparkline({ data, color = '#000', isPrimary = false }: { data: number[]; color?: string; isPrimary?: boolean }) {
-  const chartData = data.map((v, i) => ({ i, v }));
+  if (!data || data.length < 2) return <div className="w-20 h-8" />;
+  const w = 80, h = 32;
+  const max = Math.max(...data);
+  const min = Math.min(...data);
+  const range = max - min || 1;
+  const pts = data.map((v, i) => {
+    const x = (i / (data.length - 1)) * w;
+    const y = h - ((v - min) / range) * (h - 4) - 2;
+    return `${x},${y}`;
+  }).join(' ');
   return (
-    <ResponsiveContainer width={80} height={32}>
-      <LineChart data={chartData}>
-        <Line
-          type="monotone"
-          dataKey="v"
+    <div className="relative w-20 h-8 overflow-hidden" style={{ minWidth: 80, minHeight: 32 }}>
+      <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} className="overflow-visible">
+        <polyline
+          points={pts}
+          fill="none"
           stroke={color}
           strokeWidth={1.5}
-          dot={false}
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className={isPrimary ? 'sparkline-pulse' : ''}
         />
-      </LineChart>
-    </ResponsiveContainer>
+      </svg>
+    </div>
   );
 }
 

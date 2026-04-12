@@ -1,0 +1,249 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e64]:
+    - complementary [ref=e66]:
+      - link "COBAN Intelligence Platform" [ref=e67] [cursor=pointer]:
+        - /url: /
+        - heading "COBAN" [level=1] [ref=e68]
+        - paragraph [ref=e69]: Intelligence Platform
+      - navigation [ref=e70]:
+        - link "Overview" [ref=e71] [cursor=pointer]:
+          - /url: /dashboard/overview
+          - img [ref=e72]
+          - generic [ref=e77]: Overview
+        - link "Rankings" [ref=e78] [cursor=pointer]:
+          - /url: /dashboard/rankings
+          - img [ref=e79]
+          - generic [ref=e81]: Rankings
+        - link "Channel" [ref=e82] [cursor=pointer]:
+          - /url: /dashboard/channel
+          - img [ref=e83]
+          - generic [ref=e85]: Channel
+        - link "Content" [ref=e86] [cursor=pointer]:
+          - /url: /dashboard/content
+          - img [ref=e87]
+          - generic [ref=e89]: Content
+        - link "Benchmark" [ref=e90] [cursor=pointer]:
+          - /url: /dashboard/benchmark
+          - img [ref=e91]
+          - generic [ref=e93]: Benchmark
+        - link "Trends" [ref=e94] [cursor=pointer]:
+          - /url: /dashboard/trends
+          - img [ref=e95]
+          - generic [ref=e97]: Trends
+        - paragraph [ref=e99]: Management
+        - link "Groups" [ref=e100] [cursor=pointer]:
+          - /url: /dashboard/groups
+          - img [ref=e101]
+          - generic [ref=e103]: Groups
+        - link "Alerts" [ref=e104] [cursor=pointer]:
+          - /url: /dashboard/alerts
+          - img [ref=e105]
+          - generic [ref=e107]: Alerts
+        - link "Team" [ref=e108] [cursor=pointer]:
+          - /url: /dashboard/team
+          - img [ref=e109]
+          - generic [ref=e114]: Team
+        - link "Settings" [ref=e115] [cursor=pointer]:
+          - /url: /dashboard/settings
+          - img [ref=e116]
+          - generic [ref=e119]: Settings
+      - generic [ref=e121]:
+        - paragraph [ref=e122]: Logged in as
+        - paragraph [ref=e123]: demo@dairyinsights.vn
+    - generic [ref=e124]:
+      - banner [ref=e126]:
+        - generic [ref=e127]:
+          - button "Vietnamese Dairy Competitors" [ref=e128]:
+            - generic [ref=e129]: Vietnamese Dairy Competitors
+            - img
+          - combobox [ref=e130]:
+            - img
+        - generic [ref=e131]:
+          - button [ref=e132]:
+            - img
+          - button "demo@dairyinsights.vn" [ref=e134]:
+            - generic [ref=e135]:
+              - img
+            - generic [ref=e136]: demo@dairyinsights.vn
+            - img
+      - generic [ref=e139]:
+        - generic [ref=e140]:
+          - button "7D" [ref=e141]
+          - button "30D" [ref=e142]
+          - button "90D" [ref=e143]
+          - button "6M" [ref=e144]
+          - button "1Y" [ref=e145]
+          - button "ALL" [ref=e146]
+        - generic [ref=e147]: 1 filter
+        - button "Filters" [ref=e149]:
+          - img
+          - text: Filters
+          - img
+        - button "Select date range" [ref=e150]:
+          - img [ref=e151]
+          - generic [ref=e153]: Select date range
+      - tablist [ref=e157]:
+        - tab "Overview" [selected] [ref=e158]
+        - tab "Rankings" [ref=e159]
+        - tab "Channel" [ref=e160]
+        - tab "Content" [ref=e161]
+        - tab "Benchmark" [ref=e162]
+        - tab "Trends" [ref=e163]
+      - main [ref=e164]:
+        - generic [ref=e166]:
+          - generic [ref=e169]:
+            - button "Previous week" [ref=e170]:
+              - img [ref=e171]
+            - generic [ref=e173]: W1 (30 Dec – 05 Jan, 2024)
+            - button "Next week" [disabled] [ref=e174]:
+              - img [ref=e175]
+          - generic [ref=e177]:
+            - generic [ref=e182]:
+              - generic [ref=e183]:
+                - paragraph [ref=e184]: Impressions
+                - paragraph [ref=e185]: 14.8M
+              - img [ref=e187]
+            - generic [ref=e194]:
+              - generic [ref=e195]:
+                - paragraph [ref=e196]: Views
+                - paragraph [ref=e197]: 7.2M
+              - img [ref=e199]
+            - generic [ref=e206]:
+              - generic [ref=e207]:
+                - paragraph [ref=e208]: Reactions
+                - paragraph [ref=e209]: 5.2K
+              - img [ref=e211]
+            - generic [ref=e217]:
+              - generic [ref=e218]:
+                - paragraph [ref=e219]: Posts
+                - paragraph [ref=e220]: "14"
+              - img [ref=e222]
+            - generic [ref=e229]:
+              - generic [ref=e230]:
+                - paragraph [ref=e231]: Avg ER
+                - paragraph [ref=e232]: 0%
+              - img [ref=e234]
+            - generic [ref=e242]:
+              - generic [ref=e243]:
+                - paragraph [ref=e244]: SOV (Primary)
+                - paragraph [ref=e245]: 0%
+              - img [ref=e247]
+          - generic [ref=e250]:
+            - generic [ref=e254]:
+              - generic [ref=e255]:
+                - heading "Share of Voice — Impressions" [level=3] [ref=e256]
+                - generic [ref=e257]: Primary Brand
+              - img [ref=e260]:
+                - generic [ref=e262]:
+                  - generic [ref=e264]: 0%
+                  - generic [ref=e266]: 25%
+                  - generic [ref=e268]: 50%
+                  - generic [ref=e270]: 75%
+                  - generic [ref=e272]: 100%
+                - generic [ref=e274]:
+                  - generic [ref=e276]: Nutifood-VN
+                  - generic [ref=e278]: IDP-Vietnam-Friesland
+                  - generic [ref=e280]: Others-NA
+                  - generic [ref=e282]: FCV-CP-FrieslandCampina-VN
+                  - generic [ref=e284]: VitaDairy-VN
+                  - generic [ref=e286]: VPMilk-VN
+                  - generic [ref=e288]: MocChau-Milk
+                  - generic [ref=e290]: Nutricare-VN
+                  - generic [ref=e292]: Kido-Group-VN
+                  - generic [ref=e294]: TH-Milk-Vietnam
+                - generic [ref=e302]:
+                  - generic [ref=e303]: 57.2%
+                  - generic [ref=e304]: 42.8%
+                  - generic [ref=e305]: 0.0%
+                  - generic [ref=e306]: 0.0%
+                  - generic [ref=e307]: 0.0%
+                  - generic [ref=e308]: 0.0%
+                  - generic [ref=e309]: 0.0%
+                  - generic [ref=e310]: 0.0%
+                  - generic [ref=e311]: 0.0%
+                  - generic [ref=e312]: 0.0%
+            - generic [ref=e316]:
+              - heading "Network Distribution" [level=3] [ref=e317]
+              - img [ref=e320]:
+                - generic [ref=e321]:
+                  - img [ref=e323]
+                  - img [ref=e325]
+              - generic [ref=e326]:
+                - generic [ref=e327]:
+                  - generic [ref=e330]: Facebook
+                  - generic [ref=e331]: 53.6%
+                - generic [ref=e332]:
+                  - generic [ref=e335]: YouTube
+                  - generic [ref=e336]: 46.4%
+          - generic [ref=e340]:
+            - generic [ref=e341]:
+              - img [ref=e342]
+              - heading "Quick Insights" [level=3] [ref=e345]
+            - generic [ref=e346]:
+              - generic [ref=e347]:
+                - generic [ref=e348]: ▲
+                - paragraph [ref=e349]: IDP-Vietnam-Friesland impressions +58.9% vs previous week
+              - generic [ref=e350]:
+                - generic [ref=e351]: ▼
+                - paragraph [ref=e352]: Nutifood-VN impressions -69.7% vs previous week
+              - generic [ref=e353]:
+                - generic [ref=e354]: ▼
+                - paragraph [ref=e355]: Others-NA impressions -99.7% vs previous week
+          - generic [ref=e357]:
+            - generic [ref=e358]:
+              - generic [ref=e359]:
+                - generic [ref=e360]: 14.8M
+                - generic [ref=e361]:
+                  - text: Impressions
+                  - generic [ref=e362]: COBAN
+              - generic [ref=e363]:
+                - generic [ref=e364]: 7.2M
+                - generic [ref=e365]:
+                  - text: Views
+                  - generic [ref=e366]: COBAN
+              - generic [ref=e367]:
+                - generic [ref=e368]: 5.2K
+                - generic [ref=e369]:
+                  - text: Reactions
+                  - generic [ref=e370]: COBAN
+              - generic [ref=e371]:
+                - generic [ref=e372]: "14"
+                - generic [ref=e373]:
+                  - text: Posts this week
+                  - generic [ref=e374]: COBAN
+              - generic [ref=e375]:
+                - generic [ref=e376]: 0.0%
+                - generic [ref=e377]:
+                  - text: Primary SOV
+                  - generic [ref=e378]: COBAN
+            - generic [ref=e379]:
+              - generic [ref=e380]:
+                - generic [ref=e381]: 14.8M
+                - generic [ref=e382]:
+                  - text: Impressions
+                  - generic [ref=e383]: COBAN
+              - generic [ref=e384]:
+                - generic [ref=e385]: 7.2M
+                - generic [ref=e386]:
+                  - text: Views
+                  - generic [ref=e387]: COBAN
+              - generic [ref=e388]:
+                - generic [ref=e389]: 5.2K
+                - generic [ref=e390]:
+                  - text: Reactions
+                  - generic [ref=e391]: COBAN
+              - generic [ref=e392]:
+                - generic [ref=e393]: "14"
+                - generic [ref=e394]:
+                  - text: Posts this week
+                  - generic [ref=e395]: COBAN
+              - generic [ref=e396]:
+                - generic [ref=e397]: 0.0%
+                - generic [ref=e398]:
+                  - text: Primary SOV
+                  - generic [ref=e399]: COBAN
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e26] [cursor=pointer]:
+    - img [ref=e27]
+  - alert [ref=e30]
+  - generic [ref=e400]: 42.8%

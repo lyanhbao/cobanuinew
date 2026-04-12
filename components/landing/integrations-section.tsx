@@ -44,16 +44,16 @@ export function IntegrationsSection() {
         >
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
             <span className="w-8 h-px bg-foreground/30" />
-            Nền tảng & Tính năng
+            Platforms & Features
             <span className="w-8 h-px bg-foreground/30" />
           </span>
           <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-6">
-            Theo dõi tất cả
+            Track all the
             <br />
-            nền tảng bạn cần.
+            platforms you need.
           </h2>
           <p className="text-xl text-muted-foreground">
-            Facebook, YouTube, TikTok — cùng SOV, SOS, Rankings và Trends trong một dashboard.
+            Facebook, YouTube, TikTok — plus SOV, SOS, Rankings, and Trends in one dashboard.
           </p>
         </div>
 

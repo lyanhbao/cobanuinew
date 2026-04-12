@@ -6,52 +6,52 @@ import { ArrowRight, Check } from "lucide-react";
 const plans = [
   {
     name: "Starter",
-    description: "Cho Agency nho va Brand moi bat dau",
+    description: "For small agencies and brands just getting started",
     price: { monthly: 0, annual: 0 },
     features: [
-      "1 brand chinh",
-      "1 nen tang (FB hoac YT hoac TT)",
-      "30 ngay lich su data",
-      "SOV Matrix co ban",
-      "2 báo cao tuan",
-      "Ho tro community",
+      "1 primary brand",
+      "1 platform (FB or YT or TT)",
+      "30 days data history",
+      "Basic SOV Matrix",
+      "2 weekly reports",
+      "Community support",
     ],
-    cta: "Bat dau mien phi",
+    cta: "Start for free",
     popular: false,
   },
   {
     name: "Professional",
-    description: "Cho Agency va Brand can theo doi day du",
+    description: "For agencies and brands that need full tracking",
     price: { monthly: 5000000, annual: 4200000 },
     features: [
-      "10 brands (chinh + doi thu)",
-      "3 nen tang FB / YT / TT",
-      "1 nam lich su data",
+      "10 brands (primary + competitors)",
+      "3 platforms FB / YT / TT",
+      "1 year data history",
       "SOV + SOS Matrix",
       "Rankings & Trends",
-      "Bao cao tuan tu dong",
-      "Team 5 nguoi",
-      "Xuat bao cao PDF",
+      "Automated weekly reports",
+      "Team of 5",
+      "PDF report export",
     ],
-    cta: "Dung thu 14 ngay",
+    cta: "14-day free trial",
     popular: true,
   },
   {
     name: "Enterprise",
-    description: "Cho to chuc lon can quy mo dau tu",
+    description: "For large organizations with investment scale",
     price: { monthly: null, annual: null },
     features: [
       "Unlimited brands",
-      "3 nen tang FB / YT / TT",
-      "Khong gioi han lich su",
-      "Tat ca analytics + Benchmark",
-      "Crawl tuyen sinh theo yeu cau",
-      "Team khong gioi han",
+      "3 platforms FB / YT / TT",
+      "Unlimited history",
+      "All analytics + Benchmark",
+      "On-demand custom crawl",
+      "Unlimited team",
       "Priority support 24/7",
       "Custom integration",
       "SLA guarantee",
     ],
-    cta: "Lien he Sales",
+    cta: "Contact Sales",
     popular: false,
   },
 ];
@@ -72,15 +72,15 @@ export function PricingSection() {
         {/* Header */}
         <div className="max-w-3xl mb-20">
           <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase block mb-6">
-            Bang gia
+            Pricing
           </span>
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl tracking-tight text-foreground mb-6">
-            Gia ca minh bach,
+            Transparent pricing,
             <br />
-            <span className="text-stroke">khong phi an.</span>
+            <span className="text-stroke">no hidden fees.</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-xl">
-            Bat dau mien phi. Nang cap khi can. Khong co phi an, khong co bất ngờ.
+            Start for free. Upgrade when you need to. No setup fees, no surprises.
           </p>
         </div>
 
@@ -112,7 +112,7 @@ export function PricingSection() {
           </span>
           {isAnnual && (
             <span className="ml-2 px-2 py-1 bg-foreground text-primary-foreground text-xs font-mono">
-              Tiết kiệm 17%
+              Save 17%
             </span>
           )}
         </div>
@@ -128,7 +128,7 @@ export function PricingSection() {
             >
               {plan.popular && (
                 <span className="absolute -top-3 left-8 px-3 py-1 bg-foreground text-primary-foreground text-xs font-mono uppercase tracking-widest">
-                  Pho bien nhat
+                  Most popular
                 </span>
               )}
 
@@ -148,10 +148,10 @@ export function PricingSection() {
                     <span className="font-display text-5xl lg:text-6xl text-foreground">
                       {formatPrice(isAnnual ? plan.price.annual : plan.price.monthly)}đ
                     </span>
-                    <span className="text-muted-foreground">/tháng</span>
+                    <span className="text-muted-foreground">/month</span>
                   </div>
                 ) : (
-                  <span className="font-display text-4xl text-foreground">Tuỳ chỉnh</span>
+                  <span className="font-display text-4xl text-foreground">Custom</span>
                 )}
               </div>
 
@@ -182,9 +182,9 @@ export function PricingSection() {
 
         {/* Bottom Note */}
         <p className="mt-12 text-center text-sm text-muted-foreground">
-          Tat ca cac goi deu bao gom data crawl tu dong hang tuan.{" "}
+          All plans include automated weekly data crawl.{" "}
           <a href="#" className="underline underline-offset-4 hover:text-foreground transition-colors">
-            So sanh tat ca tinh nang
+            Compare all features
           </a>
         </p>
       </div>

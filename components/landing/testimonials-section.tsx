@@ -4,32 +4,32 @@ import { useEffect, useState } from "react";
 
 const testimonials = [
   {
-    quote: "Theo dõi đối thủ trên TikTok trở nên dễ dàng hơn bao giờ hết. COBAN giúp chúng tôi hiểu rõ cuộc chơi hơn.",
+    quote: "Tracking competitors on TikTok has never been easier. COBAN helped us understand the game much better.",
     author: "Nguyen Van Minh",
     role: "CEO",
     company: "Ace Media Agency",
-    metric: "Tiết kiệm 20h / tháng",
+    metric: "Saves 20h / month",
   },
   {
-    quote: "SOV Matrix giúp chúng tôi tăng 40% hiệu quả chiến dịch. Bây giờ chúng tôi biết chính xác đối thủ đang làm gì.",
+    quote: "SOV Matrix helped us increase campaign effectiveness by 40%. Now we know exactly what competitors are doing.",
     author: "Tran Thu Ha",
     role: "Marketing Director",
     company: "VinConsumer",
-    metric: "Tăng 40% hiệu quả chiến dịch",
+    metric: "40% more effective campaigns",
   },
   {
-    quote: "Data crawl tự động hàng tuần là nền tảng để ra quyết định. Không còn phải thu thập thủ công nữa.",
+    quote: "Automated weekly data crawl is the foundation for decision-making. No more manual data collection.",
     author: "Le Hoang Nam",
     role: "Founder",
     company: "Halo Digital",
-    metric: "52 crawls / năm",
+    metric: "52 crawls / year",
   },
   {
-    quote: "So sánh đối thủ trên 3 nền tảng cùng lúc giúp brand của chúng tôi luôn đi trước một bước.",
+    quote: "Comparing competitors across 3 platforms simultaneously keeps our brand one step ahead.",
     author: "Pham Thi Lan",
     role: "Head of Brand",
     company: "ClearSky Vietnam",
-    metric: "3 nền tảng đồng thời",
+    metric: "3 platforms simultaneously",
   },
 ];
 
@@ -56,7 +56,7 @@ export function TestimonialsSection() {
         {/* Section Label */}
         <div className="flex items-center gap-4 mb-16">
           <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            Khách hàng nói gì
+            What our customers say
           </span>
           <div className="flex-1 h-px bg-foreground/10" />
           <span className="font-mono text-xs text-muted-foreground">
@@ -105,7 +105,7 @@ export function TestimonialsSection() {
               }`}
             >
               <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase block mb-4">
-                Kết quả nổi bật
+                Key Result
               </span>
               <p className="font-display text-3xl md:text-4xl text-foreground">
                 {activeTestimonial.metric}
@@ -138,7 +138,7 @@ export function TestimonialsSection() {
         {/* Company Logos Marquee Label */}
         <div className="mt-24 pt-12 border-t border-foreground/10">
           <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-8 text-center">
-            Được tin tưởng bởi Agency và Brand hàng đầu Việt Nam
+            Trusted by top agencies and brands
           </p>
         </div>
       </div>

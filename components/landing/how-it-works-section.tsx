@@ -5,9 +5,9 @@ import { useEffect, useState, useRef } from "react";
 const steps = [
   {
     number: "I",
-    title: "Thêm Brand & Đối thủ",
-    description: "Chọn brand chính và danh sách đối thủ cần theo dõi. Hệ thống sẽ bắt đầu crawl data tự động.",
-    code: `// Thiet lap brand va doi thu
+    title: "Add Brand & Competitors",
+    description: "Select your primary brand and the competitors you want to track. The system will begin automated data crawling.",
+    code: `// Setup brand and competitors
 coban.track({
   primary: 'MyBrand',
   competitors: [
@@ -19,21 +19,21 @@ coban.track({
   },
   {
     number: "II",
-    title: "Crawl Data Tự Động",
-    description: "Mỗi Chủ nhật, hệ thống crawl toàn bộ data từ Facebook, YouTube, TikTok. Data được tổng hợp vào dashboard.",
-    code: `// Lich crawl tu dong
+    title: "Automated Data Crawl",
+    description: "Every Sunday, the system crawls all data from Facebook, YouTube, and TikTok. Data is aggregated into your dashboard.",
+    code: `// Automated crawl schedule
 coban.schedule({
   day: 'sunday',
   platforms: ['fb', 'yt', 'tt']
 })
 
-// Crawl dang chay...`,
+// Crawl is running...`,
   },
   {
     number: "III",
-    title: "Xem Dashboard Analytics",
-    description: "Truy cập SOV Matrix, Rankings, Trends và tất cả analytics. Hiểu rõ cuộc chơi, ra quyết định nhanh hơn.",
-    code: `// Dashboard da san sang
+    title: "View Analytics Dashboard",
+    description: "Access SOV Matrix, Rankings, Trends, and all analytics. Understand the competitive landscape and make faster decisions.",
+    code: `// Dashboard is ready
 coban.dashboard({
   view: 'sov-matrix',
   period: 'this-week'
@@ -91,16 +91,16 @@ export function HowItWorksSection() {
         <div className="mb-16 lg:mb-24">
           <span className="inline-flex items-center gap-3 text-sm font-mono text-background/50 mb-6">
             <span className="w-8 h-px bg-background/30" />
-            Quy trinh
+            How it Works
           </span>
           <h2
             className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Ba buoc de lam chủ
+            Three steps to master
             <br />
-            <span className="text-background/50">cuộc chơi.</span>
+            <span className="text-background/50">the game.</span>
           </h2>
         </div>
 

@@ -1,0 +1,183 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e4]:
+      - link "COBAN Intelligence Platform" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - heading "COBAN" [level=1] [ref=e6]
+        - paragraph [ref=e7]: Intelligence Platform
+      - navigation [ref=e8]:
+        - link "Overview" [ref=e9] [cursor=pointer]:
+          - /url: /dashboard/overview
+          - img [ref=e10]
+          - generic [ref=e15]: Overview
+        - link "Rankings" [ref=e16] [cursor=pointer]:
+          - /url: /dashboard/rankings
+          - img [ref=e17]
+          - generic [ref=e19]: Rankings
+        - link "Channel" [ref=e20] [cursor=pointer]:
+          - /url: /dashboard/channel
+          - img [ref=e21]
+          - generic [ref=e23]: Channel
+        - link "Content" [ref=e24] [cursor=pointer]:
+          - /url: /dashboard/content
+          - img [ref=e25]
+          - generic [ref=e27]: Content
+        - link "Benchmark" [ref=e28] [cursor=pointer]:
+          - /url: /dashboard/benchmark
+          - img [ref=e29]
+          - generic [ref=e31]: Benchmark
+        - link "Trends" [ref=e32] [cursor=pointer]:
+          - /url: /dashboard/trends
+          - img [ref=e33]
+          - generic [ref=e35]: Trends
+        - paragraph [ref=e37]: Management
+        - link "Groups" [ref=e38] [cursor=pointer]:
+          - /url: /dashboard/groups
+          - img [ref=e39]
+          - generic [ref=e41]: Groups
+        - link "Alerts" [ref=e42] [cursor=pointer]:
+          - /url: /dashboard/alerts
+          - img [ref=e43]
+          - generic [ref=e45]: Alerts
+        - link "Team" [ref=e46] [cursor=pointer]:
+          - /url: /dashboard/team
+          - img [ref=e47]
+          - generic [ref=e52]: Team
+        - link "Settings" [ref=e53] [cursor=pointer]:
+          - /url: /dashboard/settings
+          - img [ref=e54]
+          - generic [ref=e57]: Settings
+      - generic [ref=e59]:
+        - paragraph [ref=e60]: Logged in as
+        - paragraph [ref=e61]: demo@dairyinsights.vn
+    - generic [ref=e62]:
+      - banner [ref=e64]:
+        - generic [ref=e65]:
+          - button "Vietnamese Dairy Competitors" [ref=e66]:
+            - generic [ref=e67]: Vietnamese Dairy Competitors
+            - img
+          - combobox [ref=e68]:
+            - img
+        - generic [ref=e69]:
+          - button [ref=e70]:
+            - img
+          - button [ref=e72]:
+            - generic [ref=e73]:
+              - img
+            - img
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - button "7D" [ref=e78]
+          - button "30D" [ref=e79]
+          - button "90D" [ref=e80]
+          - button "6M" [ref=e81]
+          - button "1Y" [ref=e82]
+          - button "ALL" [ref=e83]
+        - generic [ref=e84]: 1 filter
+        - button "Filters" [ref=e86]:
+          - img
+          - text: Filters
+          - img
+        - button "Apr 1 — Apr 12, 2026" [ref=e87]:
+          - img [ref=e88]
+          - generic [ref=e90]: Apr 1 — Apr 12, 2026
+      - tablist [ref=e94]:
+        - tab "Overview" [ref=e95]
+        - tab "Rankings" [ref=e96]
+        - tab "Channel" [ref=e97]
+        - tab "Content" [ref=e98]
+        - tab "Benchmark" [active] [selected] [ref=e99]
+        - tab "Trends" [ref=e100]
+      - main [ref=e101]:
+        - generic [ref=e345]:
+          - generic [ref=e347]:
+            - heading "Benchmark" [level=2] [ref=e348]
+            - paragraph [ref=e349]: Comparative analysis — FCV-CP-FrieslandCampina-VN vs Nutifood-VN
+          - generic [ref=e350]:
+            - generic [ref=e355]:
+              - generic [ref=e356]:
+                - heading "Performance Radar" [level=3] [ref=e357]
+                - generic [ref=e358]:
+                  - generic [ref=e361]: FCV-CP-FrieslandCampina-VN
+                  - generic [ref=e364]: Nutifood-VN
+              - paragraph [ref=e365]: Normalized scores (0-100) per metric dimension
+              - img [ref=e368]:
+                - generic [ref=e382]:
+                  - generic [ref=e384]: Impressions
+                  - generic [ref=e387]: Views
+                  - generic [ref=e390]: Reactions
+                  - generic [ref=e393]: Posts
+                  - generic [ref=e396]: Engagement Rate
+                - generic [ref=e398]:
+                  - generic [ref=e400]: "0"
+                  - generic [ref=e402]: "25"
+                  - generic [ref=e404]: "50"
+                  - generic [ref=e406]: "75"
+                  - generic [ref=e408]: "100"
+            - generic [ref=e418]:
+              - heading "Head-to-Head — Direct comparison" [level=3] [ref=e419]
+              - generic [ref=e420]:
+                - generic [ref=e421]:
+                  - generic [ref=e422]:
+                    - generic [ref=e423]: Impressions
+                    - generic [ref=e424]:
+                      - img [ref=e425]
+                      - text: "-88.6%"
+                  - generic [ref=e430]:
+                    - generic [ref=e431]: "FCV-CP-FrieslandCampina-VN: 3.2M"
+                    - generic [ref=e432]: "Nutifood-VN: 28M"
+                - generic [ref=e433]:
+                  - generic [ref=e434]:
+                    - generic [ref=e435]: Views
+                    - generic [ref=e436]:
+                      - img [ref=e437]
+                      - text: +1793.6%
+                  - generic [ref=e442]:
+                    - generic [ref=e443]: "FCV-CP-FrieslandCampina-VN: 3.2M"
+                    - generic [ref=e444]: "Nutifood-VN: 169K"
+                - generic [ref=e445]:
+                  - generic [ref=e446]:
+                    - generic [ref=e447]: Reactions
+                    - generic [ref=e448]:
+                      - img [ref=e449]
+                      - text: "-75.3%"
+                  - generic [ref=e454]:
+                    - generic [ref=e455]: "FCV-CP-FrieslandCampina-VN: 676"
+                    - generic [ref=e456]: "Nutifood-VN: 2.7K"
+                - generic [ref=e457]:
+                  - generic [ref=e458]:
+                    - generic [ref=e459]: Posts
+                    - generic [ref=e460]:
+                      - img [ref=e461]
+                      - text: "-97.1%"
+                  - generic [ref=e466]:
+                    - generic [ref=e467]: "FCV-CP-FrieslandCampina-VN: 1.0"
+                    - generic [ref=e468]: "Nutifood-VN: 35"
+                - generic [ref=e469]:
+                  - generic [ref=e470]:
+                    - generic [ref=e471]: Avg. Engagement Rate
+                    - generic [ref=e472]:
+                      - img [ref=e473]
+                      - text: "-98.8%"
+                  - generic [ref=e478]:
+                    - generic [ref=e479]: "FCV-CP-FrieslandCampina-VN: 0.0"
+                    - generic [ref=e480]: "Nutifood-VN: 1.6"
+          - generic [ref=e484]:
+            - heading "Gap Analysis — Performance gap" [level=3] [ref=e485]
+            - paragraph [ref=e486]: Positive = ahead of competitor. Negative = behind competitor.
+            - img [ref=e489]:
+              - generic [ref=e493]:
+                - generic [ref=e495]: Nutifood-VN
+                - generic [ref=e497]: VitaDairy-VN
+                - generic [ref=e499]: VPMilk-VN
+              - generic [ref=e501]:
+                - generic [ref=e503]: "-75pp"
+                - generic [ref=e505]: "-50pp"
+                - generic [ref=e507]: "-25pp"
+                - generic [ref=e509]: 0pp
+                - generic [ref=e511]: +25pp
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e339] [cursor=pointer]:
+    - img [ref=e340]
+  - alert [ref=e343]
+  - generic [ref=e344]: "0"

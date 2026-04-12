@@ -28,6 +28,7 @@ interface WeekInfo {
 }
 
 interface BrandRow {
+  brand_id: string;
   rank: number;
   brand_name: string;
   is_primary: boolean;
@@ -238,6 +239,7 @@ export async function GET(
         : null;
 
       return {
+        brand_id: entry.brand_id,
         rank: idx + 1,
         brand_name: entry.brand_name,
         is_primary: entry.is_primary,

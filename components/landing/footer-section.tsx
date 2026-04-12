@@ -4,28 +4,28 @@ import { ArrowUpRight } from "lucide-react";
 import { AnimatedWave } from "./animated-wave";
 
 const footerLinks = {
-  "Sản phẩm": [
-    { name: "Tính năng", href: "#features" },
-    { name: "Quy trình", href: "#how-it-works" },
-    { name: "Bảng giá", href: "#pricing" },
-    { name: "Nền tảng", href: "#integrations" },
+  "Product": [
+    { name: "Features", href: "#features" },
+    { name: "How it Works", href: "#how-it-works" },
+    { name: "Pricing", href: "#pricing" },
+    { name: "Platforms", href: "#integrations" },
   ],
-  "Dành cho Agency": [
+  "For Agencies": [
     { name: "Dashboard", href: "#" },
-    { name: "Báo cáo", href: "#" },
+    { name: "Reports", href: "#" },
     { name: "Team", href: "#" },
     { name: "Integrations", href: "#" },
   ],
-  "Công ty": [
-    { name: "Về COBAN", href: "#" },
+  "Company": [
+    { name: "About COBAN", href: "#" },
     { name: "Blog", href: "#" },
-    { name: "Tuyển dụng", href: "#", badge: "Tuyển dụng" },
-    { name: "Liên hệ", href: "#" },
+    { name: "Careers", href: "#", badge: "Hiring" },
+    { name: "Contact", href: "#" },
   ],
-  "Pháp lý": [
-    { name: "Riêng tư", href: "#" },
-    { name: "Điều khoản", href: "#" },
-    { name: "Bảo mật", href: "#security" },
+  "Legal": [
+    { name: "Privacy", href: "#" },
+    { name: "Terms", href: "#" },
+    { name: "Security", href: "#security" },
   ],
 };
 
@@ -55,8 +55,8 @@ export function FooterSection() {
               </a>
 
               <p className="text-muted-foreground leading-relaxed mb-8 max-w-xs">
-                Social Media Competitive Intelligence cho Agency và Brand Việt Nam.
-                Theo dõi đối thủ, phân tích data, đánh bại cuộc chơi.
+                Social Media Competitive Intelligence for agencies and brands.
+                Track competitors, analyze data, dominate the game.
               </p>
 
               {/* Social Links */}
@@ -103,13 +103,13 @@ export function FooterSection() {
         {/* Bottom Bar */}
         <div className="py-8 border-t border-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            2025 COBAN. Tất cả quyền được bảo lưu.
+            2025 COBAN. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-green-500" />
-              Hệ thống hoạt động bình thường
+              All systems operational
             </span>
           </div>
         </div>

@@ -1,0 +1,348 @@
+[     202ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     807ms] [LOG] [Fast Refresh] done in 706ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     955ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     972ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[    1166ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[    1167ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /dashboard/channel, path: /dashboard/channel} @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[    1167ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/channel color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/channel, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1775999016697} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   44684ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   44928ms] [LOG] [Fast Refresh] done in 346ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  124774ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  124777ms] [LOG] [Fast Refresh] done in 105ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  244068ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  244171ms] [LOG] [Fast Refresh] done in 204ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  244873ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  244934ms] [LOG] [Fast Refresh] done in 162ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  245037ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  245056ms] [LOG] [Fast Refresh] done in 121ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  249215ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  249219ms] [LOG] [Fast Refresh] done in 105ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  253125ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  253238ms] [LOG] [Fast Refresh] done in 213ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  253596ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  254143ms] [LOG] [Fast Refresh] done in 647ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  257964ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  258070ms] [LOG] [Fast Refresh] done in 208ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  261950ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  262057ms] [LOG] [Fast Refresh] done in 209ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  262361ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  262482ms] [LOG] [Fast Refresh] done in 223ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  262585ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  263009ms] [LOG] [Fast Refresh] done in 525ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  263111ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  263140ms] [LOG] [Fast Refresh] done in 130ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  263242ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  263244ms] [LOG] [Fast Refresh] done in 103ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  266787ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  266891ms] [LOG] [Fast Refresh] done in 205ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  267250ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  267516ms] [LOG] [Fast Refresh] done in 367ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  267708ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  267729ms] [LOG] [Fast Refresh] done in 123ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  271275ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  271379ms] [LOG] [Fast Refresh] done in 206ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  274928ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  275032ms] [LOG] [Fast Refresh] done in 206ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  279615ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  279718ms] [LOG] [Fast Refresh] done in 205ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  284369ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  284474ms] [LOG] [Fast Refresh] done in 207ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  289140ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  289245ms] [LOG] [Fast Refresh] done in 207ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  309871ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  310251ms] [LOG] [Fast Refresh] done in 483ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  311264ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  311364ms] [LOG] [Fast Refresh] done in 201ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  312118ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  312663ms] [LOG] [Fast Refresh] done in 645ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  312766ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  312778ms] [LOG] [Fast Refresh] done in 114ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  313200ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  313218ms] [LOG] [Fast Refresh] done in 118ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  313371ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  313512ms] [LOG] [Fast Refresh] done in 243ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  313659ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  313710ms] [LOG] [Fast Refresh] done in 152ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  313936ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  314039ms] [LOG] [Fast Refresh] done in 203ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  314179ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  314286ms] [LOG] [Fast Refresh] done in 208ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  314417ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  314630ms] [LOG] [Fast Refresh] done in 315ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  315024ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  315152ms] [LOG] [Fast Refresh] done in 229ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  318130ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  318237ms] [LOG] [Fast Refresh] done in 207ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  318366ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  318380ms] [LOG] [Fast Refresh] done in 115ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  318936ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  319038ms] [LOG] [Fast Refresh] done in 203ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322353ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  322462ms] [LOG] [Fast Refresh] done in 211ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  323302ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  323405ms] [LOG] [Fast Refresh] done in 205ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  323831ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  323855ms] [LOG] [Fast Refresh] done in 126ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  324736ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  324841ms] [LOG] [Fast Refresh] done in 206ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  327007ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  327110ms] [LOG] [Fast Refresh] done in 204ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  327256ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  327361ms] [LOG] [Fast Refresh] done in 205ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  327490ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  327506ms] [LOG] [Fast Refresh] done in 117ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  327756ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  327759ms] [LOG] [Fast Refresh] done in 104ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  329688ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  329793ms] [LOG] [Fast Refresh] done in 206ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  331091ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  331195ms] [LOG] [Fast Refresh] done in 206ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  332228ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  332333ms] [LOG] [Fast Refresh] done in 207ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  334894ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  335001ms] [LOG] [Fast Refresh] done in 209ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  336944ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  337050ms] [LOG] [Fast Refresh] done in 206ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  338605ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  338708ms] [LOG] [Fast Refresh] done in 205ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  342535ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  342640ms] [LOG] [Fast Refresh] done in 207ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  347237ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  347341ms] [LOG] [Fast Refresh] done in 205ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  352010ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  352114ms] [LOG] [Fast Refresh] done in 205ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  356762ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  356867ms] [LOG] [Fast Refresh] done in 207ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  569692ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  569698ms] [LOG] [Fast Refresh] done in 109ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  606462ms] [WARNING] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  606468ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/content color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/content, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1775999621996} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608102ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/rankings color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/rankings, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1775999623628} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608161ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608161ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608164ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608164ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608165ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608165ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608167ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608167ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608168ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608168ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608170ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608170ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608171ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608171ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608173ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608173ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608174ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608174ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608197ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608197ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608200ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608200ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608202ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608202ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608204ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608204ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608205ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608205ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608207ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608207ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608208ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608208ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608210ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608210ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608211ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608211ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608227ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608227ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608229ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608229ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608230ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608231ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608234ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608234ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608236ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608236ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608237ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608237ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608239ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608239ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608240ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608240ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608242ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  608242ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613002ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613002ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613005ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613005ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613008ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613008ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613011ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613011ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613013ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613014ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613017ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613017ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613019ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613020ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613022ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613022ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613024ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613024ms] [WARNING] The width(80) and height(32) are both fixed numbers,
+       maybe you don't need to use a ResponsiveContainer. @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  613103ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/overview color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/overview, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1775999628630} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  614689ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  614992ms] [LOG] [Fast Refresh] done in 403ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  615033ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/groups color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/groups, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1775999630561} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  615050ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:3000/api/clients/da000000-0000-0000-0000-000000000003/groups:0
+[  615068ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:3000/api/clients/da000000-0000-0000-0000-000000000003/groups:0
+[  615097ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  615105ms] [LOG] [Fast Refresh] done in 111ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  618679ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  618942ms] [LOG] [Fast Refresh] done in 363ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  619249ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/groups/g1 color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/groups/g1, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1775999634777} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  619339ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  619341ms] [LOG] [Fast Refresh] done in 103ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  619760ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:3000/api/groups/g1:0
+[  619767ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:3000/api/groups/g1:0
+[  619772ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:3000/api/groups/g1/brands:0
+[  619778ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:3000/api/groups/g1/brands:0
+[  622539ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/groups color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/groups, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1775999638066} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  622542ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:3000/api/clients/da000000-0000-0000-0000-000000000003/groups:0
+[  622559ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:3000/api/clients/da000000-0000-0000-0000-000000000003/groups:0
+[  626010ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/overview color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/overview, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1775999641538} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  626018ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/g1/overview:0
+[  626023ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/g1/overview:0
+[  747285ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  747356ms] [LOG] [Fast Refresh] done in 171ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  748417ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  748464ms] [LOG] [Fast Refresh] done in 119ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  754413ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  754520ms] [LOG] [Fast Refresh] done in 208ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  754745ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  754972ms] [LOG] [Fast Refresh] done in 331ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  755709ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  755814ms] [LOG] [Fast Refresh] done in 206ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  756147ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  756317ms] [LOG] [Fast Refresh] done in 271ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  760130ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  760241ms] [LOG] [Fast Refresh] done in 213ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  765100ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  765215ms] [LOG] [Fast Refresh] done in 217ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  769954ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  770061ms] [LOG] [Fast Refresh] done in 208ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  773977ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  774120ms] ReferenceError: i is not defined
+    at eval (http://localhost:3000/_next/static/chunks/_987e5f9f._.js?id=%255Bproject%255D%252Fapp%252Fdashboard%252Foverview%252Fpage.tsx+%255Bapp-client%255D+%2528ecmascript%2529:911:84)
+    at Array.map (<anonymous>)
+    at ChartsRow (http://localhost:3000/_next/static/chunks/_987e5f9f._.js?id=%255Bproject%255D%252Fapp%252Fdashboard%252Foverview%252Fpage.tsx+%255Bapp-client%255D+%2528ecmascript%2529:909:76)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:14816:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:4645:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:6106:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:6702:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:959:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9556:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9450:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9434:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9099:47)
+    at performSyncWorkOnRoot (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:10232:9)
+    at flushSyncWorkAcrossRoots_impl (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:10148:316)
+    at flushSyncWork$1 (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9231:86)
+    at Object.scheduleRefresh (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:294:13)
+    at http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_48767191._.js:391:33
+    at Set.forEach (<anonymous>)
+    at Object.performReactRefresh (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_48767191._.js:384:38)
+    at applyUpdate (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_48767191._.js:878:31)
+    at http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_48767191._.js:886:13
+[  774125ms] [LOG] [Fast Refresh] done in 207ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  774252ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  774308ms] [LOG] [Fast Refresh] done in 157ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  775780ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  775802ms] [LOG] [Fast Refresh] done in 123ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  780479ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  780588ms] [LOG] [Fast Refresh] done in 210ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  832626ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  832629ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  832647ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/overview color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/overview, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1775999848177} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  832738ms] [LOG] [Fast Refresh] done in 73ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  833392ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  833412ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  833629ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  833629ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /dashboard/overview, path: /dashboard/overview} @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  833629ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/overview color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/overview, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1775999849159} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  863442ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  863479ms] [LOG] [Fast Refresh] done in 88ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1005050ms] [WARNING] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1005056ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/benchmark color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/benchmark, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776000020584} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287

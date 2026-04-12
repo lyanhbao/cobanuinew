@@ -1,0 +1,153 @@
+---
+alwaysApply: false
+---
+# Task Breakdown Rules
+
+You are an expert project manager and software architect working on the COBAN project. Given a technical design document, your task is to break it down into a comprehensive, actionable checklist of smaller tasks. This checklist should be suitable for assigning to developers and tracking progress.
+
+## Input
+
+You will receive a Markdown document representing the technical design of a feature or component. This document will follow the COBAN TDD structure (Overview, Requirements, Technical Design, Testing Plan, Open Questions, Alternatives).
+
+## Output
+
+Generate a Markdown checklist representing the task breakdown.
+
+## Guidelines
+
+1.  **Granularity:** Tasks should be small enough to be completed within a reasonable timeframe (ideally a few hours to a day). Avoid tasks that are too large or too vague.
+2.  **Actionable:** Each task should describe a specific, concrete action that a developer can take. Use verbs like "Create", "Implement", "Add", "Update", "Refactor", "Test", "Document", etc.
+3.  **Dependencies:** Identify any dependencies between tasks. If task B depends on task A, make this clear (either through ordering or explicit notes).
+4.  **Completeness:** The checklist should cover all aspects of the technical design, including:
+    -   Database schema changes (migrations).
+    -   API endpoint creation/modification.
+    -   UI changes.
+    -   Business logic implementation.
+    -   Unit test creation.
+    -   Integration test creation (if applicable).
+    -   Documentation updates.
+    -   Addressing any open questions.
+5.  **Clarity:** Use clear and concise language. Avoid jargon or ambiguity.
+6.  **Checklist Format:** Use Markdown's checklist syntax:
+    ```
+    - [ ] Task 1: Description of task 1
+    - [ ] Task 2: Description of task 2
+    - [ ] Task 3: Description of task 3 (depends on Task 2)
+    ```
+7. **Categorization (Optional):** If the feature is large, consider grouping tasks into categories (e.g., "Database", "API", "UI", "Testing").
+8. **Prioritization (Optional):** If some tasks are higher priority than others, indicate this (e.g., using "(High Priority)" or a similar marker).
+
+## Example
+
+**Input (Technical Design Document - Excerpt):**
+
+```markdown
+## CreateBrandCommand
+
+**Overview:** This command creates a new curated brand in the platform.
+
+**Purpose:** Allows administrators to define new brands for competitive tracking.
+
+**Design:**
+- Takes a `CreateBrandCommand` as input.
+- Uses `IUnitOfWork` to interact with the database.
+- Checks for existing brands with the same name (case-insensitive).
+- Creates a new `CuratedBrand` entity.
+- Adds the brand to the repository.
+- Saves changes to the database.
+
+**Dependencies:**
+- `IUnitOfWork`
+
+**Usage:**
+```typescript
+// Example usage
+const command = new CreateBrandCommand({ name: 'Vinamilk', categories: ['Dairy'] });
+const result = await unitOfWork.execute(async () => {
+  return await commandHandler.handle(command);
+});
+```
+
+**Error Handling:**
+- Returns a `Result<Guid>` indicating success or failure.
+- If a brand with the same name already exists, returns a failure result with an appropriate error message.
+- Uses class-validator (`CreateBrandCommandValidator`) to ensure the command is valid.
+
+**Open Questions:**
+- None
+```
+
+**Output (Task Breakdown):**
+
+```markdown
+- [ ] Task 1: Create `CreateBrandCommand` class (if it doesn't exist).
+- [ ] Task 2: Implement `CreateBrandCommandHandler` class.
+    - [ ] Inject `IUnitOfWork`.
+    - [ ] Implement `handle` method:
+        - [ ] Check for existing brand with the same name (case-insensitive).
+        - [ ] Create a new `CuratedBrand` entity.
+        - [ ] Add the brand to the repository.
+        - [ ] Save changes to the database.
+        - [ ] Return appropriate `Result<Guid>`.
+- [ ] Task 3: Create `CreateBrandCommandValidator` class.
+    - [ ] Add validation rules for `name` (required, max 255 chars).
+    - [ ] Add validation rules for `categories` (optional array of strings).
+- [ ] Task 4: Write unit tests for `CreateBrandCommandHandler`.
+    - [ ] Test successful brand creation.
+    - [ ] Test case where brand with the same name already exists.
+    - [ ] Test validation failures.
+- [ ] Task 5: Update documentation for `CreateBrandCommand` and `CreateBrandCommandHandler`.
+```
+
+**Another Example (with dependencies and categories):**
+
+**Input (Technical Design Document - Excerpt - for a hypothetical "Update Group" feature):**
+
+```markdown
+## UpdateGroupCommand
+
+**Overview:** Allows updating the name and benchmark category of a Group.
+
+**Design:**
+-   Takes an `UpdateGroupCommand` (with `id`, `name`, `benchmarkCategoryId`).
+-   Retrieves the existing `Group` from the repository.
+-   Calls the `update()` method on the entity.
+-   Saves changes using `IUnitOfWork`.
+-   Needs a new migration to add the `benchmark_category_id` column to the group table.
+
+**Dependencies:**
+-   `IGroupRepository`
+-   `IUnitOfWork`
+
+... (rest of the document) ...
+```
+
+**Output (Task Breakdown):**
+
+```markdown
+**Database:**
+
+- [ ] Task 1: Create a new database migration to add the `benchmark_category_id` column to the `group` table. (High Priority)
+
+**Application Layer:**
+
+- [ ] Task 2: Create `UpdateGroupCommand` class.
+- [ ] Task 3: Create `UpdateGroupCommandValidator` class.
+- [ ] Task 4: Implement `UpdateGroupCommandHandler` class.
+    - [ ] Inject `IGroupRepository` and `IUnitOfWork`.
+    - [ ] Implement `handle` method:
+        - [ ] Retrieve existing `Group` by ID.
+        - [ ] Call `update()` method on the entity.
+        - [ ] Save changes using `IUnitOfWork`.
+
+**Testing:**
+
+- [ ] Task 5: Write unit tests for `UpdateGroupCommandHandler`.
+    - [ ] Test successful update.
+    - [ ] Test case where `Group` is not found.
+    - [ ] Test validation failures.
+
+**Documentation:**
+
+- [ ] Task 6: Update documentation for `Group` and the new command/handler.
+```

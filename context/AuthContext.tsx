@@ -58,6 +58,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setSession(session);
     setUser(session.user);
     setToken(session.token);
+    // Wait for React state to flush so callers that check isAuthenticated
+    // (e.g. router.push on the login page) see the correct value before
+    // navigation. Without this, router.push() races the state update.
+    await new Promise((resolve) => setTimeout(resolve, 0));
   }, []);
 
   const signUp = useCallback(async (

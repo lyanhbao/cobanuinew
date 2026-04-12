@@ -1,0 +1,273 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e4]:
+      - link "COBAN Intelligence Platform" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - heading "COBAN" [level=1] [ref=e6]
+        - paragraph [ref=e7]: Intelligence Platform
+      - navigation [ref=e8]:
+        - link "Overview" [ref=e9] [cursor=pointer]:
+          - /url: /dashboard/overview
+          - img [ref=e10]
+          - generic [ref=e15]: Overview
+        - link "Rankings" [ref=e16] [cursor=pointer]:
+          - /url: /dashboard/rankings
+          - img [ref=e17]
+          - generic [ref=e19]: Rankings
+        - link "Channel" [ref=e20] [cursor=pointer]:
+          - /url: /dashboard/channel
+          - img [ref=e21]
+          - generic [ref=e23]: Channel
+        - link "Content" [ref=e24] [cursor=pointer]:
+          - /url: /dashboard/content
+          - img [ref=e25]
+          - generic [ref=e27]: Content
+        - link "Benchmark" [ref=e28] [cursor=pointer]:
+          - /url: /dashboard/benchmark
+          - img [ref=e29]
+          - generic [ref=e31]: Benchmark
+        - link "Trends" [ref=e32] [cursor=pointer]:
+          - /url: /dashboard/trends
+          - img [ref=e33]
+          - generic [ref=e35]: Trends
+        - paragraph [ref=e37]: Management
+        - link "Groups" [ref=e38] [cursor=pointer]:
+          - /url: /dashboard/groups
+          - img [ref=e39]
+          - generic [ref=e41]: Groups
+        - link "Alerts" [ref=e42] [cursor=pointer]:
+          - /url: /dashboard/alerts
+          - img [ref=e43]
+          - generic [ref=e45]: Alerts
+        - link "Team" [ref=e46] [cursor=pointer]:
+          - /url: /dashboard/team
+          - img [ref=e47]
+          - generic [ref=e52]: Team
+        - link "Settings" [ref=e53] [cursor=pointer]:
+          - /url: /dashboard/settings
+          - img [ref=e54]
+          - generic [ref=e57]: Settings
+      - generic [ref=e59]:
+        - paragraph [ref=e60]: Logged in as
+        - paragraph [ref=e61]: demo@dairyinsights.vn
+    - generic [ref=e62]:
+      - banner [ref=e64]:
+        - generic [ref=e65]:
+          - button "Vietnamese Dairy Competitors" [ref=e66]:
+            - generic [ref=e67]: Vietnamese Dairy Competitors
+            - img
+          - combobox [ref=e68]:
+            - img
+        - generic [ref=e69]:
+          - button [ref=e70]:
+            - img
+          - button "demo@dairyinsights.vn" [ref=e72]:
+            - generic [ref=e73]:
+              - img
+            - generic [ref=e74]: demo@dairyinsights.vn
+            - img
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - button "7D" [ref=e79]
+          - button "30D" [ref=e80]
+          - button "90D" [ref=e81]
+          - button "6M" [ref=e82]
+          - button "1Y" [ref=e83]
+          - button "ALL" [ref=e84]
+        - generic [ref=e85]: 1 filter
+        - button "Filters" [ref=e87]:
+          - img
+          - text: Filters
+          - img
+        - button "Select date range" [ref=e88]:
+          - img [ref=e89]
+          - generic [ref=e91]: Select date range
+      - tablist [ref=e95]:
+        - tab "Overview" [ref=e96]
+        - tab "Rankings" [selected] [ref=e97]
+        - tab "Channel" [ref=e98]
+        - tab "Content" [ref=e99]
+        - tab "Benchmark" [ref=e100]
+        - tab "Trends" [ref=e101]
+      - main [ref=e102]:
+        - generic [ref=e104]:
+          - generic [ref=e118]:
+            - generic [ref=e119]:
+              - heading "Rankings" [level=2] [ref=e120]
+              - paragraph [ref=e121]: Brand rankings by share of voice (SOV) and share of search (SOS)
+            - combobox [ref=e122]:
+              - generic: Impressions
+              - img
+          - table [ref=e126]:
+            - rowgroup [ref=e127]:
+              - row "# Brand Impressions SOV SOS Reactions Posts Avg ER Gap Trend" [ref=e128]:
+                - columnheader "#" [ref=e129]
+                - columnheader "Brand" [ref=e130]
+                - columnheader "Impressions" [ref=e131] [cursor=pointer]:
+                  - generic [ref=e132]:
+                    - text: Impressions
+                    - img [ref=e133]
+                - columnheader "SOV" [ref=e135] [cursor=pointer]:
+                  - generic [ref=e136]:
+                    - text: SOV
+                    - img [ref=e137]
+                - columnheader "SOS" [ref=e140] [cursor=pointer]:
+                  - generic [ref=e141]:
+                    - text: SOS
+                    - img [ref=e142]
+                - columnheader "Reactions" [ref=e145] [cursor=pointer]:
+                  - generic [ref=e146]:
+                    - text: Reactions
+                    - img [ref=e147]
+                - columnheader "Posts" [ref=e150] [cursor=pointer]:
+                  - generic [ref=e151]:
+                    - text: Posts
+                    - img [ref=e152]
+                - columnheader "Avg ER" [ref=e155] [cursor=pointer]:
+                  - generic [ref=e156]:
+                    - text: Avg ER
+                    - img [ref=e157]
+                - columnheader "Gap" [ref=e160]
+                - columnheader "Trend" [ref=e161]
+            - rowgroup [ref=e162]:
+              - row "1 Nutifood-VN 8.461.509,17 57.2% 118.3% 545 7 9.8% ▼ 69.7pp" [ref=e163]:
+                - cell "1" [ref=e164]
+                - cell "Nutifood-VN" [ref=e165]:
+                  - generic [ref=e167]: Nutifood-VN
+                - cell "8.461.509,17" [ref=e168]
+                - cell "57.2%" [ref=e169]:
+                  - generic [ref=e170]: 57.2%
+                - cell "118.3%" [ref=e171]
+                - cell "545" [ref=e172]
+                - cell "7" [ref=e173]
+                - cell "9.8%" [ref=e174]
+                - cell "▼ 69.7pp" [ref=e175]:
+                  - generic [ref=e176]: ▼ 69.7pp
+                - cell [ref=e177]:
+                  - img [ref=e181]
+              - row "2 IDP-Vietnam-Friesland 6.336.902,5 42.8% 88.5% 4.665 5 0.1% ▲ 58.9pp" [ref=e184]:
+                - cell "2" [ref=e185]
+                - cell "IDP-Vietnam-Friesland" [ref=e186]:
+                  - generic [ref=e188]: IDP-Vietnam-Friesland
+                - cell "6.336.902,5" [ref=e189]
+                - cell "42.8%" [ref=e190]:
+                  - generic [ref=e191]: 42.8%
+                - cell "88.5%" [ref=e192]
+                - cell "4.665" [ref=e193]
+                - cell "5" [ref=e194]
+                - cell "0.1%" [ref=e195]
+                - cell "▲ 58.9pp" [ref=e196]:
+                  - generic [ref=e197]: ▲ 58.9pp
+                - cell [ref=e198]:
+                  - img [ref=e202]
+              - row "3 Others-NA 5.907,5 0.0% 0.1% 29 2 1.2% ▼ 99.7pp" [ref=e205]:
+                - cell "3" [ref=e206]
+                - cell "Others-NA" [ref=e207]:
+                  - generic [ref=e209]: Others-NA
+                - cell "5.907,5" [ref=e210]
+                - cell "0.0%" [ref=e211]:
+                  - generic [ref=e212]: 0.0%
+                - cell "0.1%" [ref=e213]
+                - cell "29" [ref=e214]
+                - cell "2" [ref=e215]
+                - cell "1.2%" [ref=e216]
+                - cell "▼ 99.7pp" [ref=e217]:
+                  - generic [ref=e218]: ▼ 99.7pp
+                - cell [ref=e219]:
+                  - img [ref=e223]
+              - row "4 FCV-CP-FrieslandCampina-VN Primary 0 0.0% 0.0% 0 0 0.0% ▼ 100.0pp" [ref=e226]:
+                - cell "4" [ref=e227]
+                - cell "FCV-CP-FrieslandCampina-VN Primary" [ref=e228]:
+                  - generic [ref=e229]:
+                    - generic [ref=e230]: FCV-CP-FrieslandCampina-VN
+                    - generic [ref=e231]: Primary
+                - cell "0" [ref=e232]
+                - cell "0.0%" [ref=e233]:
+                  - generic [ref=e234]: 0.0%
+                - cell "0.0%" [ref=e235]
+                - cell "0" [ref=e236]
+                - cell "0" [ref=e237]
+                - cell "0.0%" [ref=e238]
+                - cell "▼ 100.0pp" [ref=e239]:
+                  - generic [ref=e240]: ▼ 100.0pp
+                - cell [ref=e241]:
+                  - img [ref=e245]
+              - row "5 TH-Milk-Vietnam 0 0.0% 0.0% 0 0 0.0% ▼ 100.0pp" [ref=e248]:
+                - cell "5" [ref=e249]
+                - cell "TH-Milk-Vietnam" [ref=e250]:
+                  - generic [ref=e252]: TH-Milk-Vietnam
+                - cell "0" [ref=e253]
+                - cell "0.0%" [ref=e254]:
+                  - generic [ref=e255]: 0.0%
+                - cell "0.0%" [ref=e256]
+                - cell "0" [ref=e257]
+                - cell "0" [ref=e258]
+                - cell "0.0%" [ref=e259]
+                - cell "▼ 100.0pp" [ref=e260]:
+                  - generic [ref=e261]: ▼ 100.0pp
+                - cell [ref=e262]:
+                  - img [ref=e266]
+              - row "6 VitaDairy-VN 0 0.0% 0.0% 0 0 0.0% ▼ 100.0pp" [ref=e269]:
+                - cell "6" [ref=e270]
+                - cell "VitaDairy-VN" [ref=e271]:
+                  - generic [ref=e273]: VitaDairy-VN
+                - cell "0" [ref=e274]
+                - cell "0.0%" [ref=e275]:
+                  - generic [ref=e276]: 0.0%
+                - cell "0.0%" [ref=e277]
+                - cell "0" [ref=e278]
+                - cell "0" [ref=e279]
+                - cell "0.0%" [ref=e280]
+                - cell "▼ 100.0pp" [ref=e281]:
+                  - generic [ref=e282]: ▼ 100.0pp
+                - cell [ref=e283]:
+                  - img [ref=e287]
+              - row "7 Nutricare-VN 0 0.0% 0.0% 0 0 0.0% ▼ 100.0pp" [ref=e290]:
+                - cell "7" [ref=e291]
+                - cell "Nutricare-VN" [ref=e292]:
+                  - generic [ref=e294]: Nutricare-VN
+                - cell "0" [ref=e295]
+                - cell "0.0%" [ref=e296]:
+                  - generic [ref=e297]: 0.0%
+                - cell "0.0%" [ref=e298]
+                - cell "0" [ref=e299]
+                - cell "0" [ref=e300]
+                - cell "0.0%" [ref=e301]
+                - cell "▼ 100.0pp" [ref=e302]:
+                  - generic [ref=e303]: ▼ 100.0pp
+                - cell [ref=e304]:
+                  - img [ref=e308]
+              - row "8 MocChau-Milk 0 0.0% 0.0% 0 0 0.0% ▼ 100.0pp" [ref=e311]:
+                - cell "8" [ref=e312]
+                - cell "MocChau-Milk" [ref=e313]:
+                  - generic [ref=e315]: MocChau-Milk
+                - cell "0" [ref=e316]
+                - cell "0.0%" [ref=e317]:
+                  - generic [ref=e318]: 0.0%
+                - cell "0.0%" [ref=e319]
+                - cell "0" [ref=e320]
+                - cell "0" [ref=e321]
+                - cell "0.0%" [ref=e322]
+                - cell "▼ 100.0pp" [ref=e323]:
+                  - generic [ref=e324]: ▼ 100.0pp
+                - cell [ref=e325]:
+                  - img [ref=e329]
+              - row "9 VPMilk-VN 0 0.0% 0.0% 0 0 0.0% ▼ 100.0pp" [ref=e332]:
+                - cell "9" [ref=e333]
+                - cell "VPMilk-VN" [ref=e334]:
+                  - generic [ref=e336]: VPMilk-VN
+                - cell "0" [ref=e337]
+                - cell "0.0%" [ref=e338]:
+                  - generic [ref=e339]: 0.0%
+                - cell "0.0%" [ref=e340]
+                - cell "0" [ref=e341]
+                - cell "0" [ref=e342]
+                - cell "0.0%" [ref=e343]
+                - cell "▼ 100.0pp" [ref=e344]:
+                  - generic [ref=e345]: ▼ 100.0pp
+                - cell [ref=e346]:
+                  - img [ref=e350]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e112] [cursor=pointer]:
+    - img [ref=e113]
+  - alert [ref=e116]

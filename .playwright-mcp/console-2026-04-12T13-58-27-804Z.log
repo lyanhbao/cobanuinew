@@ -1,0 +1,30 @@
+[     174ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     174ms] [LOG] [Fast Refresh] done in 102ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     449ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     485ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     887ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     887ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /dashboard/benchmark, path: /dashboard/benchmark} @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     887ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/benchmark color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/benchmark, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776002308691} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[    1136ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[    1141ms] [LOG] [Fast Refresh] done in 106ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   39694ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=nth6ZUNy8-x5zNLypiNHJ' failed:  @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[   40698ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=nth6ZUNy8-x5zNLypiNHJ' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[   41701ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=nth6ZUNy8-x5zNLypiNHJ' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[   42704ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=nth6ZUNy8-x5zNLypiNHJ' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[   43707ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=nth6ZUNy8-x5zNLypiNHJ' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[   44711ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=nth6ZUNy8-x5zNLypiNHJ' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[   55512ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   55548ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   55832ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   55837ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   55837ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /dashboard/benchmark, path: /dashboard/benchmark} @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   55837ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/benchmark color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/benchmark, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776002363640} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   56291ms] [LOG] [Fast Refresh] done in 633ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   64350ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   64704ms] [LOG] [Fast Refresh] done in 455ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   64805ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   64892ms] [LOG] [Fast Refresh] done in 187ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   65354ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   65422ms] [LOG] [Fast Refresh] done in 169ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   66304ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   66471ms] [LOG] [Fast Refresh] done in 270ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287

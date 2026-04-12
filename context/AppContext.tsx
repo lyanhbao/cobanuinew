@@ -102,7 +102,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   }, [state]);
 
   const setClientId = useCallback((id: ClientId | null) => {
-    setState((s) => ({ ...s, clientId: id, groupId: null }));
+    setState((s) => ({ ...s, clientId: id, groupId: null, isReady: false }));
   }, []);
 
   const setGroupId = useCallback((id: GroupId | null) => {

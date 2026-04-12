@@ -32,6 +32,7 @@ function useDashboardBootstrap() {
   const { setClientId, setGroupId, setSelectedWeek, clientId, groupId, availableWeeks, setAvailableWeeks, setReady } = useApp();
   const { fetchWithAuth, isAuthenticated } = useAuth();
   const [groups, setGroups] = useState<Group[]>([]);
+  const [bootstrapLoading, setBootstrapLoading] = useState(true);
 
   // Set clientId from localStorage once authenticated
   useEffect(() => {
@@ -63,9 +64,12 @@ function useDashboardBootstrap() {
       .catch(() => setGroups([]));
   }, [clientId, groupId, setGroupId, fetchWithAuth]);
 
-  // Fetch real week range from backend and update AppContext
+  // Fetch real week range from backend and update AppContext.
+  // Runs only after groupId is set (groups effect has completed setGroupId).
+  // This ordering guarantees groupId is stable before useDashboardData fires.
   useEffect(() => {
     if (!clientId || !isAuthenticated) return;
+    if (!groupId) return; // wait for group to be auto-selected first
     fetchWithAuth('/api/dashboard/weeks')
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => {
@@ -89,7 +93,14 @@ function useDashboardBootstrap() {
         setReady(true);
       })
       .catch(() => {});
-  }, [clientId, isAuthenticated, fetchWithAuth, setAvailableWeeks, setSelectedWeek, setReady]);
+  }, [clientId, isAuthenticated, groupId, fetchWithAuth, setAvailableWeeks, setSelectedWeek, setReady]);
+
+  // Track bootstrap completion to hide the loading spinner
+  useEffect(() => {
+    if (groups.length > 0 && isAuthenticated) {
+      setBootstrapLoading(false);
+    }
+  }, [groups, isAuthenticated]);
 
   return { groups };
 }

@@ -1,0 +1,180 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e4]:
+      - link "COBAN Intelligence Platform" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - heading "COBAN" [level=1] [ref=e6]
+        - paragraph [ref=e7]: Intelligence Platform
+      - navigation [ref=e8]:
+        - link "Overview" [ref=e9] [cursor=pointer]:
+          - /url: /dashboard/overview
+          - img [ref=e10]
+          - generic [ref=e15]: Overview
+        - link "Rankings" [ref=e16] [cursor=pointer]:
+          - /url: /dashboard/rankings
+          - img [ref=e17]
+          - generic [ref=e19]: Rankings
+        - link "Channel" [ref=e20] [cursor=pointer]:
+          - /url: /dashboard/channel
+          - img [ref=e21]
+          - generic [ref=e23]: Channel
+        - link "Content" [ref=e24] [cursor=pointer]:
+          - /url: /dashboard/content
+          - img [ref=e25]
+          - generic [ref=e27]: Content
+        - link "Benchmark" [ref=e28] [cursor=pointer]:
+          - /url: /dashboard/benchmark
+          - img [ref=e29]
+          - generic [ref=e31]: Benchmark
+        - link "Trends" [ref=e32] [cursor=pointer]:
+          - /url: /dashboard/trends
+          - img [ref=e33]
+          - generic [ref=e35]: Trends
+        - paragraph [ref=e37]: Management
+        - link "Groups" [ref=e38] [cursor=pointer]:
+          - /url: /dashboard/groups
+          - img [ref=e39]
+          - generic [ref=e41]: Groups
+        - link "Alerts" [ref=e42] [cursor=pointer]:
+          - /url: /dashboard/alerts
+          - img [ref=e43]
+          - generic [ref=e45]: Alerts
+        - link "Team" [ref=e46] [cursor=pointer]:
+          - /url: /dashboard/team
+          - img [ref=e47]
+          - generic [ref=e52]: Team
+        - link "Settings" [ref=e53] [cursor=pointer]:
+          - /url: /dashboard/settings
+          - img [ref=e54]
+          - generic [ref=e57]: Settings
+      - generic [ref=e59]:
+        - paragraph [ref=e60]: Logged in as
+        - paragraph [ref=e61]: demo@dairyinsights.vn
+    - generic [ref=e62]:
+      - banner [ref=e64]:
+        - generic [ref=e65]:
+          - button "KUN Competitive Intelligence" [ref=e116]:
+            - generic [ref=e67]: KUN Competitive Intelligence
+            - img
+          - combobox [ref=e68]:
+            - img
+        - generic [ref=e69]:
+          - button [ref=e70]:
+            - img
+          - button [ref=e72]:
+            - generic [ref=e73]:
+              - img
+            - img
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - button "7D" [ref=e78]
+          - button "30D" [ref=e79]
+          - button "90D" [ref=e80]
+          - button "6M" [ref=e81]
+          - button "1Y" [ref=e82]
+          - button "ALL" [ref=e83]
+        - generic [ref=e84]: 1 filter
+        - button "Filters" [ref=e86]:
+          - img
+          - text: Filters
+          - img
+        - button "Select date range" [ref=e87]:
+          - img [ref=e88]
+          - generic [ref=e90]: Select date range
+      - tablist [ref=e94]:
+        - tab "Overview" [ref=e95]
+        - tab "Rankings" [ref=e96]
+        - tab "Channel" [ref=e97]
+        - tab "Content" [ref=e98]
+        - tab "Benchmark" [selected] [ref=e99]
+        - tab "Trends" [ref=e100]
+      - main [ref=e101]:
+        - generic [ref=e103]:
+          - generic [ref=e118]:
+            - heading "Benchmark" [level=2] [ref=e119]
+            - paragraph [ref=e120]: Comparative analysis — IDP-Vietnam-Friesland vs Nutifood-VN
+          - generic [ref=e121]:
+            - generic [ref=e126]:
+              - generic [ref=e127]:
+                - heading "Performance Radar" [level=3] [ref=e128]
+                - generic [ref=e129]:
+                  - generic [ref=e132]: IDP-Vietnam-Friesland
+                  - generic [ref=e135]: Nutifood-VN
+              - paragraph [ref=e136]: Normalized scores (0-100) per metric dimension
+              - img [ref=e139]:
+                - generic [ref=e153]:
+                  - generic [ref=e155]: Impressions
+                  - generic [ref=e158]: Views
+                  - generic [ref=e161]: Reactions
+                  - generic [ref=e164]: Posts
+                  - generic [ref=e167]: Engagement Rate
+                - generic [ref=e169]:
+                  - generic [ref=e171]: "0"
+                  - generic [ref=e173]: "25"
+                  - generic [ref=e175]: "50"
+                  - generic [ref=e177]: "75"
+                  - generic [ref=e179]: "100"
+            - generic [ref=e189]:
+              - heading "Head-to-Head — Direct comparison" [level=3] [ref=e190]
+              - generic [ref=e191]:
+                - generic [ref=e192]:
+                  - generic [ref=e193]:
+                    - generic [ref=e194]: Impressions
+                    - generic [ref=e195]:
+                      - img [ref=e196]
+                      - text: "-25.1%"
+                  - generic [ref=e201]:
+                    - generic [ref=e202]: "IDP-Vietnam-Friesland: 6.3M"
+                    - generic [ref=e203]: "Nutifood-VN: 8.5M"
+                - generic [ref=e204]:
+                  - generic [ref=e205]:
+                    - generic [ref=e206]: Views
+                    - generic [ref=e207]:
+                      - img [ref=e208]
+                      - text: +128391.4%
+                  - generic [ref=e213]:
+                    - generic [ref=e214]: "IDP-Vietnam-Friesland: 7.1M"
+                    - generic [ref=e215]: "Nutifood-VN: 5.6K"
+                - generic [ref=e216]:
+                  - generic [ref=e217]:
+                    - generic [ref=e218]: Reactions
+                    - generic [ref=e219]:
+                      - img [ref=e220]
+                      - text: +756.0%
+                  - generic [ref=e225]:
+                    - generic [ref=e226]: "IDP-Vietnam-Friesland: 4.7K"
+                    - generic [ref=e227]: "Nutifood-VN: 545"
+                - generic [ref=e228]:
+                  - generic [ref=e229]:
+                    - generic [ref=e230]: Posts
+                    - generic [ref=e231]:
+                      - img [ref=e232]
+                      - text: "-28.6%"
+                  - generic [ref=e237]:
+                    - generic [ref=e238]: "IDP-Vietnam-Friesland: 5.0"
+                    - generic [ref=e239]: "Nutifood-VN: 7.0"
+                - generic [ref=e240]:
+                  - generic [ref=e241]:
+                    - generic [ref=e242]: Avg. Engagement Rate
+                    - generic [ref=e243]:
+                      - img [ref=e244]
+                      - text: "-99.3%"
+                  - generic [ref=e249]:
+                    - generic [ref=e250]: "IDP-Vietnam-Friesland: 0.1"
+                    - generic [ref=e251]: "Nutifood-VN: 9.8"
+          - generic [ref=e255]:
+            - heading "Gap Analysis — Performance gap" [level=3] [ref=e256]
+            - paragraph [ref=e257]: Positive = ahead of competitor. Negative = behind competitor.
+            - img [ref=e260]:
+              - generic [ref=e266]: Nutifood-VN
+              - generic [ref=e268]:
+                - generic [ref=e270]: 0pp
+                - generic [ref=e272]: +35pp
+                - generic [ref=e274]: +70pp
+                - generic [ref=e276]: +105pp
+                - generic [ref=e278]: +140pp
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e111] [cursor=pointer]:
+    - img [ref=e112]
+  - alert [ref=e115]
+  - generic [ref=e284]: 0pp

@@ -1,0 +1,362 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e4]:
+      - link "COBAN Intelligence Platform" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - heading "COBAN" [level=1] [ref=e6]
+        - paragraph [ref=e7]: Intelligence Platform
+      - navigation [ref=e8]:
+        - link "Overview" [ref=e9] [cursor=pointer]:
+          - /url: /dashboard/overview
+          - img [ref=e10]
+          - generic [ref=e15]: Overview
+        - link "Rankings" [ref=e16] [cursor=pointer]:
+          - /url: /dashboard/rankings
+          - img [ref=e17]
+          - generic [ref=e19]: Rankings
+        - link "Channel" [ref=e20] [cursor=pointer]:
+          - /url: /dashboard/channel
+          - img [ref=e21]
+          - generic [ref=e23]: Channel
+        - link "Content" [ref=e24] [cursor=pointer]:
+          - /url: /dashboard/content
+          - img [ref=e25]
+          - generic [ref=e27]: Content
+        - link "Benchmark" [ref=e28] [cursor=pointer]:
+          - /url: /dashboard/benchmark
+          - img [ref=e29]
+          - generic [ref=e31]: Benchmark
+        - link "Trends" [ref=e32] [cursor=pointer]:
+          - /url: /dashboard/trends
+          - img [ref=e33]
+          - generic [ref=e35]: Trends
+        - paragraph [ref=e37]: Management
+        - link "Groups" [ref=e38] [cursor=pointer]:
+          - /url: /dashboard/groups
+          - img [ref=e39]
+          - generic [ref=e41]: Groups
+        - link "Alerts" [ref=e42] [cursor=pointer]:
+          - /url: /dashboard/alerts
+          - img [ref=e43]
+          - generic [ref=e45]: Alerts
+        - link "Team" [ref=e46] [cursor=pointer]:
+          - /url: /dashboard/team
+          - img [ref=e47]
+          - generic [ref=e52]: Team
+        - link "Settings" [ref=e53] [cursor=pointer]:
+          - /url: /dashboard/settings
+          - img [ref=e54]
+          - generic [ref=e57]: Settings
+      - generic [ref=e59]:
+        - paragraph [ref=e60]: Logged in as
+        - paragraph [ref=e61]: demo@dairyinsights.vn
+    - generic [ref=e62]:
+      - banner [ref=e64]:
+        - generic [ref=e65]:
+          - button "Vietnamese Dairy Competitors" [ref=e66]:
+            - generic [ref=e67]: Vietnamese Dairy Competitors
+            - img
+          - combobox [ref=e68]:
+            - img
+        - generic [ref=e69]:
+          - button [ref=e70]:
+            - img
+          - button [ref=e72]:
+            - generic [ref=e73]:
+              - img
+            - img
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - button "7D" [ref=e78]
+          - button "30D" [ref=e79]
+          - button "90D" [ref=e80]
+          - button "6M" [ref=e81]
+          - button "1Y" [ref=e82]
+          - button "ALL" [ref=e83]
+        - generic [ref=e84]: 1 filter
+        - button "Filters" [ref=e86]:
+          - img
+          - text: Filters
+          - img
+        - button "Select date range" [ref=e87]:
+          - img [ref=e88]
+          - generic [ref=e90]: Select date range
+      - tablist [ref=e94]:
+        - tab "Overview" [ref=e95]
+        - tab "Rankings" [ref=e96]
+        - tab "Channel" [ref=e97]
+        - tab "Content" [ref=e98]
+        - tab "Benchmark" [ref=e99]
+        - tab "Trends" [selected] [ref=e100]
+      - main [ref=e101]:
+        - generic [ref=e103]:
+          - generic [ref=e131]:
+            - generic [ref=e132]:
+              - heading "Trends" [level=2] [ref=e133]
+              - paragraph [ref=e134]: Performance trend — Last 26 weeks
+            - generic [ref=e135]:
+              - button "Impressions" [ref=e136]
+              - button "Views" [ref=e137]
+              - button "Engagement" [ref=e138]
+              - button "Posts" [ref=e139]
+          - generic [ref=e142]:
+            - paragraph [ref=e143]: Compare brands
+            - generic [ref=e144]:
+              - generic [ref=e145] [cursor=pointer]:
+                - checkbox "IDP-Vietnam-Friesland" [checked] [ref=e146]:
+                  - generic:
+                    - img
+                - generic [ref=e148]: IDP-Vietnam-Friesland
+              - generic [ref=e149] [cursor=pointer]:
+                - checkbox "MocChau-Milk" [checked] [ref=e150]:
+                  - generic:
+                    - img
+                - generic [ref=e152]: MocChau-Milk
+              - generic [ref=e153] [cursor=pointer]:
+                - checkbox "Nutifood-VN" [checked] [ref=e154]:
+                  - generic:
+                    - img
+                - generic [ref=e156]: Nutifood-VN
+              - generic [ref=e157] [cursor=pointer]:
+                - checkbox "Nutricare-VN" [ref=e158]
+                - generic [ref=e160]: Nutricare-VN
+              - generic [ref=e161] [cursor=pointer]:
+                - checkbox "Others-NA" [ref=e162]
+                - generic [ref=e164]: Others-NA
+              - generic [ref=e165] [cursor=pointer]:
+                - checkbox "VPMilk-VN" [ref=e166]
+                - generic [ref=e168]: VPMilk-VN
+              - generic [ref=e169] [cursor=pointer]:
+                - checkbox "VitaDairy-VN" [ref=e170]
+                - generic [ref=e172]: VitaDairy-VN
+              - generic [ref=e173] [cursor=pointer]:
+                - checkbox "TH-Milk-Vietnam" [ref=e174]
+                - generic [ref=e176]: TH-Milk-Vietnam
+              - generic [ref=e177] [cursor=pointer]:
+                - checkbox "FCV-CP-FrieslandCampina-VN" [ref=e178]
+                - generic [ref=e180]: FCV-CP-FrieslandCampina-VN
+          - generic [ref=e183]:
+            - generic [ref=e184]:
+              - heading "Performance Over Time" [level=3] [ref=e185]
+              - generic [ref=e186]:
+                - generic [ref=e189]: IDP-Vietnam-Friesland
+                - generic [ref=e192]: MocChau-Milk
+                - generic [ref=e195]: Nutifood-VN
+            - img [ref=e198]:
+              - generic [ref=e203]:
+                - generic [ref=e205]: W28 (08 Jul – 14 Jul, 2024)
+                - generic [ref=e207]: W31 (29 Jul – 04 Aug, 2024)
+                - generic [ref=e209]: W34 (19 Aug – 25 Aug,2024)
+                - generic [ref=e211]: W37 (09 Sept – 15 Sept,2024)
+                - generic [ref=e213]: W40 (30 Sept – 06 Oct,2024)
+                - generic [ref=e215]: W43 (21 Oct – 27 Oct, 2024)
+                - generic [ref=e217]: W46 (11 Nov – 17 Nov, 2024)
+                - generic [ref=e219]: W49 (02 Dec – 08 Dec,2024)
+                - generic [ref=e221]: W52 (23 Dec – 29 Dec,2024)
+              - generic [ref=e223]:
+                - generic [ref=e225]: "0"
+                - generic [ref=e227]: 55M
+                - generic [ref=e229]: 110M
+                - generic [ref=e231]: 165M
+                - generic [ref=e233]: 220M
+          - generic [ref=e241]:
+            - generic [ref=e242]:
+              - img [ref=e243]
+              - heading "Anomalies & Alerts — 20 events" [level=3] [ref=e245]
+            - generic [ref=e246]:
+              - generic [ref=e247]:
+                - img [ref=e249]
+                - generic [ref=e252]:
+                  - generic [ref=e253]:
+                    - generic [ref=e254]: FCV-CP-FrieslandCampina-VN
+                    - generic [ref=e255]: critical
+                    - generic [ref=e256]: W5
+                    - generic [ref=e257]: viral
+                  - paragraph [ref=e258]: "Viral spike detected: +4446287% impressions"
+              - generic [ref=e259]:
+                - img [ref=e261]
+                - generic [ref=e264]:
+                  - generic [ref=e265]:
+                    - generic [ref=e266]: Nutifood-VN
+                    - generic [ref=e267]: critical
+                    - generic [ref=e268]: W2
+                    - generic [ref=e269]: viral
+                  - paragraph [ref=e270]: "Viral spike detected: +1658105% impressions"
+              - generic [ref=e271]:
+                - img [ref=e273]
+                - generic [ref=e276]:
+                  - generic [ref=e277]:
+                    - generic [ref=e278]: FCV-CP-FrieslandCampina-VN
+                    - generic [ref=e279]: critical
+                    - generic [ref=e280]: W35
+                    - generic [ref=e281]: viral
+                  - paragraph [ref=e282]: "Viral spike detected: +1373521% impressions"
+              - generic [ref=e283]:
+                - img [ref=e285]
+                - generic [ref=e288]:
+                  - generic [ref=e289]:
+                    - generic [ref=e290]: Nutricare-VN
+                    - generic [ref=e291]: critical
+                    - generic [ref=e292]: W44
+                    - generic [ref=e293]: viral
+                  - paragraph [ref=e294]: "Viral spike detected: +1245426% impressions"
+              - generic [ref=e295]:
+                - img [ref=e297]
+                - generic [ref=e300]:
+                  - generic [ref=e301]:
+                    - generic [ref=e302]: FCV-CP-FrieslandCampina-VN
+                    - generic [ref=e303]: critical
+                    - generic [ref=e304]: W17
+                    - generic [ref=e305]: viral
+                  - paragraph [ref=e306]: "Viral spike detected: +1237425% impressions"
+              - generic [ref=e307]:
+                - img [ref=e309]
+                - generic [ref=e312]:
+                  - generic [ref=e313]:
+                    - generic [ref=e314]: Nutricare-VN
+                    - generic [ref=e315]: critical
+                    - generic [ref=e316]: W5
+                    - generic [ref=e317]: viral
+                  - paragraph [ref=e318]: "Viral spike detected: +1078830% impressions"
+              - generic [ref=e319]:
+                - img [ref=e321]
+                - generic [ref=e324]:
+                  - generic [ref=e325]:
+                    - generic [ref=e326]: FCV-CP-FrieslandCampina-VN
+                    - generic [ref=e327]: critical
+                    - generic [ref=e328]: W11
+                    - generic [ref=e329]: viral
+                  - paragraph [ref=e330]: "Viral spike detected: +705168% impressions"
+              - generic [ref=e331]:
+                - img [ref=e333]
+                - generic [ref=e336]:
+                  - generic [ref=e337]:
+                    - generic [ref=e338]: Nutricare-VN
+                    - generic [ref=e339]: critical
+                    - generic [ref=e340]: W44
+                    - generic [ref=e341]: viral
+                  - paragraph [ref=e342]: "Viral spike detected: +665900% impressions"
+              - generic [ref=e343]:
+                - img [ref=e345]
+                - generic [ref=e348]:
+                  - generic [ref=e349]:
+                    - generic [ref=e350]: VitaDairy-VN
+                    - generic [ref=e351]: critical
+                    - generic [ref=e352]: W8
+                    - generic [ref=e353]: viral
+                  - paragraph [ref=e354]: "Viral spike detected: +628837% impressions"
+              - generic [ref=e355]:
+                - img [ref=e357]
+                - generic [ref=e360]:
+                  - generic [ref=e361]:
+                    - generic [ref=e362]: Others-NA
+                    - generic [ref=e363]: critical
+                    - generic [ref=e364]: W30
+                    - generic [ref=e365]: viral
+                  - paragraph [ref=e366]: "Viral spike detected: +588680% impressions"
+              - generic [ref=e367]:
+                - img [ref=e369]
+                - generic [ref=e372]:
+                  - generic [ref=e373]:
+                    - generic [ref=e374]: MocChau-Milk
+                    - generic [ref=e375]: critical
+                    - generic [ref=e376]: W45
+                    - generic [ref=e377]: viral
+                  - paragraph [ref=e378]: "Viral spike detected: +575487% impressions"
+              - generic [ref=e379]:
+                - img [ref=e381]
+                - generic [ref=e384]:
+                  - generic [ref=e385]:
+                    - generic [ref=e386]: Others-NA
+                    - generic [ref=e387]: critical
+                    - generic [ref=e388]: W19
+                    - generic [ref=e389]: viral
+                  - paragraph [ref=e390]: "Viral spike detected: +571849% impressions"
+              - generic [ref=e391]:
+                - img [ref=e393]
+                - generic [ref=e396]:
+                  - generic [ref=e397]:
+                    - generic [ref=e398]: Others-NA
+                    - generic [ref=e399]: critical
+                    - generic [ref=e400]: W14
+                    - generic [ref=e401]: viral
+                  - paragraph [ref=e402]: "Viral spike detected: +570133% impressions"
+              - generic [ref=e403]:
+                - img [ref=e405]
+                - generic [ref=e408]:
+                  - generic [ref=e409]:
+                    - generic [ref=e410]: Others-NA
+                    - generic [ref=e411]: critical
+                    - generic [ref=e412]: W43
+                    - generic [ref=e413]: viral
+                  - paragraph [ref=e414]: "Viral spike detected: +541867% impressions"
+              - generic [ref=e415]:
+                - img [ref=e417]
+                - generic [ref=e420]:
+                  - generic [ref=e421]:
+                    - generic [ref=e422]: VPMilk-VN
+                    - generic [ref=e423]: critical
+                    - generic [ref=e424]: W27
+                    - generic [ref=e425]: viral
+                  - paragraph [ref=e426]: "Viral spike detected: +443947% impressions"
+              - generic [ref=e427]:
+                - img [ref=e429]
+                - generic [ref=e432]:
+                  - generic [ref=e433]:
+                    - generic [ref=e434]: Nutifood-VN
+                    - generic [ref=e435]: critical
+                    - generic [ref=e436]: W13
+                    - generic [ref=e437]: viral
+                  - paragraph [ref=e438]: "Viral spike detected: +405559% impressions"
+              - generic [ref=e439]:
+                - img [ref=e441]
+                - generic [ref=e444]:
+                  - generic [ref=e445]:
+                    - generic [ref=e446]: MocChau-Milk
+                    - generic [ref=e447]: critical
+                    - generic [ref=e448]: W48
+                    - generic [ref=e449]: viral
+                  - paragraph [ref=e450]: "Viral spike detected: +371837% impressions"
+              - generic [ref=e451]:
+                - img [ref=e453]
+                - generic [ref=e456]:
+                  - generic [ref=e457]:
+                    - generic [ref=e458]: TH-Milk-Vietnam
+                    - generic [ref=e459]: critical
+                    - generic [ref=e460]: W41
+                    - generic [ref=e461]: viral
+                  - paragraph [ref=e462]: "Viral spike detected: +329906% impressions"
+              - generic [ref=e463]:
+                - img [ref=e465]
+                - generic [ref=e468]:
+                  - generic [ref=e469]:
+                    - generic [ref=e470]: Others-NA
+                    - generic [ref=e471]: critical
+                    - generic [ref=e472]: W47
+                    - generic [ref=e473]: viral
+                  - paragraph [ref=e474]: "Viral spike detected: +282069% impressions"
+              - generic [ref=e475]:
+                - img [ref=e477]
+                - generic [ref=e480]:
+                  - generic [ref=e481]:
+                    - generic [ref=e482]: TH-Milk-Vietnam
+                    - generic [ref=e483]: critical
+                    - generic [ref=e484]: W32
+                    - generic [ref=e485]: viral
+                  - paragraph [ref=e486]: "Viral spike detected: +270062% impressions"
+  - region "Notifications alt+T"
+  - generic [ref=e124] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e125]:
+      - img [ref=e126]
+    - generic [ref=e487]:
+      - button "Open issues overlay" [ref=e488]:
+        - generic [ref=e489]:
+          - generic [ref=e490]: "11"
+          - generic [ref=e491]: "12"
+        - generic [ref=e492]:
+          - text: Issue
+          - generic [ref=e493]: s
+      - button "Collapse issues badge" [ref=e494]:
+        - img [ref=e495]
+  - alert [ref=e129]
+  - generic [ref=e497]: "0"

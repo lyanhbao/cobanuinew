@@ -6,23 +6,23 @@ import { Shield, Lock, Eye, FileCheck } from "lucide-react";
 const securityFeatures = [
   {
     icon: Shield,
-    title: "Mã hoá AES-256",
-    description: "Dữ liệu được mã hoá bắt đầu khi thu thập và lúc lưu trữ. Không có ngoại lệ.",
+    title: "AES-256 Encryption",
+    description: "Data is encrypted at collection and at rest. No exceptions.",
   },
   {
     icon: Lock,
-    title: "Truy cập phân quyền",
-    description: "Chỉ người được phép mới có thể xem dữ liệu của bạn. Hệ thống RBAC chi tiết.",
+    title: "Role-Based Access",
+    description: "Only authorized users can view your data. Detailed RBAC system.",
   },
   {
     icon: Eye,
-    title: "An toàn & Bảo mật",
-    description: "Hàng rào bảo vệ đầu vào — crawl bot, proxy xoay, IP ngẫu nhiên hoá.",
+    title: "Safety & Security",
+    description: "Input protection layers — crawl bots, rotating proxies, randomized IPs.",
   },
   {
     icon: FileCheck,
-    title: "Compliance Vietnam",
-    description: "Tuân thủ quy định về bảo mật dữ liệu của Việt Nam và Quốc tế.",
+    title: "Compliance Ready",
+    description: "Compliant with Vietnamese and international data security regulations.",
   },
 ];
 
@@ -56,16 +56,16 @@ export function SecuritySection() {
           >
             <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
               <span className="w-8 h-px bg-foreground/30" />
-              Bảo mật
+              Security
             </span>
             <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Dữ liệu của bạn,
+              Your data,
               <br />
-              an toàn tuyệt đối.
+              fully protected.
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
-              Chúng tôi hiểu dữ liệu kinh doanh của bạn là tài sản quý giá.
-              Tất cả được mã hoá, phân quyền, và bảo vệ từ mọi góc nhìn.
+              We understand that your business data is a valuable asset.
+              Everything is encrypted, access-controlled, and protected from every angle.
             </p>
 
             {/* Certifications */}

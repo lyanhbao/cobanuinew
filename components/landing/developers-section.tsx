@@ -5,7 +5,7 @@ import { Copy, Check } from "lucide-react";
 
 const codeExamples = [
   {
-    label: "Theo dõi",
+    label: "Tracking",
     code: `coban.brands.track({
   primary: 'MyBrand',
   competitors: [
@@ -16,44 +16,44 @@ const codeExamples = [
   },
   {
     label: "Dashboard",
-    code: `// Xem SOV Matrix
+    code: `// View SOV Matrix
 coban.dashboard({
   view: 'sov-matrix',
   period: 'last-4-weeks'
 })
 
-// Xem Rankings
+// View Rankings
 coban.rankings()`,
   },
   {
-    label: "Báo cáo",
-    code: `// Lấy báo cáo tổng hợp
+    label: "Reports",
+    code: `// Get weekly report
 coban.report({
   group: 'MyGroup',
   type: 'weekly'
 })
 
-// So sánh đối thủ
+// Benchmark competitors
 coban.benchmark()`,
   },
 ];
 
 const features = [
   {
-    title: "Thiết lập nhanh",
-    description: "Bắt đầu theo dõi trong vài phút.",
+    title: "Quick Setup",
+    description: "Start tracking in minutes.",
   },
   {
-    title: "Dashboard trực quan",
-    description: "Giao diện đơn giản, hiệu quả.",
+    title: "Visual Dashboard",
+    description: "Simple, effective interface.",
   },
   {
-    title: "Team collaboration",
-    description: "Chia sẻ dữ liệu với đồng nghiệp.",
+    title: "Team Collaboration",
+    description: "Share data with your team.",
   },
   {
-    title: "Báo cáo chuyên sâu",
-    description: "Xuất báo cáo chỉ với một click.",
+    title: "Deep Reports",
+    description: "Export reports with one click.",
   },
 ];
 
@@ -122,16 +122,15 @@ export function DevelopersSection() {
           >
             <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
               <span className="w-8 h-px bg-foreground/30" />
-              Dành cho Agency & Brand
+              Built for Agencies & Brands
             </span>
             <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Thiết kế cho
+              Designed for
               <br />
-              <span className="text-muted-foreground">Agency và Brand Việt Nam.</span>
+              <span className="text-muted-foreground">Agencies and Brands.</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
-              COBAN được xây dựng đặc biệt cho Agency và Brand Việt Nam.
-              Giao diện đơn giản, data chính xác, báo cáo chi tiết.
+              COBAN is purpose-built for agencies and brands. Simple interface, accurate data, detailed reports.
             </p>
 
             {/* Features */}
@@ -223,11 +222,11 @@ export function DevelopersSection() {
             {/* Links */}
             <div className="mt-6 flex items-center gap-6 text-sm">
               <a href="#" className="text-foreground hover:underline underline-offset-4">
-                Xem dashboard
+                View Dashboard
               </a>
               <span className="text-foreground/20">|</span>
               <a href="#" className="text-muted-foreground hover:text-foreground">
-                Hướng dẫn sử dụng
+                Documentation
               </a>
             </div>
           </div>
