@@ -106,6 +106,24 @@ export async function GET(
     const week = weekResult.rows[0]!;
     const weekStart = week.week_start;
 
+    // If latest week doesn't have the primary brand (is_primary='t'), step back
+    // to the most recent week that does. This ensures benchmark always compares the
+    // right brands regardless of which week is "latest".
+    let benchmarkWeek = weekStart;
+    const primaryWeekResult = await query<{ week_start: string; week_number: number; year: number }>(
+      `SELECT ws.week_start::text, ws.week_number, ws.year
+       FROM weekly_stats ws
+       JOIN brand b ON b.id = ws.brand_id
+       WHERE ws.group_id = $1 AND b.is_primary = 't'
+       ORDER BY ws.week_start DESC
+       LIMIT 1`,
+      [groupId],
+    );
+    if (primaryWeekResult.rows.length > 0) {
+      const pw = primaryWeekResult.rows[0]!;
+      benchmarkWeek = pw.week_start;
+    }
+
     // All brands with stats for the week, ordered by is_primary DESC then impressions DESC
     // is_primary is 't'/'f' string in PostgreSQL, not boolean — sort by it first
     const brandsResult = await query<RawBrandRow>(
@@ -124,20 +142,20 @@ export async function GET(
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
        WHERE ws.group_id = $1 AND ws.week_start = $2::date
        ORDER BY b.is_primary DESC, ws.total_impressions DESC`,
-      [groupId, weekStart],
+      [groupId, benchmarkWeek],
     );
 
     const rows = brandsResult.rows;
     // Primary = brand with is_primary='t' (PostgreSQL string, not boolean)
-    const primaryRow = rows.find((r) => r.is_primary === 't' || r.is_primary === true) ?? rows[0];
+    const primaryRow = rows.find((r) => r.is_primary === 't' || r.is_primary === true);
     // Competitor = highest impressions non-primary brand
-    const competitorRow = rows.find((r) => r !== primaryRow) ?? rows[1];
+    const competitorRow = rows.find((r) => r !== primaryRow);
 
     if (!primaryRow) {
       return NextResponse.json({
         success: true,
         data: {
-          week: { label: weekLabel(weekStart), start: weekStart, number: week.week_number, year: week.year },
+          week: { label: weekLabel(benchmarkWeek), start: benchmarkWeek, number: week.week_number, year: week.year },
           radar: [],
           head_to_head: [],
           gap_analysis: [],
@@ -236,10 +254,20 @@ export async function GET(
         };
       });
 
+    // Use primary week info for the returned week label
+    const weekInfo = primaryWeekResult.rows.length > 0
+      ? primaryWeekResult.rows[0]!
+      : week;
+
     return NextResponse.json({
       success: true,
       data: {
-        week: { label: weekLabel(weekStart), start: weekStart, number: week.week_number, year: week.year },
+        week: {
+          label: weekLabel(benchmarkWeek),
+          start: benchmarkWeek,
+          number: weekInfo.week_number,
+          year: weekInfo.year,
+        },
         radar,
         head_to_head,
         gap_analysis,
