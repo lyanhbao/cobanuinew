@@ -34,6 +34,7 @@ import { RefreshCw, AlertCircle, ArrowUp, ArrowDown, ArrowUpDown } from 'lucide-
 
 interface RankingsData {
   brands: Array<{
+    brand_id: string;
     rank: number;
     brand_name: string;
     is_primary: boolean;
@@ -221,7 +222,7 @@ function AnimatedTableRow({
 
 export default function RankingsPage() {
   const { data, loading, error, refetch } = useDashboardData<RankingsData>('rankings');
-  const [sortKey, setSortKey] = useState<SortKey>('rank');
+  const [sortKey, setSortKey] = useState<SortKey>('impressions');
   const [sortDir, setSortDir] = useState<SortDir>('desc');
   const { ref: tableRef, isVisible: tableVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.05 });
 
@@ -352,7 +353,7 @@ export default function RankingsPage() {
               const gapUp = (brand.gap_pct ?? 0) >= 0;
               return (
                 <AnimatedTableRow
-                  key={brand.brand_name}
+                  key={brand.brand_id ?? brand.brand_name}
                   brand={brand}
                   index={i}
                   gapUp={gapUp}
