@@ -433,9 +433,9 @@ function ChartsRow({
                       fill: 'hsl(var(--muted-foreground))',
                     }}
                   >
-                    {sovChartData.map((entry, i) => (
+                    {sovChartData.map((entry) => (
                       <Cell
-                        key={i}
+                        key={entry.brand_name}
                         fill={entry.color}
                         className={entry.is_primary ? 'glow-sm' : ''}
                       />
@@ -473,13 +473,13 @@ function ChartsRow({
                     onMouseEnter={(_, index) => setActiveIndex(index)}
                     onMouseLeave={() => setActiveIndex(null)}
                   >
-                    {networkBreakdown.map((entry, i) => (
+                    {networkBreakdown.map((entry, idx) => (
                       <Cell
-                        key={i}
+                        key={entry.platform}
                         fill={PLATFORM_COLORS[entry.platform] ?? '#888'}
-                        className={activeIndex === i ? 'glow-md' : ''}
+                        className={activeIndex === idx ? 'glow-md' : ''}
                         style={{
-                          filter: activeIndex === i ? 'drop-shadow(0 0 8px)' : 'none',
+                          filter: activeIndex === idx ? 'drop-shadow(0 0 8px)' : 'none',
                           transition: 'filter 0.2s ease',
                         }}
                       />
@@ -540,7 +540,7 @@ function InsightsFeed({ insights }: { insights: OverviewData['insights'] }) {
 
                 return (
                   <div
-                    key={i}
+                    key={`${insight.brand_name}-${insight.metric}`}
                     className="flex items-start gap-3 text-sm"
                     style={{
                       opacity: isVisible ? 1 : 0,

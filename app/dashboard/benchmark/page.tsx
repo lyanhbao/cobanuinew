@@ -475,9 +475,9 @@ export default function BenchmarkPage() {
                   />
                   <Tooltip content={<GapTooltip />} />
                   <Bar dataKey="gap" name="Gap (pp)" radius={[4, 4, 0, 0]}>
-                    {gap_analysis.map((entry, i) => (
+                    {gap_analysis.map((entry) => (
                       <Cell
-                        key={i}
+                        key={entry.metric}
                         fill={
                           entry.category === 'positive'
                             ? '#16a34a'
