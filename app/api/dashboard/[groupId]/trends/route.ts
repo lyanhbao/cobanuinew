@@ -94,9 +94,7 @@ export async function GET(
     // Brands in order of appearance in the dataset
     const brands = Array.from(brandOrder.keys());
 
-    // ── Anomalies from brand_activity ────────────────────────────────────────
-    // Anomalies from brand_activity using actual schema columns:
-    // title, description, gap_pct (not summary/change_pct)
+    // ── Anomalies: first try brand_activity, fall back to weekly_stats gap_pct ──
     interface RawAnomaly {
       id: string;
       brand_name: string;
@@ -107,7 +105,7 @@ export async function GET(
       week_start: string | null;
       week_number: number | null;
     }
-    const anomalyRows = await query<RawAnomaly>(
+    let anomalyRows = await query<RawAnomaly>(
       `SELECT
          ba.id,
          cb.name          AS brand_name,
@@ -129,6 +127,33 @@ export async function GET(
        LIMIT 20`,
       [groupId],
     );
+
+    // If brand_activity has no rows, fall back to weekly_stats gap_pct anomalies
+    if (anomalyRows.rows.length === 0) {
+      anomalyRows = await query<RawAnomaly>(
+        `SELECT
+           ws.brand_id::text AS id,
+           cb.name           AS brand_name,
+           CASE WHEN ws.gap_pct > 0 THEN 'viral' ELSE 'anomaly' END AS activity_type,
+           NULL::text        AS title,
+           CASE
+             WHEN ws.gap_pct > 0
+               THEN 'Viral spike detected: +' || ROUND(ABS(ws.gap_pct::numeric), 0) || '% impressions'
+             ELSE 'Significant drop detected: ' || ROUND(ws.gap_pct::numeric, 0) || '% impressions'
+           END               AS description,
+           ws.gap_pct::text AS gap_pct,
+           ws.week_start::text AS week_start,
+           ws.week_number
+         FROM weekly_stats ws
+         JOIN brand b        ON b.id  = ws.brand_id
+         JOIN curated_brand cb ON cb.id = b.curated_brand_id
+         WHERE ws.group_id = $1
+           AND ABS(ws.gap_pct::numeric) >= 100
+         ORDER BY ABS(ws.gap_pct::numeric) DESC
+         LIMIT 20`,
+        [groupId],
+      );
+    }
 
     function toSeverity(
       gapPct: number | null,

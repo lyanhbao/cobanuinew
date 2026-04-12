@@ -278,14 +278,26 @@ export async function GET(
         return entry;
       });
 
-    // Build top-level format_mix: platform × format cross-tab
-    const topFormatMix = Array.from(formatMixMap.entries()).map(([p, formats]) => {
-      const entry: Record<string, string | number> = { format: formats[0]?.format ?? 'Unknown' };
+    // Build top-level format_mix: { format, youtube, facebook, tiktok }
+    // Group by format, sum counts per platform
+    const formatByPlatform = new Map<string, Record<string, number>>();
+    for (const [p, formats] of formatMixMap.entries()) {
       for (const f of formats) {
-        entry[p] = f.count;
+        if (!formatByPlatform.has(f.format)) {
+          formatByPlatform.set(f.format, { youtube: 0, facebook: 0, tiktok: 0 });
+        }
+        const entry = formatByPlatform.get(f.format)!;
+        if (p === 'youtube' || p === 'facebook' || p === 'tiktok') {
+          entry[p] += f.count;
+        }
       }
-      return entry;
-    });
+    }
+    const topFormatMix = Array.from(formatByPlatform.entries()).map(([format, counts]) => ({
+      format,
+      youtube: counts.youtube,
+      facebook: counts.facebook,
+      tiktok: counts.tiktok,
+    }));
 
     return NextResponse.json({ success: true, data: { platforms: platformsResult, format_mix: topFormatMix, cadence: posting_cadence } });
   } catch (err) {
