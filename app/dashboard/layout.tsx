@@ -97,8 +97,12 @@ function useDashboardBootstrap() {
             cur.setDate(cur.getDate() + 7);
           }
           if (weeks.length > 0) {
+            // Always default to the LATEST week (last in array) so dashboard
+            // always shows fresh data, not a sparse old week from localStorage.
             setAvailableWeeks(weeks);
-            setSelectedWeek(weeks[weeks.length - 1]!);
+            const latestWeek = weeks[weeks.length - 1]!;
+            setSelectedWeek(latestWeek);
+            groupIdRef.current = latestWeek; // ensure week aligns with group
           }
         }
         setReady(true);
