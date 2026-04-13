@@ -31,14 +31,10 @@ export type CrawlStatus = 'pending' | 'crawling' | 'ready' | 'error';
 export type JobStatus = 'pending' | 'running' | 'completed' | 'failed' | 'cancelled';
 export type JobType = 'initial' | 'weekly' | 'delta' | 'manual';
 export type ActivityType =
-  | 'viral_post'
-  | 'reengaged_post'
-  | 'new_post'
-  | 'competitor_added'
-  | 'benchmark_updated'
   | 'viral'
   | 'reengaged'
-  | 'anomaly';
+  | 'anomaly'
+  | 'new_post';
 export type AlertLevel = 'info' | 'warning' | 'critical';
 export type ReportStatus = 'pending' | 'generating' | 'finalized' | 'failed';
 

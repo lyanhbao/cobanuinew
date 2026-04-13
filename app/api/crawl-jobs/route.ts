@@ -38,9 +38,9 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
 
     const { status, groupId, from, to, limit, offset } = parsed.data;
 
-    // FIX: added authorization filter — only show crawl jobs for groups
-    // belonging to the authenticated account.
-    const conditions: string[] = [`g.account_id = $${1}`];
+    // FIX: authorization — only show crawl jobs for groups belonging to
+    // the authenticated account. group → client → account_id chain.
+    const conditions: string[] = [`c.account_id = $${1}`];
     const paramsArr: unknown[] = [payload.accountId];
     let pIdx = 2;
 
@@ -83,6 +83,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
               cj.started_at, cj.completed_at, cj.error_message, cj.created_at
        FROM crawl_job cj
        JOIN "group" g ON g.id = cj.group_id
+       JOIN client c ON c.id = g.client_id
        ${whereClause}
        ORDER BY cj.created_at DESC
        LIMIT $${pIdx++} OFFSET $${pIdx++}`,
@@ -93,6 +94,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       `SELECT COUNT(*) AS count
        FROM crawl_job cj
        JOIN "group" g ON g.id = cj.group_id
+       JOIN client c ON c.id = g.client_id
        ${whereClause}`,
       paramsArr,
     );

@@ -33,7 +33,7 @@ async function getUserByEmail(email: string): Promise<DbUser | null> {
 
 async function updateLastLogin(userId: string): Promise<void> {
   await query(
-    `UPDATE "user" SET last_login = now() WHERE id = $1`,
+    `UPDATE "user" SET last_login_at = now() WHERE id = $1`,
     [userId]
   );
 }

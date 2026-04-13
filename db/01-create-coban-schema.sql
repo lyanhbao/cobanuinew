@@ -422,7 +422,7 @@ CREATE INDEX IF NOT EXISTS idx_wr_year_week ON weekly_report(year, week_number);
 CREATE TABLE IF NOT EXISTS brand_activity (
   id              uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   brand_id        uuid NOT NULL REFERENCES brand(id) ON DELETE CASCADE,
-  post_id         uuid NOT NULL REFERENCES post(id) ON DELETE CASCADE,
+  post_id         uuid,  -- Stored for reference; post table uses composite PK (platform, post_id), not uuid id
   activity_type   activity_type NOT NULL,
     -- 'viral' | 'reengaged' | 'anomaly' | 'new_post'
   week_start      date NOT NULL,
