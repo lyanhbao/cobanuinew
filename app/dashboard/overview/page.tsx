@@ -12,6 +12,7 @@ import { useSpotlight } from '@/lib/use-spotlight';
 import { formatVietnamNumber, formatCompact } from '@/lib/vietnam-format';
 import { useApp } from '@/context/AppContext';
 import { AnimatedSphere } from '@/components/landing/animated-sphere';
+import { MarketPulse } from '@/components/dashboard/market-pulse';
 import {
   BarChart,
   Bar,
@@ -681,8 +682,10 @@ export default function OverviewPage() {
         </div>
       </div>
 
+      {/* Market Pulse — top section */}
+      <MarketPulse />
+
       {/* KPI Cards — staggered entrance */}
-      <StaggeredKpiGrid kpis={kpis} />
 
       {/* Charts row */}
       <ChartsRow sovChartData={sovChartData} networkBreakdown={data.network_breakdown} />

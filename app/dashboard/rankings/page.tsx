@@ -24,6 +24,7 @@ import { useDashboardData } from '@/lib/use-dashboard-data';
 import { useScrollReveal } from '@/lib/use-scroll-reveal';
 import { formatVietnamNumber } from '@/lib/vietnam-format';
 import { RefreshCw, AlertCircle, ArrowUp, ArrowDown, ArrowUpDown } from 'lucide-react';
+import { MomentumBadge } from '@/components/dashboard/momentum';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -219,6 +220,11 @@ function AnimatedTableRow({
           />
         </div>
       </TableCell>
+      <TableCell>
+        <div className="flex items-center justify-center">
+          <MomentumBadge brandId={brand.brand_id} />
+        </div>
+      </TableCell>
     </TableRow>
   );
 }
@@ -350,7 +356,8 @@ export default function RankingsPage() {
                 </div>
               </TableHead>
               <TableHead className="text-center">Gap</TableHead>
-              <TableHead className="text-center w-24">Trend</TableHead>
+              <TableHead className="text-center">Trend</TableHead>
+              <TableHead className="text-center w-24">Momentum</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

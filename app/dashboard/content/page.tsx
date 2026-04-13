@@ -25,6 +25,7 @@ import {
 import { useDashboardData } from '@/lib/use-dashboard-data';
 import { useScrollReveal, useMultiScrollReveal } from '@/lib/use-scroll-reveal';
 import { formatVietnamNumber, formatCompact } from '@/lib/vietnam-format';
+import { ViralSpotlight } from '@/components/dashboard/viral-spotlight';
 import { RefreshCw, AlertCircle, ExternalLink, Video, ImageIcon, Layout, Zap, Clock } from 'lucide-react';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -276,6 +277,11 @@ export default function ContentPage() {
             Content performance and top performing posts
           </p>
         </div>
+      </div>
+
+      {/* Viral Spotlight — top of content page */}
+      <div className="dashboard-reveal is-visible">
+        <ViralSpotlight />
       </div>
 
       {/* Charts row */}

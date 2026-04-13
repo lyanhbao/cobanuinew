@@ -23,6 +23,8 @@ import { useDashboardData } from '@/lib/use-dashboard-data';
 import { useScrollReveal } from '@/lib/use-scroll-reveal';
 import { formatCompact } from '@/lib/vietnam-format';
 import { RefreshCw, AlertCircle, TrendingUp, TrendingDown } from 'lucide-react';
+import { CompetitiveHeatmap } from '@/components/dashboard/competitive-heatmap';
+import { MomentumTable } from '@/components/dashboard/momentum';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -434,6 +436,30 @@ export default function BenchmarkPage() {
             </Card>
           </LocalSpotlightCard>
         </div>
+      </div>
+
+      {/* Competitive Heatmap */}
+      <div
+        className={chartsVisible ? 'dashboard-reveal is-visible' : 'dashboard-reveal'}
+      >
+        <CompetitiveHeatmap />
+      </div>
+
+      {/* Momentum Trend Table */}
+      <div
+        className={chartsVisible ? 'dashboard-reveal is-visible' : 'dashboard-reveal'}
+        style={{ transitionDelay: '80ms' }}
+      >
+        <LocalSpotlightCard className="card-hover">
+          <Card>
+            <CardContent className="p-5">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+                Momentum — 4-Week Trend Signal
+              </h3>
+              <MomentumTable />
+            </CardContent>
+          </Card>
+        </LocalSpotlightCard>
       </div>
 
       {/* Gap Analysis */}
