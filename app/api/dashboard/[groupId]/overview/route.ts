@@ -51,7 +51,7 @@ export async function GET(
     // Build dynamic filter conditions
     // Platform filter: applied on post table (JOIN via brand)
     // BrandType filter: applied on brand.is_primary
-    const platformFilter = platform ? `AND p.platform = $3` : '';
+    const platformClause = platform ? `AND p.platform = $3` : '';
     const brandTypeFilter =
       brandType === 'primary' ? `AND b.is_primary = 't'`
       : brandType === 'competitor' ? `AND b.is_primary = 'f'`
@@ -134,7 +134,7 @@ export async function GET(
          COALESCE(SUM(p.reactions), 0)::bigint AS total_reactions
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformFilter}`,
+       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformClause}`,
       [groupId, weekStart, ...(platform ? [platform] : [])],
     );
     const kpi = kpiRows.rows[0]!;
@@ -147,7 +147,7 @@ export async function GET(
       `SELECT COUNT(*)::int AS count
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformFilter}`,
+       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformClause}`,
       [groupId, weekStart, ...(platform ? [platform] : [])],
     );
     const totalPosts = postCountRows.rows[0]?.count ?? 0;
@@ -167,7 +167,7 @@ export async function GET(
          AND (
            ${platform ? `EXISTS (SELECT 1 FROM post p2 JOIN brand b2 ON b2.curated_brand_id = p2.curated_brand_id WHERE b2.id = b.id AND p2.week_start = $2::date AND p2.platform = '${platform}')` : '1=1'}
          )
-         AND (${brandTypeFilter || '1=1'})
+         ${brandTypeFilter ? `AND (${brandTypeFilter})` : ''}
        GROUP BY b.id, cb.name, b.is_primary
        ORDER BY SUM(ws.total_impressions) DESC NULLS LAST`,
       [groupId, weekStart],
@@ -190,7 +190,7 @@ export async function GET(
          COALESCE(SUM(p.impressions), 0)::bigint AS impressions
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformFilter}
+       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformClause}
        GROUP BY p.platform`,
       [groupId, weekStart, ...(platform ? [platform] : [])],
     );
@@ -214,7 +214,7 @@ export async function GET(
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
        WHERE ws.group_id = $1 AND ws.week_start = $2::date
          AND ws.gap_pct IS NOT NULL
-         AND (${brandTypeFilter || '1=1'})
+         ${brandTypeFilter ? `AND (${brandTypeFilter})` : ''}
        ORDER BY ws.gap_pct DESC
        LIMIT 5`,
       [groupId, weekStart],

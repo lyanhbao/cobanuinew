@@ -12,6 +12,7 @@ import { verifyJwt } from '../../../../../lib/auth';
 
 const paramsSchema = z.object({
   groupId: z.string().uuid(),
+  week: z.string().optional(),
   platform: z.enum(['youtube', 'facebook', 'tiktok']).optional(),
   brandType: z.enum(['primary', 'competitor']).optional(),
 });
@@ -55,15 +56,15 @@ export async function GET(
 
   try {
     const searchParams = Object.fromEntries(req.nextUrl.searchParams);
-    const { groupId, platform, brandType } = paramsSchema.parse({
+    const { groupId, week: requestedWeek, platform, brandType } = paramsSchema.parse({
       groupId: (await params).groupId,
       ...searchParams,
     });
 
-    const platformFilter = platform ? `AND p.platform = '${platform}'` : '';
+    const platformClause = platform ? `AND p.platform = '${platform}'` : '';
     const brandTypeFilter =
-      brandType === 'primary' ? `AND b.is_primary = 't'`
-      : brandType === 'competitor' ? `AND b.is_primary = 'f'`
+      brandType === 'primary' ? `b.is_primary = 't'`
+      : brandType === 'competitor' ? `b.is_primary = 'f'`
       : '';
 
     // Verify group belongs to account
@@ -86,17 +87,40 @@ export async function GET(
       [groupId],
     );
 
-    if (weekResult.rows.length === 0) {
-      return NextResponse.json({ success: true, data: { week: null, brands: [] } });
+    // ── Resolve week: use requested or fallback to latest ──────────────────
+    let resolvedWeekStart: string;
+    let resolvedWeekNumber: number;
+    let resolvedWeekYear: number;
+
+    if (requestedWeek) {
+      const weekInfoRow = await query<{ week_start: string; week_number: number; year: number }>(
+        `SELECT week_start::text AS week_start, week_number, year
+         FROM weekly_stats WHERE group_id = $1 AND week_start = $2::date LIMIT 1`,
+        [groupId, requestedWeek],
+      );
+      if (weekInfoRow.rows.length > 0) {
+        const w = weekInfoRow.rows[0]!;
+        resolvedWeekStart = w.week_start;
+        resolvedWeekNumber = w.week_number;
+        resolvedWeekYear = w.year;
+      } else {
+        const fallback = weekResult.rows[0]!;
+        resolvedWeekStart = fallback.week_start;
+        resolvedWeekNumber = fallback.week_number;
+        resolvedWeekYear = fallback.year;
+      }
+    } else {
+      const latest = weekResult.rows[0]!;
+      resolvedWeekStart = latest.week_start;
+      resolvedWeekNumber = latest.week_number;
+      resolvedWeekYear = latest.year;
     }
 
-    const week = weekResult.rows[0]!;
-    const weekStart = week.week_start;
     const weekInfo: WeekInfo = {
-      label: weekLabel(weekStart),
-      start: weekStart,
-      number: week.week_number,
-      year: week.year,
+      label: weekLabel(resolvedWeekStart),
+      start: resolvedWeekStart,
+      number: resolvedWeekNumber,
+      year: resolvedWeekYear,
     };
 
     // ── All brands in group (LEFT JOIN to get ALL brands, not just those with stats) ──
@@ -126,9 +150,9 @@ export async function GET(
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
        LEFT JOIN weekly_stats ws ON ws.brand_id = b.id
          AND ws.week_start IN ($2::date, $2::date - INTERVAL '7 days')
-       WHERE b.group_id = $1 ${brandTypeFilter}
+       WHERE b.group_id = $1${brandTypeFilter ? ` AND ${brandTypeFilter}` : ''}
        ORDER BY b.is_primary DESC, ws.total_impressions DESC NULLS LAST`,
-      [groupId, weekStart],
+      [groupId, resolvedWeekStart],
     );
 
     // Partition by brand so we can grab current vs previous week
@@ -165,7 +189,7 @@ export async function GET(
 
       if (row.week_start === null) continue; // brand has no weekly_stats at all
 
-      const isCurrent = row.week_start === weekStart;
+      const isCurrent = row.week_start === resolvedWeekStart;
       if (isCurrent) {
         entry.curr_impressions = Number(row.total_impressions) || 0;
         entry.curr_reactions = Number(row.total_reactions) || 0;
@@ -182,21 +206,21 @@ export async function GET(
       byBrand.set(row.brand_id, entry);
     }
 
-    // ── SOV: total impressions for the latest week (for percentage calc) ────
+    // ── SOV: total impressions for the resolved week (for percentage calc) ────
     const totalResult = await query<{ total: string }>(
       `SELECT COALESCE(SUM(total_impressions), 0)::bigint AS total
        FROM weekly_stats
        WHERE group_id = $1 AND week_start = $2::date`,
-      [groupId, weekStart],
+      [groupId, resolvedWeekStart],
     );
     const totalImpressions = Number(totalResult.rows[0]?.total) || 1;
 
-    // ── SOS: total views for the latest week ──────────────────────────────────
+    // ── SOS: total views for the resolved week ──────────────────────────────────
     const totalViewsResult = await query<{ total: string }>(
       `SELECT COALESCE(SUM(total_views), 0)::bigint AS total
        FROM weekly_stats
        WHERE group_id = $1 AND week_start = $2::date`,
-      [groupId, weekStart],
+      [groupId, resolvedWeekStart],
     );
     const totalViews = Number(totalViewsResult.rows[0]?.total) || 1;
 
@@ -209,7 +233,7 @@ export async function GET(
        WHERE ws.group_id = $1 AND ws.week_start <= $2::date
        GROUP BY ws.week_start
        ORDER BY ws.week_start ASC`,
-      [groupId, weekStart],
+      [groupId, resolvedWeekStart],
     );
     const totalByWeek = new Map<string, number>();
     for (const row of totalByWeekResult.rows) {
@@ -221,7 +245,7 @@ export async function GET(
        FROM weekly_stats ws
        WHERE ws.group_id = $1 AND ws.week_start <= $2::date
        ORDER BY ws.brand_id, ws.week_start ASC`,
-      [groupId, weekStart],
+      [groupId, resolvedWeekStart],
     );
 
     const trendByBrand = new Map<string, number[]>();

@@ -11,6 +11,7 @@ import { verifyJwt } from '../../../../../lib/auth';
 
 const paramsSchema = z.object({
   groupId: z.string().uuid(),
+  week: z.string().optional(),
   platform: z.enum(['youtube', 'facebook', 'tiktok']).optional(),
 });
 
@@ -40,7 +41,7 @@ export async function GET(
 
   try {
     const searchParams = Object.fromEntries(req.nextUrl.searchParams);
-    const { groupId, platform } = paramsSchema.parse({
+    const { groupId, week: requestedWeek, platform } = paramsSchema.parse({
       groupId: (await params).groupId,
       ...searchParams,
     });
@@ -68,13 +69,39 @@ export async function GET(
       return NextResponse.json({ success: true, data: { week: null, platforms: [] } });
     }
 
-    const week = weekResult.rows[0]!;
-    const weekStart = week.week_start;
+    let resolvedWeekStart: string;
+    let resolvedWeekNumber: number;
+    let resolvedWeekYear: number;
+
+    if (requestedWeek) {
+      const weekInfoRow = await query<{ week_start: string; week_number: number; year: number }>(
+        `SELECT week_start::text AS week_start, week_number, year
+         FROM weekly_stats WHERE group_id = $1 AND week_start = $2::date LIMIT 1`,
+        [groupId, requestedWeek],
+      );
+      if (weekInfoRow.rows.length > 0) {
+        const w = weekInfoRow.rows[0]!;
+        resolvedWeekStart = w.week_start;
+        resolvedWeekNumber = w.week_number;
+        resolvedWeekYear = w.year;
+      } else {
+        const fallback = weekResult.rows[0]!;
+        resolvedWeekStart = fallback.week_start;
+        resolvedWeekNumber = fallback.week_number;
+        resolvedWeekYear = fallback.year;
+      }
+    } else {
+      const latest = weekResult.rows[0]!;
+      resolvedWeekStart = latest.week_start;
+      resolvedWeekNumber = latest.week_number;
+      resolvedWeekYear = latest.year;
+    }
+
     const weekInfo: WeekInfo = {
-      label: weekLabel(weekStart),
-      start: weekStart,
-      number: week.week_number,
-      year: week.year,
+      label: weekLabel(resolvedWeekStart),
+      start: resolvedWeekStart,
+      number: resolvedWeekNumber,
+      year: resolvedWeekYear,
     };
 
     // Per-platform KPIs: aggregate from post table for accuracy
@@ -95,7 +122,7 @@ export async function GET(
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
        WHERE b.group_id = $1 AND p.week_start = $2::date
        GROUP BY p.platform`,
-      [groupId, weekStart],
+      [groupId, resolvedWeekStart],
     );
 
     // Build a lookup map
@@ -129,7 +156,7 @@ export async function GET(
        WHERE b.group_id = $1 AND p.week_start = $2::date
        GROUP BY p.platform, format
        ORDER BY p.platform, count DESC`,
-      [groupId, weekStart],
+      [groupId, resolvedWeekStart],
     );
 
     const formatMixMap = new Map<Platform, { format: string; count: number }[]>();
@@ -168,7 +195,7 @@ export async function GET(
          AND p.week_start >= $2::date - INTERVAL '7 weeks'
        GROUP BY p.week_start, ws.week_number, p.platform
        ORDER BY p.week_start ASC`,
-      [groupId, weekStart],
+      [groupId, resolvedWeekStart],
     );
 
     const cadenceMap = new Map<string, Record<string, number>>();
@@ -211,7 +238,7 @@ export async function GET(
        WHERE b.group_id = $1 AND p.week_start = $2::date
          AND p.platform = 'youtube'
        GROUP BY yt_format`,
-      [groupId, weekStart],
+      [groupId, resolvedWeekStart],
     );
 
     const ytDetailsMap: Record<string, {

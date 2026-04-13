@@ -13,6 +13,7 @@ import { verifyJwt } from '../../../../../lib/auth';
 
 const paramsSchema = z.object({
   groupId: z.string().uuid(),
+  week: z.string().optional(),
   brandType: z.enum(['primary', 'competitor']).optional(),
 });
 
@@ -70,7 +71,7 @@ export async function GET(
 
   try {
     const searchParams = Object.fromEntries(req.nextUrl.searchParams);
-    const { groupId, brandType: rawBrandType } = paramsSchema.parse({
+    const { groupId, week: requestedWeek, brandType: rawBrandType } = paramsSchema.parse({
       groupId: (await params).groupId,
       ...searchParams,
     });
@@ -111,8 +112,35 @@ export async function GET(
       });
     }
 
-    const week = weekResult.rows[0]!;
-    const weekStart = week.week_start;
+    let resolvedWeekStart: string;
+    let resolvedWeekNumber: number;
+    let resolvedWeekYear: number;
+
+    if (requestedWeek) {
+      const weekInfoRow = await query<{ week_start: string; week_number: number; year: number }>(
+        `SELECT week_start::text AS week_start, week_number, year
+         FROM weekly_stats WHERE group_id = $1 AND week_start = $2::date LIMIT 1`,
+        [groupId, requestedWeek],
+      );
+      if (weekInfoRow.rows.length > 0) {
+        const w = weekInfoRow.rows[0]!;
+        resolvedWeekStart = w.week_start;
+        resolvedWeekNumber = w.week_number;
+        resolvedWeekYear = w.year;
+      } else {
+        const fallback = weekResult.rows[0]!;
+        resolvedWeekStart = fallback.week_start;
+        resolvedWeekNumber = fallback.week_number;
+        resolvedWeekYear = fallback.year;
+      }
+    } else {
+      const latest = weekResult.rows[0]!;
+      resolvedWeekStart = latest.week_start;
+      resolvedWeekNumber = latest.week_number;
+      resolvedWeekYear = latest.year;
+    }
+
+    const weekStart = resolvedWeekStart;
 
     // If latest week doesn't have the primary brand (is_primary='t'), step back
     // to the most recent week that does. This ensures benchmark always compares the

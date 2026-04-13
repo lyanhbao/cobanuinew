@@ -11,6 +11,7 @@ import { verifyJwt } from '../../../../../lib/auth';
 
 const paramsSchema = z.object({
   groupId: z.string().uuid(),
+  week: z.string().optional(),
   platform: z.enum(['youtube', 'facebook', 'tiktok']).optional(),
   brandType: z.enum(['primary', 'competitor']).optional(),
 });
@@ -83,15 +84,15 @@ export async function GET(
 
   try {
     const searchParams = Object.fromEntries(req.nextUrl.searchParams);
-    const { groupId, platform, brandType } = paramsSchema.parse({
+    const { groupId, week: requestedWeek, platform, brandType } = paramsSchema.parse({
       groupId: (await params).groupId,
       ...searchParams,
     });
 
-    const platformFilter = platform ? `AND p.platform = '${platform}'` : '';
+    const platformClause = platform ? `AND p.platform = '${platform}'` : '';
     const brandTypeFilter =
-      brandType === 'primary' ? `AND b.is_primary = 't'`
-      : brandType === 'competitor' ? `AND b.is_primary = 'f'`
+      brandType === 'primary' ? `b.is_primary = 't'`
+      : brandType === 'competitor' ? `b.is_primary = 'f'`
       : '';
 
     // Verify group belongs to account
@@ -120,13 +121,39 @@ export async function GET(
       });
     }
 
-    const week = weekResult.rows[0]!;
-    const weekStart = week.week_start;
+    let resolvedWeekStart: string;
+    let resolvedWeekNumber: number;
+    let resolvedWeekYear: number;
+
+    if (requestedWeek) {
+      const weekInfoRow = await query<{ week_start: string; week_number: number; year: number }>(
+        `SELECT week_start::text AS week_start, week_number, year
+         FROM weekly_stats WHERE group_id = $1 AND week_start = $2::date LIMIT 1`,
+        [groupId, requestedWeek],
+      );
+      if (weekInfoRow.rows.length > 0) {
+        const w = weekInfoRow.rows[0]!;
+        resolvedWeekStart = w.week_start;
+        resolvedWeekNumber = w.week_number;
+        resolvedWeekYear = w.year;
+      } else {
+        const fallback = weekResult.rows[0]!;
+        resolvedWeekStart = fallback.week_start;
+        resolvedWeekNumber = fallback.week_number;
+        resolvedWeekYear = fallback.year;
+      }
+    } else {
+      const latest = weekResult.rows[0]!;
+      resolvedWeekStart = latest.week_start;
+      resolvedWeekNumber = latest.week_number;
+      resolvedWeekYear = latest.year;
+    }
+
     const weekInfo: WeekInfo = {
-      label: weekLabel(weekStart),
-      start: weekStart,
-      number: week.week_number,
-      year: week.year,
+      label: weekLabel(resolvedWeekStart),
+      start: resolvedWeekStart,
+      number: resolvedWeekNumber,
+      year: resolvedWeekYear,
     };
 
     // Format performance: aggregate from post table by platform × format
@@ -147,10 +174,10 @@ export async function GET(
          COUNT(*)::int AS total_posts
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformFilter}
+       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformClause}${brandTypeFilter ? ` AND ${brandTypeFilter}` : ''}
        GROUP BY p.platform, format
        ORDER BY p.platform, total_impressions DESC`,
-      [groupId, weekStart],
+      [groupId, resolvedWeekStart],
     );
 
     const format_performance = formatResult.rows.map((r) => {
@@ -169,8 +196,8 @@ export async function GET(
       `SELECT p.content
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformFilter}`,
-      [groupId, weekStart],
+       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformClause}${brandTypeFilter ? ` AND ${brandTypeFilter}` : ''}`,
+      [groupId, resolvedWeekStart],
     );
 
     const top_keywords = extractKeywords(keywordResult.rows.map((r) => r.content));
@@ -202,10 +229,10 @@ export async function GET(
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformFilter}
+       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformClause}${brandTypeFilter ? ` AND ${brandTypeFilter}` : ''}
        ORDER BY p.impressions DESC
        LIMIT 20`,
-      [groupId, weekStart],
+      [groupId, resolvedWeekStart],
     );
 
     const top_posts = topPostsResult.rows.map((r) => {

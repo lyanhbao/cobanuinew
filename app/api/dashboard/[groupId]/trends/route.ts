@@ -15,6 +15,7 @@ import { verifyJwt } from '../../../../../lib/auth';
 
 const querySchema = z.object({
   groupId: z.string().uuid(),
+  week: z.string().optional(),
   weeks: z.coerce.number().int().min(4).max(52).default(26),
   platform: z.enum(['youtube', 'facebook', 'tiktok']).optional(),
   brandType: z.enum(['primary', 'competitor']).optional(),
@@ -37,15 +38,15 @@ export async function GET(
 
   try {
     const searchParams = Object.fromEntries(req.nextUrl.searchParams);
-    const { groupId, weeks, platform, brandType } = querySchema.parse({
+    const { groupId, week: requestedWeek, weeks, platform, brandType } = querySchema.parse({
       groupId: (await params).groupId,
       ...searchParams,
     });
 
     const platformFilter = platform ? `AND p.platform = '${platform}'` : '';
     const brandTypeFilter =
-      brandType === 'primary' ? `AND b.is_primary = 't'`
-      : brandType === 'competitor' ? `AND b.is_primary = 'f'`
+      brandType === 'primary' ? `b.is_primary = 't'`
+      : brandType === 'competitor' ? `b.is_primary = 'f'`
       : '';
 
     // Verify group belongs to account
@@ -80,7 +81,7 @@ export async function GET(
        CROSS JOIN max_week mw
        WHERE ws.group_id  = $1
          AND ws.week_start >= mw.max_w - (INTERVAL '1 day' * ($2 * 7))
-         ${brandTypeFilter}
+         ${brandTypeFilter ? `AND ${brandTypeFilter}` : ''}
        ORDER BY ws.week_start ASC, cb.name ASC`,
       [groupId, weeks],
     );
@@ -134,7 +135,7 @@ export async function GET(
        LEFT JOIN weekly_stats ws
               ON ws.brand_id    = b.id
              AND ws.week_start  = ba.week_start
-       WHERE b.group_id = $1 ${brandTypeFilter}
+       WHERE b.group_id = $1 ${brandTypeFilter ? `AND ${brandTypeFilter}` : ''}
        ORDER BY
          ABS(COALESCE(ba.gap_pct::numeric, 0)) DESC
        LIMIT 20`,
@@ -162,7 +163,7 @@ export async function GET(
          JOIN curated_brand cb ON cb.id = b.curated_brand_id
          WHERE ws.group_id = $1
            AND ABS(ws.gap_pct::numeric) >= 100
-           ${brandTypeFilter}
+           ${brandTypeFilter ? `AND ${brandTypeFilter}` : ''}
          ORDER BY ABS(ws.gap_pct::numeric) DESC
          LIMIT 20`,
         [groupId],
