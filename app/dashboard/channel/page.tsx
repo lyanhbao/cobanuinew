@@ -46,6 +46,7 @@ interface CadenceEntry {
 }
 
 interface ChannelData {
+  week?: { label: string; start: string; number: number; year: number };
   platforms: PlatformEntry[];
   format_mix: Array<{ format: string; youtube: number; facebook: number; tiktok: number }>;
   cadence: CadenceEntry[];

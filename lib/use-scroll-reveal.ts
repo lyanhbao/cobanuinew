@@ -43,7 +43,7 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [threshold, rootMargin, once, delay]);
+  }, [threshold, rootMargin, once]); // delay intentionally excluded — it doesn't affect WHEN we observe, only WHEN the element animates
 
   return { ref, isVisible };
 }
@@ -77,7 +77,7 @@ export function useMultiScrollReveal<T extends HTMLElement = HTMLDivElement>(
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [threshold, rootMargin, once, delay]);
+  }, [threshold, rootMargin, once]); // delay intentionally excluded
 
   return { containerRef, isVisible };
 }

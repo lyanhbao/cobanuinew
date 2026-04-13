@@ -195,6 +195,28 @@ git push origin HEAD
 
 ---
 
+## Behavioral Guidelines
+
+Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
+
+### 1. Think Before Coding
+
+Before writing any code, read the relevant files thoroughly. Understand the existing patterns, conventions, and architecture. Don't assume — verify. Ask clarifying questions if requirements are ambiguous. Rushed coding creates bugs that take 10× longer to fix than the time "saved" by skipping analysis.
+
+### 2. Simplicity First
+
+Choose the simplest solution that solves the actual problem. Resist the urge to add flexibility, abstraction, or features that aren't explicitly requested. Speculative generality is technical debt. Start simple; refactor when there's real pressure to add complexity. "It might be useful someday" is not a valid reason to add code today.
+
+### 3. Surgical Changes
+
+Make the smallest change that fixes the problem. Avoid broad refactors, style rewrites, or "improvements" beyond what was asked. Each line changed is a line that needs review, testing, and maintenance. The best fix is the one that touches the fewest files while fully solving the issue. Leave the codebase cleaner than you found it, but not at the cost of scope creep.
+
+### 4. Goal-Driven Execution
+
+Every action should serve the user's stated goal. Before making a change, ask: does this move us closer to the objective? Avoid tangential exploration, premature optimization, or addressing hypothetical future needs. Stay on task. If you discover something else that needs fixing, document it and ask the user whether to address it now or later.
+
+---
+
 ## Session Completion Status (April 11–12, 2026)
 
 All tasks completed. E2E test suite: **87/87 passing**.

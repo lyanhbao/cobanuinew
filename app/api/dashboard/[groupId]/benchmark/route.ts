@@ -200,7 +200,7 @@ export async function GET(
       return NextResponse.json({
         success: true,
         data: {
-          week: { label: weekLabel(benchmarkWeek), start: benchmarkWeek, number: week.week_number, year: week.year },
+          week: { label: weekLabel(benchmarkWeek), start: benchmarkWeek, number: primaryWeekResult.rows[0]?.week_number ?? 0, year: primaryWeekResult.rows[0]?.year ?? 0 },
           radar: [],
           head_to_head: [],
           gap_analysis: [],
@@ -304,7 +304,7 @@ export async function GET(
     // Use primary week info for the returned week label
     const weekInfo = primaryWeekResult.rows.length > 0
       ? primaryWeekResult.rows[0]!
-      : week;
+      : { week_start: resolvedWeekStart, week_number: resolvedWeekNumber, year: resolvedWeekYear };
 
     return NextResponse.json({
       success: true,
