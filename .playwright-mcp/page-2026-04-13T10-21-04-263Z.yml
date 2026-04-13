@@ -1,0 +1,953 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - link "COBAN VI" [ref=e6] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e7]: COBAN
+          - generic [ref=e8]: VI
+        - generic [ref=e9]:
+          - link "Features" [ref=e10] [cursor=pointer]:
+            - /url: "#features"
+            - text: Features
+          - link "How it Works" [ref=e11] [cursor=pointer]:
+            - /url: "#how-it-works"
+            - text: How it Works
+          - link "Pricing" [ref=e12] [cursor=pointer]:
+            - /url: "#pricing"
+            - text: Pricing
+          - link "For Agencies" [ref=e13] [cursor=pointer]:
+            - /url: "#developers"
+            - text: For Agencies
+        - generic [ref=e14]:
+          - link "Sign In" [ref=e15] [cursor=pointer]:
+            - /url: /auth/login
+          - link "Start Free" [ref=e16] [cursor=pointer]:
+            - /url: /auth/signup
+            - button "Start Free" [ref=e17]
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e21]: Social Media Competitive Intelligence for Vietnam
+        - heading "Know your competitors, to a n a l y t i c s" [level=1] [ref=e24]:
+          - generic [ref=e25]: Know your competitors,
+          - generic [ref=e26]:
+            - text: to
+            - generic [ref=e28]:
+              - generic [ref=e29]: a
+              - generic [ref=e30]: "n"
+              - generic [ref=e31]: a
+              - generic [ref=e32]: l
+              - generic [ref=e33]: "y"
+              - generic [ref=e34]: t
+              - generic [ref=e35]: i
+              - generic [ref=e36]: c
+              - generic [ref=e37]: s
+        - generic [ref=e39]:
+          - paragraph [ref=e40]: Track the game on Facebook, YouTube, and TikTok. Professional analytics dashboard for Vietnamese agencies and brands.
+          - generic [ref=e41]:
+            - link "Start Free" [ref=e42] [cursor=pointer]:
+              - /url: /auth/signup
+              - button "Start Free" [ref=e43]:
+                - text: Start Free
+                - img
+            - button "Request Demo" [ref=e44]
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - generic [ref=e49]: 200+
+            - generic [ref=e50]:
+              - text: brands tracked
+              - generic [ref=e51]: VINCONS
+          - generic [ref=e52]:
+            - generic [ref=e53]: "3"
+            - generic [ref=e54]:
+              - text: platforms FB/YT/TT
+              - generic [ref=e55]: COCOCOLA
+          - generic [ref=e56]:
+            - generic [ref=e57]: Weekly
+            - generic [ref=e58]:
+              - text: automated crawl
+              - generic [ref=e59]: ACE M
+          - generic [ref=e60]:
+            - generic [ref=e61]: W
+            - generic [ref=e62]:
+              - text: total SOV/SOS views
+              - generic [ref=e63]: CLEAR
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - generic [ref=e66]: 200+
+            - generic [ref=e67]:
+              - text: brands tracked
+              - generic [ref=e68]: VINCONS
+          - generic [ref=e69]:
+            - generic [ref=e70]: "3"
+            - generic [ref=e71]:
+              - text: platforms FB/YT/TT
+              - generic [ref=e72]: COCOCOLA
+          - generic [ref=e73]:
+            - generic [ref=e74]: Weekly
+            - generic [ref=e75]:
+              - text: automated crawl
+              - generic [ref=e76]: ACE M
+          - generic [ref=e77]:
+            - generic [ref=e78]: W
+            - generic [ref=e79]:
+              - text: total SOV/SOS views
+              - generic [ref=e80]: CLEAR
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - generic [ref=e84]: Features
+        - heading "Every metric you need to outrank competitors." [level=2] [ref=e86]:
+          - text: Every metric you need
+          - text: to outrank competitors.
+      - generic [ref=e87]:
+        - generic [ref=e89]:
+          - generic [ref=e90]: "01"
+          - generic [ref=e91]:
+            - generic [ref=e92]:
+              - heading "SOV Matrix & Rankings" [level=3] [ref=e93]
+              - paragraph [ref=e94]: Track Share of Voice for your brand and competitors across all platforms. Clear rankings, accurate comparisons.
+            - img [ref=e97]
+        - generic [ref=e108]:
+          - generic [ref=e109]: "02"
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - heading "Automated Weekly Crawl" [level=3] [ref=e112]
+              - paragraph [ref=e113]: Automatic data crawl system every Sunday. No manual work needed — always have fresh data on your dashboard.
+            - img [ref=e116]
+        - generic [ref=e136]:
+          - generic [ref=e137]: "03"
+          - generic [ref=e138]:
+            - generic [ref=e139]:
+              - heading "Track 3 Platforms" [level=3] [ref=e140]
+              - paragraph [ref=e141]: Facebook, YouTube, TikTok — all in one dashboard. Compare competitor performance across every channel.
+            - img [ref=e144]:
+              - generic [ref=e147]: A
+              - generic [ref=e151]: B
+        - generic [ref=e157]:
+          - generic [ref=e158]: "04"
+          - generic [ref=e159]:
+            - generic [ref=e160]:
+              - heading "Professional Analytics Dashboard" [level=3] [ref=e161]
+              - paragraph [ref=e162]: SOV Matrix, SOS Matrix, Rankings, Content Analysis, Benchmark, Trends — every metric you need in one interface.
+            - img [ref=e165]
+    - generic [ref=e173]:
+      - generic [ref=e174]:
+        - generic [ref=e175]: How it Works
+        - heading "Three steps to master the game." [level=2] [ref=e177]:
+          - text: Three steps to master
+          - text: the game.
+      - generic [ref=e178]:
+        - generic [ref=e179]:
+          - button "I Add Brand & Competitors Select your primary brand and the competitors you want to track. The system will begin automated data crawling." [ref=e180]:
+            - generic [ref=e181]:
+              - generic [ref=e182]: I
+              - generic [ref=e183]:
+                - heading "Add Brand & Competitors" [level=3] [ref=e184]
+                - paragraph [ref=e185]: Select your primary brand and the competitors you want to track. The system will begin automated data crawling.
+          - button "II Automated Data Crawl Every Sunday, the system crawls all data from Facebook, YouTube, and TikTok. Data is aggregated into your dashboard." [ref=e187]:
+            - generic [ref=e188]:
+              - generic [ref=e189]: II
+              - generic [ref=e190]:
+                - heading "Automated Data Crawl" [level=3] [ref=e191]
+                - paragraph [ref=e192]: Every Sunday, the system crawls all data from Facebook, YouTube, and TikTok. Data is aggregated into your dashboard.
+          - button "III View Analytics Dashboard Access SOV Matrix, Rankings, Trends, and all analytics. Understand the competitive landscape and make faster decisions." [ref=e193]:
+            - generic [ref=e194]:
+              - generic [ref=e195]: III
+              - generic [ref=e196]:
+                - heading "View Analytics Dashboard" [level=3] [ref=e197]
+                - paragraph [ref=e198]: Access SOV Matrix, Rankings, Trends, and all analytics. Understand the competitive landscape and make faster decisions.
+        - generic [ref=e200]:
+          - generic [ref=e206]: coban-setup.ts
+          - generic [ref=e208]:
+            - generic [ref=e209]:
+              - generic [ref=e210]: "1"
+              - generic [ref=e211]:
+                - generic [ref=e212]: /
+                - generic [ref=e213]: /
+                - generic [ref=e215]: S
+                - generic [ref=e216]: e
+                - generic [ref=e217]: t
+                - generic [ref=e218]: u
+                - generic [ref=e219]: p
+                - generic [ref=e221]: b
+                - generic [ref=e222]: r
+                - generic [ref=e223]: a
+                - generic [ref=e224]: "n"
+                - generic [ref=e225]: d
+                - generic [ref=e227]: a
+                - generic [ref=e228]: "n"
+                - generic [ref=e229]: d
+                - generic [ref=e231]: c
+                - generic [ref=e232]: o
+                - generic [ref=e233]: m
+                - generic [ref=e234]: p
+                - generic [ref=e235]: e
+                - generic [ref=e236]: t
+                - generic [ref=e237]: i
+                - generic [ref=e238]: t
+                - generic [ref=e239]: o
+                - generic [ref=e240]: r
+                - generic [ref=e241]: s
+            - generic [ref=e242]:
+              - generic [ref=e243]: "2"
+              - generic [ref=e244]:
+                - generic [ref=e245]: c
+                - generic [ref=e246]: o
+                - generic [ref=e247]: b
+                - generic [ref=e248]: a
+                - generic [ref=e249]: "n"
+                - generic [ref=e250]: .
+                - generic [ref=e251]: t
+                - generic [ref=e252]: r
+                - generic [ref=e253]: a
+                - generic [ref=e254]: c
+                - generic [ref=e255]: k
+                - generic [ref=e256]: (
+                - generic [ref=e257]: "{"
+            - generic [ref=e258]:
+              - generic [ref=e259]: "3"
+              - generic [ref=e260]:
+                - generic [ref=e263]: p
+                - generic [ref=e264]: r
+                - generic [ref=e265]: i
+                - generic [ref=e266]: m
+                - generic [ref=e267]: a
+                - generic [ref=e268]: r
+                - generic [ref=e269]: "y"
+                - generic [ref=e270]: ":"
+                - generic [ref=e272]: "'"
+                - generic [ref=e273]: M
+                - generic [ref=e274]: "y"
+                - generic [ref=e275]: B
+                - generic [ref=e276]: r
+                - generic [ref=e277]: a
+                - generic [ref=e278]: "n"
+                - generic [ref=e279]: d
+                - generic [ref=e280]: "'"
+                - generic [ref=e281]: ","
+            - generic [ref=e282]:
+              - generic [ref=e283]: "4"
+              - generic [ref=e284]:
+                - generic [ref=e287]: c
+                - generic [ref=e288]: o
+                - generic [ref=e289]: m
+                - generic [ref=e290]: p
+                - generic [ref=e291]: e
+                - generic [ref=e292]: t
+                - generic [ref=e293]: i
+                - generic [ref=e294]: t
+                - generic [ref=e295]: o
+                - generic [ref=e296]: r
+                - generic [ref=e297]: s
+                - generic [ref=e298]: ":"
+                - generic [ref=e300]: "["
+            - generic [ref=e301]:
+              - generic [ref=e302]: "5"
+              - generic [ref=e303]:
+                - generic [ref=e308]: "'"
+                - generic [ref=e309]: C
+                - generic [ref=e310]: o
+                - generic [ref=e311]: m
+                - generic [ref=e312]: p
+                - generic [ref=e313]: e
+                - generic [ref=e314]: t
+                - generic [ref=e315]: i
+                - generic [ref=e316]: t
+                - generic [ref=e317]: o
+                - generic [ref=e318]: r
+                - generic [ref=e319]: A
+                - generic [ref=e320]: "'"
+                - generic [ref=e321]: ","
+            - generic [ref=e322]:
+              - generic [ref=e323]: "6"
+              - generic [ref=e324]:
+                - generic [ref=e329]: "'"
+                - generic [ref=e330]: C
+                - generic [ref=e331]: o
+                - generic [ref=e332]: m
+                - generic [ref=e333]: p
+                - generic [ref=e334]: e
+                - generic [ref=e335]: t
+                - generic [ref=e336]: i
+                - generic [ref=e337]: t
+                - generic [ref=e338]: o
+                - generic [ref=e339]: r
+                - generic [ref=e340]: B
+                - generic [ref=e341]: "'"
+                - generic [ref=e342]: ","
+            - generic [ref=e343]:
+              - generic [ref=e344]: "7"
+              - generic [ref=e345]:
+                - generic [ref=e350]: "'"
+                - generic [ref=e351]: C
+                - generic [ref=e352]: o
+                - generic [ref=e353]: m
+                - generic [ref=e354]: p
+                - generic [ref=e355]: e
+                - generic [ref=e356]: t
+                - generic [ref=e357]: i
+                - generic [ref=e358]: t
+                - generic [ref=e359]: o
+                - generic [ref=e360]: r
+                - generic [ref=e361]: C
+                - generic [ref=e362]: "'"
+            - generic [ref=e363]:
+              - generic [ref=e364]: "8"
+              - generic [ref=e368]: "]"
+            - generic [ref=e369]:
+              - generic [ref=e370]: "9"
+              - generic [ref=e371]:
+                - generic [ref=e372]: "}"
+                - generic [ref=e373]: )
+          - generic [ref=e376]: Ready
+    - generic [ref=e379]:
+      - generic [ref=e380]:
+        - generic [ref=e381]: Infrastructure
+        - heading "Global by default." [level=2] [ref=e383]:
+          - text: Global by
+          - text: default.
+        - paragraph [ref=e384]: Deploy once, run everywhere. Our edge network spans 17 data centers across 6 continents, delivering sub-50ms latency to 99% of the world.
+        - generic [ref=e385]:
+          - generic [ref=e386]:
+            - generic [ref=e387]: "17"
+            - generic [ref=e388]: Data centers
+          - generic [ref=e389]:
+            - generic [ref=e390]: 99.99%
+            - generic [ref=e391]: Uptime SLA
+          - generic [ref=e392]:
+            - generic [ref=e393]: <50ms
+            - generic [ref=e394]: Global latency
+      - generic [ref=e396]:
+        - generic [ref=e397]:
+          - generic [ref=e398]: Edge Network
+          - generic [ref=e399]: All operational
+        - generic [ref=e401]:
+          - generic [ref=e402]:
+            - generic [ref=e405]:
+              - generic [ref=e406]: San Francisco
+              - generic [ref=e407]: US West
+            - generic [ref=e408]: 12ms
+          - generic [ref=e409]:
+            - generic [ref=e412]:
+              - generic [ref=e413]: New York
+              - generic [ref=e414]: US East
+            - generic [ref=e415]: 18ms
+          - generic [ref=e416]:
+            - generic [ref=e419]:
+              - generic [ref=e420]: London
+              - generic [ref=e421]: Europe
+            - generic [ref=e422]: 24ms
+          - generic [ref=e423]:
+            - generic [ref=e426]:
+              - generic [ref=e427]: Tokyo
+              - generic [ref=e428]: Asia Pacific
+            - generic [ref=e429]: 32ms
+          - generic [ref=e430]:
+            - generic [ref=e433]:
+              - generic [ref=e434]: Sydney
+              - generic [ref=e435]: Oceania
+            - generic [ref=e436]: 45ms
+          - generic [ref=e437]:
+            - generic [ref=e440]:
+              - generic [ref=e441]: Sao Paulo
+              - generic [ref=e442]: South America
+            - generic [ref=e443]: 38ms
+    - generic [ref=e445]:
+      - generic [ref=e446]:
+        - generic [ref=e447]:
+          - generic [ref=e448]: Platform overview
+          - heading "The numbers that define COBAN." [level=2] [ref=e450]:
+            - text: The numbers that
+            - text: define COBAN.
+        - generic [ref=e451]:
+          - generic [ref=e452]: Live
+          - generic [ref=e454]: "|"
+          - generic [ref=e455]: 5:21:03 PM
+      - generic [ref=e456]:
+        - generic [ref=e457]:
+          - generic [ref=e458]: 0+
+          - generic [ref=e459]: Brands tracked
+        - generic [ref=e460]:
+          - generic [ref=e461]: "0"
+          - generic [ref=e462]: Platforms FB / YT / TT
+        - generic [ref=e463]:
+          - generic [ref=e464]: "0"
+          - generic [ref=e465]: Crawls per week
+        - generic [ref=e466]:
+          - generic [ref=e467]: 0W
+          - generic [ref=e468]: Aggregate reports
+    - generic [ref=e469]:
+      - generic [ref=e471]:
+        - generic [ref=e472]: Platforms & Features
+        - heading "Track all the platforms you need." [level=2] [ref=e475]:
+          - text: Track all the
+          - text: platforms you need.
+        - paragraph [ref=e476]: Facebook, YouTube, TikTok — plus SOV, SOS, Rankings, and Trends in one dashboard.
+      - generic [ref=e478]:
+        - generic [ref=e479]:
+          - generic [ref=e480]:
+            - generic [ref=e481]: Facebook
+            - generic [ref=e482]: Social Platform
+          - generic [ref=e483]:
+            - generic [ref=e484]: YouTube
+            - generic [ref=e485]: Video Platform
+          - generic [ref=e486]:
+            - generic [ref=e487]: TikTok
+            - generic [ref=e488]: Short Video
+          - generic [ref=e489]:
+            - generic [ref=e490]: SOV Matrix
+            - generic [ref=e491]: Analytics
+          - generic [ref=e492]:
+            - generic [ref=e493]: SOS Matrix
+            - generic [ref=e494]: Analytics
+          - generic [ref=e495]:
+            - generic [ref=e496]: Rankings
+            - generic [ref=e497]: Analytics
+          - generic [ref=e498]:
+            - generic [ref=e499]: Weekly Crawl
+            - generic [ref=e500]: Automation
+          - generic [ref=e501]:
+            - generic [ref=e502]: Engagement
+            - generic [ref=e503]: Metrics
+          - generic [ref=e504]:
+            - generic [ref=e505]: Trends
+            - generic [ref=e506]: Analytics
+          - generic [ref=e507]:
+            - generic [ref=e508]: Content Analysis
+            - generic [ref=e509]: Analytics
+          - generic [ref=e510]:
+            - generic [ref=e511]: Benchmark
+            - generic [ref=e512]: Comparison
+          - generic [ref=e513]:
+            - generic [ref=e514]: Multi-Platform
+            - generic [ref=e515]: Overview
+        - generic [ref=e516]:
+          - generic [ref=e517]:
+            - generic [ref=e518]: Facebook
+            - generic [ref=e519]: Social Platform
+          - generic [ref=e520]:
+            - generic [ref=e521]: YouTube
+            - generic [ref=e522]: Video Platform
+          - generic [ref=e523]:
+            - generic [ref=e524]: TikTok
+            - generic [ref=e525]: Short Video
+          - generic [ref=e526]:
+            - generic [ref=e527]: SOV Matrix
+            - generic [ref=e528]: Analytics
+          - generic [ref=e529]:
+            - generic [ref=e530]: SOS Matrix
+            - generic [ref=e531]: Analytics
+          - generic [ref=e532]:
+            - generic [ref=e533]: Rankings
+            - generic [ref=e534]: Analytics
+          - generic [ref=e535]:
+            - generic [ref=e536]: Weekly Crawl
+            - generic [ref=e537]: Automation
+          - generic [ref=e538]:
+            - generic [ref=e539]: Engagement
+            - generic [ref=e540]: Metrics
+          - generic [ref=e541]:
+            - generic [ref=e542]: Trends
+            - generic [ref=e543]: Analytics
+          - generic [ref=e544]:
+            - generic [ref=e545]: Content Analysis
+            - generic [ref=e546]: Analytics
+          - generic [ref=e547]:
+            - generic [ref=e548]: Benchmark
+            - generic [ref=e549]: Comparison
+          - generic [ref=e550]:
+            - generic [ref=e551]: Multi-Platform
+            - generic [ref=e552]: Overview
+      - generic [ref=e554]:
+        - generic [ref=e555]:
+          - generic [ref=e556]:
+            - generic [ref=e557]: Multi-Platform
+            - generic [ref=e558]: Overview
+          - generic [ref=e559]:
+            - generic [ref=e560]: Benchmark
+            - generic [ref=e561]: Comparison
+          - generic [ref=e562]:
+            - generic [ref=e563]: Content Analysis
+            - generic [ref=e564]: Analytics
+          - generic [ref=e565]:
+            - generic [ref=e566]: Trends
+            - generic [ref=e567]: Analytics
+          - generic [ref=e568]:
+            - generic [ref=e569]: Engagement
+            - generic [ref=e570]: Metrics
+          - generic [ref=e571]:
+            - generic [ref=e572]: Weekly Crawl
+            - generic [ref=e573]: Automation
+          - generic [ref=e574]:
+            - generic [ref=e575]: Rankings
+            - generic [ref=e576]: Analytics
+          - generic [ref=e577]:
+            - generic [ref=e578]: SOS Matrix
+            - generic [ref=e579]: Analytics
+          - generic [ref=e580]:
+            - generic [ref=e581]: SOV Matrix
+            - generic [ref=e582]: Analytics
+          - generic [ref=e583]:
+            - generic [ref=e584]: TikTok
+            - generic [ref=e585]: Short Video
+          - generic [ref=e586]:
+            - generic [ref=e587]: YouTube
+            - generic [ref=e588]: Video Platform
+          - generic [ref=e589]:
+            - generic [ref=e590]: Facebook
+            - generic [ref=e591]: Social Platform
+        - generic [ref=e592]:
+          - generic [ref=e593]:
+            - generic [ref=e594]: Multi-Platform
+            - generic [ref=e595]: Overview
+          - generic [ref=e596]:
+            - generic [ref=e597]: Benchmark
+            - generic [ref=e598]: Comparison
+          - generic [ref=e599]:
+            - generic [ref=e600]: Content Analysis
+            - generic [ref=e601]: Analytics
+          - generic [ref=e602]:
+            - generic [ref=e603]: Trends
+            - generic [ref=e604]: Analytics
+          - generic [ref=e605]:
+            - generic [ref=e606]: Engagement
+            - generic [ref=e607]: Metrics
+          - generic [ref=e608]:
+            - generic [ref=e609]: Weekly Crawl
+            - generic [ref=e610]: Automation
+          - generic [ref=e611]:
+            - generic [ref=e612]: Rankings
+            - generic [ref=e613]: Analytics
+          - generic [ref=e614]:
+            - generic [ref=e615]: SOS Matrix
+            - generic [ref=e616]: Analytics
+          - generic [ref=e617]:
+            - generic [ref=e618]: SOV Matrix
+            - generic [ref=e619]: Analytics
+          - generic [ref=e620]:
+            - generic [ref=e621]: TikTok
+            - generic [ref=e622]: Short Video
+          - generic [ref=e623]:
+            - generic [ref=e624]: YouTube
+            - generic [ref=e625]: Video Platform
+          - generic [ref=e626]:
+            - generic [ref=e627]: Facebook
+            - generic [ref=e628]: Social Platform
+    - generic [ref=e631]:
+      - generic [ref=e632]:
+        - generic [ref=e633]: Security
+        - heading "Your data, fully protected." [level=2] [ref=e635]:
+          - text: Your data,
+          - text: fully protected.
+        - paragraph [ref=e636]: We understand that your business data is a valuable asset. Everything is encrypted, access-controlled, and protected from every angle.
+        - generic [ref=e637]:
+          - generic [ref=e638]: AES-256
+          - generic [ref=e639]: RBAC
+          - generic [ref=e640]: ISO 27001
+          - generic [ref=e641]: GDPR
+          - generic [ref=e642]: PDPD
+      - generic [ref=e643]:
+        - generic [ref=e645]:
+          - img [ref=e647]
+          - generic [ref=e649]:
+            - heading "AES-256 Encryption" [level=3] [ref=e650]
+            - paragraph [ref=e651]: Data is encrypted at collection and at rest. No exceptions.
+        - generic [ref=e653]:
+          - img [ref=e655]
+          - generic [ref=e658]:
+            - heading "Role-Based Access" [level=3] [ref=e659]
+            - paragraph [ref=e660]: Only authorized users can view your data. Detailed RBAC system.
+        - generic [ref=e662]:
+          - img [ref=e664]
+          - generic [ref=e667]:
+            - heading "Safety & Security" [level=3] [ref=e668]
+            - paragraph [ref=e669]: Input protection layers — crawl bots, rotating proxies, randomized IPs.
+        - generic [ref=e671]:
+          - img [ref=e673]
+          - generic [ref=e677]:
+            - heading "Compliance Ready" [level=3] [ref=e678]
+            - paragraph [ref=e679]: Compliant with Vietnamese and international data security regulations.
+    - generic [ref=e682]:
+      - generic [ref=e683]:
+        - generic [ref=e684]: Built for Agencies & Brands
+        - heading "Designed for Agencies and Brands." [level=2] [ref=e686]:
+          - text: Designed for
+          - text: Agencies and Brands.
+        - paragraph [ref=e687]: COBAN is purpose-built for agencies and brands. Simple interface, accurate data, detailed reports.
+        - generic [ref=e688]:
+          - generic [ref=e689]:
+            - heading "Quick Setup" [level=3] [ref=e690]
+            - paragraph [ref=e691]: Start tracking in minutes.
+          - generic [ref=e692]:
+            - heading "Visual Dashboard" [level=3] [ref=e693]
+            - paragraph [ref=e694]: Simple, effective interface.
+          - generic [ref=e695]:
+            - heading "Team Collaboration" [level=3] [ref=e696]
+            - paragraph [ref=e697]: Share data with your team.
+          - generic [ref=e698]:
+            - heading "Deep Reports" [level=3] [ref=e699]
+            - paragraph [ref=e700]: Export reports with one click.
+      - generic [ref=e701]:
+        - generic [ref=e702]:
+          - generic [ref=e703]:
+            - button "Tracking" [ref=e704]: Tracking
+            - button "Dashboard" [ref=e706]
+            - button "Reports" [ref=e707]
+            - button "Copy code" [ref=e708]:
+              - img [ref=e709]
+          - generic [ref=e713]:
+            - generic [ref=e715]:
+              - generic [ref=e716]: c
+              - generic [ref=e717]: o
+              - generic [ref=e718]: b
+              - generic [ref=e719]: a
+              - generic [ref=e720]: "n"
+              - generic [ref=e721]: .
+              - generic [ref=e722]: b
+              - generic [ref=e723]: r
+              - generic [ref=e724]: a
+              - generic [ref=e725]: "n"
+              - generic [ref=e726]: d
+              - generic [ref=e727]: s
+              - generic [ref=e728]: .
+              - generic [ref=e729]: t
+              - generic [ref=e730]: r
+              - generic [ref=e731]: a
+              - generic [ref=e732]: c
+              - generic [ref=e733]: k
+              - generic [ref=e734]: (
+              - generic [ref=e735]: "{"
+            - generic [ref=e737]:
+              - generic [ref=e740]: p
+              - generic [ref=e741]: r
+              - generic [ref=e742]: i
+              - generic [ref=e743]: m
+              - generic [ref=e744]: a
+              - generic [ref=e745]: r
+              - generic [ref=e746]: "y"
+              - generic [ref=e747]: ":"
+              - generic [ref=e749]: "'"
+              - generic [ref=e750]: M
+              - generic [ref=e751]: "y"
+              - generic [ref=e752]: B
+              - generic [ref=e753]: r
+              - generic [ref=e754]: a
+              - generic [ref=e755]: "n"
+              - generic [ref=e756]: d
+              - generic [ref=e757]: "'"
+              - generic [ref=e758]: ","
+            - generic [ref=e760]:
+              - generic [ref=e763]: c
+              - generic [ref=e764]: o
+              - generic [ref=e765]: m
+              - generic [ref=e766]: p
+              - generic [ref=e767]: e
+              - generic [ref=e768]: t
+              - generic [ref=e769]: i
+              - generic [ref=e770]: t
+              - generic [ref=e771]: o
+              - generic [ref=e772]: r
+              - generic [ref=e773]: s
+              - generic [ref=e774]: ":"
+              - generic [ref=e776]: "["
+            - generic [ref=e778]:
+              - generic [ref=e783]: "'"
+              - generic [ref=e784]: C
+              - generic [ref=e785]: o
+              - generic [ref=e786]: m
+              - generic [ref=e787]: p
+              - generic [ref=e788]: e
+              - generic [ref=e789]: t
+              - generic [ref=e790]: i
+              - generic [ref=e791]: t
+              - generic [ref=e792]: o
+              - generic [ref=e793]: r
+              - generic [ref=e794]: A
+              - generic [ref=e795]: "'"
+              - generic [ref=e796]: ","
+            - generic [ref=e798]:
+              - generic [ref=e803]: "'"
+              - generic [ref=e804]: C
+              - generic [ref=e805]: o
+              - generic [ref=e806]: m
+              - generic [ref=e807]: p
+              - generic [ref=e808]: e
+              - generic [ref=e809]: t
+              - generic [ref=e810]: i
+              - generic [ref=e811]: t
+              - generic [ref=e812]: o
+              - generic [ref=e813]: r
+              - generic [ref=e814]: B
+              - generic [ref=e815]: "'"
+            - generic [ref=e820]: "]"
+            - generic [ref=e822]:
+              - generic [ref=e823]: "}"
+              - generic [ref=e824]: )
+        - generic [ref=e825]:
+          - link "View Dashboard" [ref=e826] [cursor=pointer]:
+            - /url: "#"
+          - generic [ref=e827]: "|"
+          - link "Documentation" [ref=e828] [cursor=pointer]:
+            - /url: "#"
+    - generic [ref=e829]:
+      - generic [ref=e830]:
+        - generic [ref=e831]:
+          - generic [ref=e832]: What our customers say
+          - generic [ref=e834]: 01 / 04
+        - generic [ref=e835]:
+          - generic [ref=e836]:
+            - blockquote [ref=e837]:
+              - paragraph [ref=e838]: "\"Tracking competitors on TikTok has never been easier. COBAN helped us understand the game much better.\""
+            - generic [ref=e839]:
+              - generic [ref=e841]: "N"
+              - generic [ref=e842]:
+                - paragraph [ref=e843]: Nguyen Van Minh
+                - paragraph [ref=e844]: CEO, Ace Media Agency
+          - generic [ref=e845]:
+            - generic [ref=e846]:
+              - generic [ref=e847]: Key Result
+              - paragraph [ref=e848]: Saves 20h / month
+            - generic [ref=e849]:
+              - button [ref=e850]
+              - button [ref=e851]
+              - button [ref=e852]
+              - button [ref=e853]
+        - paragraph [ref=e855]: Trusted by top agencies and brands
+      - generic [ref=e857]:
+        - generic [ref=e858]:
+          - generic [ref=e859]: Ace Media
+          - generic [ref=e860]: VinConsumer
+          - generic [ref=e861]: Halo Digital
+          - generic [ref=e862]: ClearSky
+          - generic [ref=e863]: Nova Brand
+          - generic [ref=e864]: VietMedia
+          - generic [ref=e865]: BrandFirst
+          - generic [ref=e866]: SocialPro
+        - generic [ref=e867]:
+          - generic [ref=e868]: Ace Media
+          - generic [ref=e869]: VinConsumer
+          - generic [ref=e870]: Halo Digital
+          - generic [ref=e871]: ClearSky
+          - generic [ref=e872]: Nova Brand
+          - generic [ref=e873]: VietMedia
+          - generic [ref=e874]: BrandFirst
+          - generic [ref=e875]: SocialPro
+    - generic [ref=e877]:
+      - generic [ref=e878]:
+        - generic [ref=e879]: Pricing
+        - heading "Transparent pricing, no hidden fees." [level=2] [ref=e880]:
+          - text: Transparent pricing,
+          - text: no hidden fees.
+        - paragraph [ref=e881]: Start for free. Upgrade when you need to. No setup fees, no surprises.
+      - generic [ref=e882]:
+        - generic [ref=e883]: Monthly
+        - button [ref=e884]
+        - generic [ref=e886]: Annual
+        - generic [ref=e887]: Save 17%
+      - generic [ref=e888]:
+        - generic [ref=e889]:
+          - generic [ref=e890]:
+            - text: "01"
+            - heading "Starter" [level=3] [ref=e891]
+            - paragraph [ref=e892]: For small agencies and brands just getting started
+          - generic [ref=e894]:
+            - generic [ref=e895]: 0đ
+            - generic [ref=e896]: /month
+          - list [ref=e897]:
+            - listitem [ref=e898]:
+              - img [ref=e899]
+              - generic [ref=e901]: 1 primary brand
+            - listitem [ref=e902]:
+              - img [ref=e903]
+              - generic [ref=e905]: 1 platform (FB or YT or TT)
+            - listitem [ref=e906]:
+              - img [ref=e907]
+              - generic [ref=e909]: 30 days data history
+            - listitem [ref=e910]:
+              - img [ref=e911]
+              - generic [ref=e913]: Basic SOV Matrix
+            - listitem [ref=e914]:
+              - img [ref=e915]
+              - generic [ref=e917]: 2 weekly reports
+            - listitem [ref=e918]:
+              - img [ref=e919]
+              - generic [ref=e921]: Community support
+          - button "Start for free" [ref=e922]:
+            - text: Start for free
+            - img [ref=e923]
+        - generic [ref=e925]:
+          - generic [ref=e926]: Most popular
+          - generic [ref=e927]:
+            - text: "02"
+            - heading "Professional" [level=3] [ref=e928]
+            - paragraph [ref=e929]: For agencies and brands that need full tracking
+          - generic [ref=e931]:
+            - generic [ref=e932]: 4Mđ
+            - generic [ref=e933]: /month
+          - list [ref=e934]:
+            - listitem [ref=e935]:
+              - img [ref=e936]
+              - generic [ref=e938]: 10 brands (primary + competitors)
+            - listitem [ref=e939]:
+              - img [ref=e940]
+              - generic [ref=e942]: 3 platforms FB / YT / TT
+            - listitem [ref=e943]:
+              - img [ref=e944]
+              - generic [ref=e946]: 1 year data history
+            - listitem [ref=e947]:
+              - img [ref=e948]
+              - generic [ref=e950]: SOV + SOS Matrix
+            - listitem [ref=e951]:
+              - img [ref=e952]
+              - generic [ref=e954]: Rankings & Trends
+            - listitem [ref=e955]:
+              - img [ref=e956]
+              - generic [ref=e958]: Automated weekly reports
+            - listitem [ref=e959]:
+              - img [ref=e960]
+              - generic [ref=e962]: Team of 5
+            - listitem [ref=e963]:
+              - img [ref=e964]
+              - generic [ref=e966]: PDF report export
+          - button "14-day free trial" [ref=e967]:
+            - text: 14-day free trial
+            - img [ref=e968]
+        - generic [ref=e970]:
+          - generic [ref=e971]:
+            - text: "03"
+            - heading "Enterprise" [level=3] [ref=e972]
+            - paragraph [ref=e973]: For large organizations with investment scale
+          - generic [ref=e974]: Custom
+          - list [ref=e975]:
+            - listitem [ref=e976]:
+              - img [ref=e977]
+              - generic [ref=e979]: Unlimited brands
+            - listitem [ref=e980]:
+              - img [ref=e981]
+              - generic [ref=e983]: 3 platforms FB / YT / TT
+            - listitem [ref=e984]:
+              - img [ref=e985]
+              - generic [ref=e987]: Unlimited history
+            - listitem [ref=e988]:
+              - img [ref=e989]
+              - generic [ref=e991]: All analytics + Benchmark
+            - listitem [ref=e992]:
+              - img [ref=e993]
+              - generic [ref=e995]: On-demand custom crawl
+            - listitem [ref=e996]:
+              - img [ref=e997]
+              - generic [ref=e999]: Unlimited team
+            - listitem [ref=e1000]:
+              - img [ref=e1001]
+              - generic [ref=e1003]: Priority support 24/7
+            - listitem [ref=e1004]:
+              - img [ref=e1005]
+              - generic [ref=e1007]: Custom integration
+            - listitem [ref=e1008]:
+              - img [ref=e1009]
+              - generic [ref=e1011]: SLA guarantee
+          - button "Contact Sales" [ref=e1012]:
+            - text: Contact Sales
+            - img [ref=e1013]
+      - paragraph [ref=e1015]:
+        - text: All plans include automated weekly data crawl.
+        - link "Compare all features" [ref=e1016] [cursor=pointer]:
+          - /url: "#"
+    - generic [ref=e1022]:
+      - heading "Ready to dominate the market?" [level=2] [ref=e1023]:
+        - text: Ready to dominate
+        - text: the market?
+      - paragraph [ref=e1024]: Join 200+ Vietnamese brands using COBAN to track and outrank their competitors. Start for free today.
+      - generic [ref=e1025]:
+        - button "Start Free" [ref=e1026]:
+          - text: Start Free
+          - img
+        - button "Request Demo" [ref=e1027]
+      - paragraph [ref=e1028]: 14-day free trial, no credit card required
+    - generic [ref=e1034]:
+      - generic [ref=e1036]:
+        - generic [ref=e1037]:
+          - link "COBAN VI" [ref=e1038] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e1039]: COBAN
+            - generic [ref=e1040]: VI
+          - paragraph [ref=e1041]: Social Media Competitive Intelligence for agencies and brands. Track competitors, analyze data, dominate the game.
+          - generic [ref=e1042]:
+            - link "LinkedIn" [ref=e1043] [cursor=pointer]:
+              - /url: "#"
+              - text: LinkedIn
+              - img [ref=e1044]
+            - link "Facebook" [ref=e1047] [cursor=pointer]:
+              - /url: "#"
+              - text: Facebook
+              - img [ref=e1048]
+            - link "Zalo" [ref=e1051] [cursor=pointer]:
+              - /url: "#"
+              - text: Zalo
+              - img [ref=e1052]
+        - generic [ref=e1055]:
+          - heading "Product" [level=3] [ref=e1056]
+          - list [ref=e1057]:
+            - listitem [ref=e1058]:
+              - link "Features" [ref=e1059] [cursor=pointer]:
+                - /url: "#features"
+            - listitem [ref=e1060]:
+              - link "How it Works" [ref=e1061] [cursor=pointer]:
+                - /url: "#how-it-works"
+            - listitem [ref=e1062]:
+              - link "Pricing" [ref=e1063] [cursor=pointer]:
+                - /url: "#pricing"
+            - listitem [ref=e1064]:
+              - link "Platforms" [ref=e1065] [cursor=pointer]:
+                - /url: "#integrations"
+        - generic [ref=e1066]:
+          - heading "For Agencies" [level=3] [ref=e1067]
+          - list [ref=e1068]:
+            - listitem [ref=e1069]:
+              - link "Dashboard" [ref=e1070] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e1071]:
+              - link "Reports" [ref=e1072] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e1073]:
+              - link "Team" [ref=e1074] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e1075]:
+              - link "Integrations" [ref=e1076] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e1077]:
+          - heading "Company" [level=3] [ref=e1078]
+          - list [ref=e1079]:
+            - listitem [ref=e1080]:
+              - link "About COBAN" [ref=e1081] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e1082]:
+              - link "Blog" [ref=e1083] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e1084]:
+              - link "Careers Hiring" [ref=e1085] [cursor=pointer]:
+                - /url: "#"
+                - text: Careers
+                - generic [ref=e1086]: Hiring
+            - listitem [ref=e1087]:
+              - link "Contact" [ref=e1088] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e1089]:
+          - heading "Legal" [level=3] [ref=e1090]
+          - list [ref=e1091]:
+            - listitem [ref=e1092]:
+              - link "Privacy" [ref=e1093] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e1094]:
+              - link "Terms" [ref=e1095] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e1096]:
+              - link "Security" [ref=e1097] [cursor=pointer]:
+                - /url: "#security"
+      - generic [ref=e1098]:
+        - paragraph [ref=e1099]: 2025 COBAN. All rights reserved.
+        - generic [ref=e1101]: All systems operational
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e1108] [cursor=pointer]:
+    - img [ref=e1109]

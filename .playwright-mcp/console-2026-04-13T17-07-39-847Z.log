@@ -1,0 +1,49 @@
+[     194ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     463ms] [LOG] [Fast Refresh] done in 369ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     552ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     572ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     606ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     606ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /dashboard/rankings, path: /dashboard/rankings} @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     606ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/rankings color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/rankings, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776100060453} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     722ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     769ms] [LOG] [Fast Refresh] done in 154ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     871ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[     881ms] [LOG] [Fast Refresh] done in 111ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[    1270ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1287ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1311ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1331ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1344ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1355ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1366ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1374ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[    1383ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1397ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1411ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1421ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1432ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1444ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1454ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1466ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1478ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1489ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1500ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/dashboard/da000000-0000-0000-0000-000000000004/momentum?week=2024-12-30:0
+[    1546ms] [LOG] [Fast Refresh] done in 273ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   53996ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   54281ms] [LOG] [Fast Refresh] done in 387ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   65114ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   65145ms] [LOG] [Fast Refresh] done in 132ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   65249ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[   65252ms] [LOG] [Fast Refresh] done in 105ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  130059ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  130085ms] [LOG] [Fast Refresh] done in 127ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  169796ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  169865ms] [LOG] [Fast Refresh] done in 175ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  203043ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  203084ms] [LOG] [Fast Refresh] done in 143ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  204323ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  204771ms] [LOG] [Fast Refresh] done in 551ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  204872ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  205023ms] [LOG] [Fast Refresh] done in 251ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  205671ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  205723ms] [LOG] [Fast Refresh] done in 153ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287

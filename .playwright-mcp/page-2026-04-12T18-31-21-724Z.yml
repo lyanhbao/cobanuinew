@@ -1,0 +1,30 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e32]:
+    - generic [ref=e33]:
+      - heading "Select Client" [level=1] [ref=e34]
+      - paragraph [ref=e35]: Choose a client to view their competitive intelligence dashboard
+    - generic [ref=e36]:
+      - generic [ref=e37] [cursor=pointer]:
+        - generic [ref=e38]:
+          - img [ref=e40]
+          - img [ref=e44]
+        - heading "KUN Competitive Landscape" [level=3] [ref=e46]
+        - paragraph [ref=e47]: Dairy & Dairy Alternatives
+      - generic [ref=e48] [cursor=pointer]:
+        - generic [ref=e49]:
+          - img [ref=e51]
+          - img [ref=e55]
+        - heading "Vietnamese Dairy Market" [level=3] [ref=e57]
+        - paragraph [ref=e58]: food_beverage
+      - generic [ref=e59] [cursor=pointer]:
+        - img [ref=e61]
+        - paragraph [ref=e62]: Add New Client
+        - paragraph [ref=e63]: Create your first client
+  - region "Notifications alt+T":
+    - list:
+      - listitem [ref=e64]:
+        - img [ref=e66]
+        - generic [ref=e69]: Welcome back!
+  - button "Open Next.js Dev Tools" [ref=e26] [cursor=pointer]:
+    - img [ref=e27]
+  - alert [ref=e30]

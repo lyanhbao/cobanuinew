@@ -29,7 +29,7 @@ interface MetricRow {
   total_views: string;
   total_engagement: string;
   sov_impressions_pct: string;
-  total_spend: string;
+  total_cost: string;
   total_posts: number;
 }
 
@@ -90,9 +90,9 @@ export async function GET(
       `SELECT
          ws.brand_id,
          COALESCE(SUM(ws.total_views), 0)::bigint AS total_views,
-         COALESCE(SUM(ws.total_reactions + ws.total_comments + ws.total_shares), 0)::bigint AS total_engagement,
+         COALESCE(SUM(ws.total_reactions), 0)::bigint AS total_engagement,
          COALESCE(AVG(ws.sov_impressions_pct), 0)::numeric AS sov_impressions_pct,
-         COALESCE(SUM(ws.total_spend), 0)::numeric AS total_spend,
+         0::numeric AS total_cost,
          COALESCE(SUM(ws.total_posts), 0) AS total_posts
        FROM weekly_stats ws
        WHERE ws.group_id = $1 AND ws.week_start = $2::date
@@ -116,7 +116,7 @@ export async function GET(
       views: Number(r.total_views),
       engagement: Number(r.total_engagement),
       sov: Number(r.sov_impressions_pct),
-      spend: Number(r.total_spend),
+      spend: Number(r.total_cost),
     }));
 
     const avg = {
@@ -135,7 +135,7 @@ export async function GET(
       const views = m ? Number(m.total_views) : 0;
       const engagement = m ? Number(m.total_engagement) : 0;
       const sov = m ? Number(m.sov_impressions_pct) : 0;
-      const spend = m ? Number(m.total_spend) : 0;
+      const spend = m ? Number(m.total_cost) : 0;
       const posts = m ? Number(m.total_posts) : 0;
       const formatDiversity = f ? f.format_count : 0;
       const formatDivScore = maxFormatCount > 0 ? (formatDiversity / maxFormatCount) * 100 : 0;

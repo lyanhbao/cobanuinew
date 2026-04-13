@@ -1,9 +1,6 @@
 /**
  * GET /api/dashboard/[groupId]/overview
  * Returns KPIs, SOV, network breakdown, and insights for the latest week.
- * KPIs: total_posts from post table; avg_engagement_rate = SUM(reactions)/SUM(impressions)*100
- * network_breakdown: from post table grouped by platform
- * insights: WoW changes using gap_pct from weekly_stats, direction = down if gap_pct < 0
  */
 import { NextRequest, NextResponse } from "next/server";
 import { query } from "../../../../../lib/db";
@@ -14,8 +11,8 @@ import { verifyJwt } from "../../../../../lib/auth";
 const paramsSchema = z.object({
   groupId: z.string().uuid(),
   week: z.string().optional(),
-  platform: z.enum(['youtube', 'facebook', 'tiktok']).optional(),
-  brandType: z.enum(['primary', 'competitor']).optional(),
+  platform: z.enum(["youtube", "facebook", "tiktok"]).optional(),
+  brandType: z.enum(["primary", "competitor"]).optional(),
 });
 
 function authUser(req: NextRequest) {
@@ -48,15 +45,6 @@ export async function GET(
       ...await params,
     });
 
-    // Build dynamic filter conditions
-    // Platform filter: applied on post table (JOIN via brand)
-    // BrandType filter: applied on brand.is_primary
-    const platformClause = platform ? `AND p.platform = $3` : '';
-    const brandTypeFilter =
-      brandType === 'primary' ? `AND b.is_primary = 't'`
-      : brandType === 'competitor' ? `AND b.is_primary = 'f'`
-      : '';
-
     // Verify group belongs to account
     const groupCheck = await query<{ id: string }>(
       `SELECT g.id FROM "group" g JOIN client c ON c.id = g.client_id WHERE g.id = $1 AND c.account_id = $2`,
@@ -71,14 +59,12 @@ export async function GET(
     let weekYear: number;
 
     if (requestedWeek) {
-      // Use the week requested by the client
       const weekInfoRow = await query<WeekRow>(
         `SELECT week_start::text AS week_start, week_number, year
          FROM weekly_stats WHERE group_id = $1 AND week_start = $2::date LIMIT 1`,
         [groupId, requestedWeek],
       );
       if (weekInfoRow.rows.length === 0) {
-        // Requested week doesn't exist — fall back to latest
         const fallbackRow = await query<WeekRow>(
           `SELECT week_start::text AS week_start, week_number, year
            FROM weekly_stats WHERE group_id = $1 ORDER BY week_start DESC LIMIT 1`,
@@ -87,7 +73,7 @@ export async function GET(
         if (fallbackRow.rows.length === 0) {
           return NextResponse.json({
             success: true,
-            data: { week: null, kpis: null, sov: [], network_breakdown: [], insights: [] },
+            data: { week: null, kpis: null, sov: [], network_breakdown: [], insights: [], trends: null },
           });
         }
         const fb = fallbackRow.rows[0]!;
@@ -101,7 +87,6 @@ export async function GET(
         weekYear = w.year;
       }
     } else {
-      // No week requested — use latest
       const weekRows = await query<WeekRow>(
         `SELECT week_start::text AS week_start, week_number, year
          FROM weekly_stats WHERE group_id = $1 ORDER BY week_start DESC LIMIT 1`,
@@ -110,7 +95,7 @@ export async function GET(
       if (weekRows.rows.length === 0) {
         return NextResponse.json({
           success: true,
-          data: { week: null, kpis: null, sov: [], network_breakdown: [], insights: [] },
+          data: { week: null, kpis: null, sov: [], network_breakdown: [], insights: [], trends: null },
         });
       }
       const w = weekRows.rows[0]!;
@@ -121,8 +106,7 @@ export async function GET(
 
     const weekInfo = { label: weekLabel(weekStart), start: weekStart, number: weekNumber, year: weekYear };
 
-    // KPIs: aggregate from post table (supports platform filter via JOIN)
-    // avg_engagement_rate = SUM(reactions) / SUM(impressions) * 100
+    // KPIs: aggregate from post table
     const kpiRows = await query<{
       total_impressions: string;
       total_views: string;
@@ -134,26 +118,25 @@ export async function GET(
          COALESCE(SUM(p.reactions), 0)::bigint AS total_reactions
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformClause}`,
-      [groupId, weekStart, ...(platform ? [platform] : [])],
+       WHERE b.group_id = $1 AND p.week_start = $2::date`,
+      [groupId, weekStart],
     );
     const kpi = kpiRows.rows[0]!;
     const totalImpressions = Number(kpi.total_impressions) || 1;
     const totalReactions = Number(kpi.total_reactions) || 0;
     const avgEngRate = totalImpressions > 0 ? (totalReactions / totalImpressions) * 100 : 0;
 
-    // total_posts from post table (actual post count)
+    // total_posts from post table
     const postCountRows = await query<{ count: string }>(
       `SELECT COUNT(*)::int AS count
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformClause}`,
-      [groupId, weekStart, ...(platform ? [platform] : [])],
+       WHERE b.group_id = $1 AND p.week_start = $2::date`,
+      [groupId, weekStart],
     );
     const totalPosts = postCountRows.rows[0]?.count ?? 0;
 
-    // SOV: impressions per brand (LEFT JOIN to include all brands)
-    // Platform filter: brand qualifies if it has posts on the selected platform this week
+    // SOV: impressions per brand from weekly_stats
     const sovRows = await query<SovRow>(
       `SELECT
          b.id AS brand_id,
@@ -164,10 +147,6 @@ export async function GET(
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
        LEFT JOIN weekly_stats ws ON ws.brand_id = b.id AND ws.week_start = $2::date
        WHERE b.group_id = $1
-         AND (
-           ${platform ? `EXISTS (SELECT 1 FROM post p2 JOIN brand b2 ON b2.curated_brand_id = p2.curated_brand_id WHERE b2.id = b.id AND p2.week_start = $2::date AND p2.platform = '${platform}')` : '1=1'}
-         )
-         ${brandTypeFilter ? `AND (${brandTypeFilter})` : ''}
        GROUP BY b.id, cb.name, b.is_primary
        ORDER BY SUM(ws.total_impressions) DESC NULLS LAST`,
       [groupId, weekStart],
@@ -183,16 +162,16 @@ export async function GET(
 
     const primarySov = sov.find((s) => s.is_primary)?.sov_pct ?? null;
 
-    // Network breakdown: from post table grouped by platform (supports platform filter)
+    // Network breakdown: from post table grouped by platform
     const netRows = await query<{ platform: string; impressions: string }>(
       `SELECT
          p.platform,
          COALESCE(SUM(p.impressions), 0)::bigint AS impressions
        FROM post p
        JOIN brand b ON b.curated_brand_id = p.curated_brand_id
-       WHERE b.group_id = $1 AND p.week_start = $2::date ${platformClause}
+       WHERE b.group_id = $1 AND p.week_start = $2::date
        GROUP BY p.platform`,
-      [groupId, weekStart, ...(platform ? [platform] : [])],
+      [groupId, weekStart],
     );
 
     const network_breakdown = netRows.rows.map((r) => {
@@ -204,7 +183,7 @@ export async function GET(
       };
     });
 
-    // Insights: from gap_pct in weekly_stats (direction = down if gap_pct < 0)
+    // Insights: from gap_pct in weekly_stats
     const insightsRows = await query<{ brand_name: string; gap_pct: string | null }>(
       `SELECT
          cb.name AS brand_name,
@@ -214,7 +193,6 @@ export async function GET(
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
        WHERE ws.group_id = $1 AND ws.week_start = $2::date
          AND ws.gap_pct IS NOT NULL
-         ${brandTypeFilter ? `AND (${brandTypeFilter})` : ''}
        ORDER BY ws.gap_pct DESC
        LIMIT 5`,
       [groupId, weekStart],
@@ -233,6 +211,76 @@ export async function GET(
       })
       .filter(Boolean) as Array<{ brand_name: string; metric: string; change: string; direction: "up" | "down" | "neutral" }>;
 
+    // Week-over-Week trends: last 4 weeks of impressions by category
+    const trendRows = await query<{
+      week_start: string;
+      week_number: number;
+      year: number;
+      primary_impressions: string;
+      competitor_avg: string;
+      total_impressions: string;
+    }>(
+      `WITH weeks AS (
+        SELECT week_start, week_number, year
+        FROM weekly_stats
+        WHERE group_id = $1
+        GROUP BY week_start, week_number, year
+        ORDER BY week_start DESC
+        LIMIT 4
+      ),
+      primary_stats AS (
+        SELECT ws.week_start,
+               COALESCE(SUM(ws.total_impressions), 0)::bigint AS primary_impressions
+        FROM weekly_stats ws
+        JOIN brand b ON b.id = ws.brand_id
+        WHERE ws.group_id = $1 AND b.is_primary = 't'
+        GROUP BY ws.week_start
+      ),
+      competitor_stats AS (
+        SELECT ws.week_start,
+               COUNT(DISTINCT ws.brand_id) AS competitor_count,
+               COALESCE(SUM(ws.total_impressions), 0)::bigint AS competitor_total
+        FROM weekly_stats ws
+        JOIN brand b ON b.id = ws.brand_id
+        WHERE ws.group_id = $1 AND b.is_primary = 'f'
+        GROUP BY ws.week_start
+      )
+      SELECT
+        w.week_start::text AS week_start,
+        w.week_number,
+        w.year,
+        COALESCE(ps.primary_impressions, 0) AS primary_impressions,
+        CASE WHEN COALESCE(cs.competitor_count, 0) > 0
+             THEN ROUND(cs.competitor_total::numeric / cs.competitor_count, 0)
+             ELSE 0
+        END AS competitor_avg,
+        COALESCE(ps.primary_impressions, 0) + COALESCE(cs.competitor_total, 0) AS total_impressions
+      FROM weeks w
+      LEFT JOIN primary_stats ps ON ps.week_start = w.week_start
+      LEFT JOIN competitor_stats cs ON cs.week_start = w.week_start
+      ORDER BY w.week_start ASC`,
+      [groupId],
+    );
+
+    // Also get primary brand name for the legend
+    const primaryBrandRow = await query<{ brand_name: string }>(
+      `SELECT cb.name AS brand_name
+       FROM brand b
+       JOIN curated_brand cb ON cb.id = b.curated_brand_id
+       WHERE b.group_id = $1 AND b.is_primary = 't'
+       LIMIT 1`,
+      [groupId],
+    );
+
+    const trends = {
+      weeks: trendRows.rows.map(r => weekLabel(r.week_start)),
+      week_starts: trendRows.rows.map(r => r.week_start),
+      primary: trendRows.rows.map(r => Number(r.primary_impressions)),
+      competitor_avg: trendRows.rows.map(r => Number(r.competitor_avg)),
+      total: trendRows.rows.map(r => Number(r.total_impressions)),
+      primary_label: primaryBrandRow.rows[0]?.brand_name ?? 'Primary Brand',
+    };
+
     return NextResponse.json({
       success: true,
       data: {
@@ -248,6 +296,7 @@ export async function GET(
         sov,
         network_breakdown,
         insights,
+        trends,
       },
     });
   } catch (err) {

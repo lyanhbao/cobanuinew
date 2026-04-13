@@ -215,6 +215,26 @@ Make the smallest change that fixes the problem. Avoid broad refactors, style re
 
 Every action should serve the user's stated goal. Before making a change, ask: does this move us closer to the objective? Avoid tangential exploration, premature optimization, or addressing hypothetical future needs. Stay on task. If you discover something else that needs fixing, document it and ask the user whether to address it now or later.
 
+### Goal Verification Criteria
+
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+### Apply to COBAN:
+- **Think Before Coding:** Read DB schema (`db/01-create-coban-schema.sql`) before writing any SQL. Verify column names exist. Read existing route/page files before modifying.
+- **Simplicity First:** Dashboard feature > keep it focused. If the user says "Overview only", don't add Rankings, Channel, etc.
+- **Surgical Changes:** Don't rewrite entire files unless asked. Fix the specific bug.
+- **Goal-Driven:** "Fix API error" → verify API returns correct data first. "Build Overview" → verify it renders without errors.
+
 ---
 
 ## Session Completion Status (April 11–12, 2026)

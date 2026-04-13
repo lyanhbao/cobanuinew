@@ -136,8 +136,6 @@ export async function GET(
       total_views: string;
       total_impressions: string;
       total_reactions: string;
-      total_comments: string;
-      total_shares: string;
       total_cost: string;
       avg_engagement_rate: string;
       sov_impressions_pct: string;
@@ -151,8 +149,6 @@ export async function GET(
          ws.total_views::text,
          ws.total_impressions::text,
          ws.total_reactions::text,
-         ws.total_comments::text,
-         ws.total_shares::text,
          ws.total_cost::text,
          ws.avg_engagement_rate::text,
          COALESCE(ws.sov_impressions_pct, 0)::text AS sov_impressions_pct,
@@ -176,8 +172,8 @@ export async function GET(
         views: Number(row.total_views) || 0,
         impressions: Number(row.total_impressions) || 0,
         reactions: Number(row.total_reactions) || 0,
-        comments: Number(row.total_comments) || 0,
-        shares: Number(row.total_shares) || 0,
+        comments: 0,
+        shares: 0,
         cost: Number(row.total_cost) || 0,
         avg_er: Number(row.avg_engagement_rate) || 0,
         sov_impressions: Number(row.sov_impressions_pct) || 0,
@@ -197,6 +193,9 @@ export async function GET(
       views: 0, impressions: 0, reactions: 0, comments: 0,
       shares: 0, cost: 0, avg_er: 0, sov_impressions: 0, sov_views: 0,
     };
+    // Suppress unused variable warnings — comments/shares are 0 (no data in weekly_stats)
+    void b1Current.comments; void b1Current.shares;
+    void b2Current.comments; void b2Current.shares;
 
     type MetricKey = 'views' | 'impressions' | 'reactions' | 'comments' | 'shares' | 'cost' | 'avg_er' | 'sov_impressions' | 'sov_views';
     type MetricDef = { key: MetricKey; label: string; format: 'number' | 'percent' | 'currency' };

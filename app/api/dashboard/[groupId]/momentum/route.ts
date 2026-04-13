@@ -84,7 +84,7 @@ export async function GET(
     const weeklyRows = await query<WeeklyRow>(
       `SELECT ws.brand_id, ws.week_start::text,
               COALESCE(SUM(ws.total_views), 0)::bigint AS total_views,
-              COALESCE(SUM(ws.total_reactions + ws.total_comments + ws.total_shares), 0)::bigint AS total_engagement,
+              COALESCE(SUM(ws.total_reactions), 0)::bigint AS total_engagement,
               COALESCE(AVG(ws.sov_impressions_pct), 0)::numeric AS sov_impressions_pct
        FROM weekly_stats ws
        WHERE ws.group_id = $1 AND ws.week_start <= $2::date

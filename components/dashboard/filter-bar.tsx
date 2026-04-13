@@ -5,7 +5,6 @@ import { SlidersHorizontal, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { useApp } from '@/context/AppContext';
 import type { Platform, BrandType } from '@/context/AppContext';
 import { cn } from '@/lib/utils';
@@ -46,9 +45,9 @@ export default function DashboardFilterBar() {
       {activeFilterCount > 0 && (
         <Badge
           variant="outline"
-          className="gap-1.5 text-xs px-2 py-0.5 h-6 border-primary/40 bg-primary/5 text-primary"
+          className="gap-1.5 text-xs px-2.5 py-1 h-6 border-primary/30 bg-primary/10 text-primary"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+          <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
           {activeFilterCount} active filter{activeFilterCount > 1 ? 's' : ''}
           <button
             onClick={handleClearAll}
@@ -67,17 +66,20 @@ export default function DashboardFilterBar() {
             variant="outline"
             size="sm"
             className={cn(
-              'gap-2 text-xs h-8 border-border/50 transition-all',
-              activeFilterCount > 0 && 'border-primary/40 bg-primary/5 text-primary',
+              'gap-2 text-xs h-8 border-border bg-secondary/50 hover:bg-accent transition-colors',
+              activeFilterCount > 0 && 'border-primary/30 bg-primary/10 text-primary',
             )}
           >
             <SlidersHorizontal className="w-3.5 h-3.5" />
             Filters
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-80 p-4" align="start">
+        <PopoverContent
+          className="w-80 p-4 bg-popover border-border"
+          align="start"
+        >
           <div className="flex items-center justify-between mb-4">
-            <h4 className="text-sm font-semibold">Filters</h4>
+            <h4 className="text-sm font-semibold text-foreground">Filters</h4>
             {activeFilterCount > 0 && (
               <button
                 onClick={handleClearAll}
@@ -94,29 +96,25 @@ export default function DashboardFilterBar() {
               <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
                 Platform
               </p>
-              <ToggleGroup
-                type="single"
-                value={filters.platform}
-                onValueChange={(v) => v && handleChange('platform', v)}
-                className="flex flex-wrap gap-1.5"
-              >
-                {PLATFORM_OPTIONS.map((opt) => (
-                  <ToggleGroupItem
-                    key={opt.value}
-                    value={opt.value}
-                    variant="outline"
-                    size="sm"
-                    className={cn(
-                      'text-xs',
-                      filters.platform === opt.value && opt.value !== 'all'
-                        ? 'border-primary/40 bg-primary/5 text-primary'
-                        : '',
-                    )}
-                  >
-                    {opt.label}
-                  </ToggleGroupItem>
-                ))}
-              </ToggleGroup>
+              <div className="flex flex-wrap gap-1.5">
+                {PLATFORM_OPTIONS.map((opt) => {
+                  const isActive = filters.platform === opt.value && opt.value !== 'all';
+                  return (
+                    <button
+                      key={opt.value}
+                      onClick={() => handleChange('platform', opt.value)}
+                      className={cn(
+                        'text-xs px-3 py-1.5 rounded-full transition-colors',
+                        isActive
+                          ? 'bg-primary text-primary-foreground'
+                          : 'bg-secondary text-secondary-foreground hover:bg-accent hover:text-accent-foreground border border-border'
+                      )}
+                    >
+                      {opt.label}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Brand Type filter */}
@@ -124,29 +122,25 @@ export default function DashboardFilterBar() {
               <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
                 Brand Type
               </p>
-              <ToggleGroup
-                type="single"
-                value={filters.brandType}
-                onValueChange={(v) => v && handleChange('brandType', v)}
-                className="flex flex-wrap gap-1.5"
-              >
-                {BRAND_TYPE_OPTIONS.map((opt) => (
-                  <ToggleGroupItem
-                    key={opt.value}
-                    value={opt.value}
-                    variant="outline"
-                    size="sm"
-                    className={cn(
-                      'text-xs',
-                      filters.brandType === opt.value && opt.value !== 'all'
-                        ? 'border-primary/40 bg-primary/5 text-primary'
-                        : '',
-                    )}
-                  >
-                    {opt.label}
-                  </ToggleGroupItem>
-                ))}
-              </ToggleGroup>
+              <div className="flex flex-wrap gap-1.5">
+                {BRAND_TYPE_OPTIONS.map((opt) => {
+                  const isActive = filters.brandType === opt.value && opt.value !== 'all';
+                  return (
+                    <button
+                      key={opt.value}
+                      onClick={() => handleChange('brandType', opt.value)}
+                      className={cn(
+                        'text-xs px-3 py-1.5 rounded-full transition-colors',
+                        isActive
+                          ? 'bg-primary text-primary-foreground'
+                          : 'bg-secondary text-secondary-foreground hover:bg-accent hover:text-accent-foreground border border-border'
+                      )}
+                    >
+                      {opt.label}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
 

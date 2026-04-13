@@ -1,0 +1,201 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e16]:
+      - link "COBAN Intelligence Platform" [ref=e17] [cursor=pointer]:
+        - /url: /
+        - heading "COBAN" [level=1] [ref=e18]
+        - paragraph [ref=e19]: Intelligence Platform
+      - navigation [ref=e20]:
+        - link "Overview" [ref=e21] [cursor=pointer]:
+          - /url: /dashboard/overview
+          - img [ref=e22]
+          - generic [ref=e27]: Overview
+        - link "Rankings" [ref=e28] [cursor=pointer]:
+          - /url: /dashboard/rankings
+          - img [ref=e29]
+          - generic [ref=e31]: Rankings
+        - link "Channel" [ref=e32] [cursor=pointer]:
+          - /url: /dashboard/channel
+          - img [ref=e33]
+          - generic [ref=e35]: Channel
+        - link "Content" [ref=e36] [cursor=pointer]:
+          - /url: /dashboard/content
+          - img [ref=e37]
+          - generic [ref=e39]: Content
+        - link "Benchmark" [ref=e40] [cursor=pointer]:
+          - /url: /dashboard/benchmark
+          - img [ref=e41]
+          - generic [ref=e43]: Benchmark
+        - link "Trends" [ref=e44] [cursor=pointer]:
+          - /url: /dashboard/trends
+          - img [ref=e45]
+          - generic [ref=e47]: Trends
+        - paragraph [ref=e49]: Management
+        - link "Groups" [ref=e50] [cursor=pointer]:
+          - /url: /dashboard/groups
+          - img [ref=e51]
+          - generic [ref=e53]: Groups
+        - link "Alerts" [ref=e54] [cursor=pointer]:
+          - /url: /dashboard/alerts
+          - img [ref=e55]
+          - generic [ref=e57]: Alerts
+        - link "Team" [ref=e58] [cursor=pointer]:
+          - /url: /dashboard/team
+          - img [ref=e59]
+          - generic [ref=e64]: Team
+        - link "Settings" [ref=e65] [cursor=pointer]:
+          - /url: /dashboard/settings
+          - img [ref=e66]
+          - generic [ref=e69]: Settings
+      - generic [ref=e71]:
+        - paragraph [ref=e72]: Logged in as
+        - paragraph [ref=e73]: demo@dairyinsights.vn
+    - generic [ref=e74]:
+      - banner [ref=e76]:
+        - generic [ref=e77]:
+          - button "Vietnamese Dairy Competitors" [ref=e78]:
+            - generic [ref=e79]: Vietnamese Dairy Competitors
+            - img
+          - combobox [ref=e80]:
+            - img
+        - generic [ref=e81]:
+          - button [ref=e82]:
+            - img
+          - button "demo@dairyinsights.vn" [ref=e84]:
+            - generic [ref=e85]:
+              - img
+            - generic [ref=e86]: demo@dairyinsights.vn
+            - img
+      - button "Filters" [ref=e90]:
+        - img
+        - text: Filters
+      - tablist [ref=e94]:
+        - tab "Overview" [ref=e95]
+        - tab "Rankings" [ref=e96]
+        - tab "Channel" [active] [selected] [ref=e97]
+        - tab "Content" [ref=e98]
+        - tab "Benchmark" [ref=e99]
+        - tab "Trends" [ref=e100]
+      - main [ref=e101]:
+        - generic [ref=e322]:
+          - generic [ref=e324]:
+            - generic [ref=e325]:
+              - heading "Channel" [level=2] [ref=e326]
+              - paragraph [ref=e327]: Platform Performance — Impressions, Views, Engagement
+            - tablist [ref=e329]:
+              - tab "All" [selected] [ref=e330]
+              - tab "YouTube" [ref=e331]:
+                - img
+                - text: YouTube
+              - tab "Facebook" [ref=e332]:
+                - img
+                - text: Facebook
+              - tab "TikTok" [ref=e333]:
+                - img
+                - text: TikTok
+          - generic [ref=e334]:
+            - generic [ref=e337]:
+              - generic [ref=e339]:
+                - img [ref=e340]
+                - generic [ref=e343]: YouTube
+              - generic [ref=e344]:
+                - generic [ref=e345]:
+                  - paragraph [ref=e346]: 6.9M
+                  - paragraph [ref=e347]: — vs prev week
+                - generic [ref=e348]:
+                  - generic [ref=e349]:
+                    - paragraph [ref=e350]: Views
+                    - paragraph [ref=e351]: 34.7K
+                  - generic [ref=e352]:
+                    - paragraph [ref=e353]: Posts
+                    - paragraph [ref=e354]: "9"
+                  - generic [ref=e355]:
+                    - paragraph [ref=e356]: Engagement
+                    - paragraph [ref=e357]: "414"
+                  - generic [ref=e358]:
+                    - paragraph [ref=e359]: Avg ER
+                    - paragraph [ref=e360]: 0.0%
+            - generic [ref=e363]:
+              - generic [ref=e365]:
+                - img [ref=e366]
+                - generic [ref=e369]: Facebook
+              - generic [ref=e370]:
+                - generic [ref=e371]:
+                  - paragraph [ref=e372]: 7.9M
+                  - paragraph [ref=e373]: — vs prev week
+                - generic [ref=e374]:
+                  - generic [ref=e375]:
+                    - paragraph [ref=e376]: Views
+                    - paragraph [ref=e377]: 7.1M
+                  - generic [ref=e378]:
+                    - paragraph [ref=e379]: Posts
+                    - paragraph [ref=e380]: "5"
+                  - generic [ref=e381]:
+                    - paragraph [ref=e382]: Engagement
+                    - paragraph [ref=e383]: 4.8K
+                  - generic [ref=e384]:
+                    - paragraph [ref=e385]: Avg ER
+                    - paragraph [ref=e386]: 0.1%
+            - generic [ref=e389]:
+              - generic [ref=e391]:
+                - img [ref=e392]
+                - generic [ref=e395]: TikTok
+              - generic [ref=e396]:
+                - generic [ref=e397]:
+                  - paragraph [ref=e398]: "0"
+                  - paragraph [ref=e399]: — vs prev week
+                - generic [ref=e400]:
+                  - generic [ref=e401]:
+                    - paragraph [ref=e402]: Views
+                    - paragraph [ref=e403]: "0"
+                  - generic [ref=e404]:
+                    - paragraph [ref=e405]: Posts
+                    - paragraph [ref=e406]: "0"
+                  - generic [ref=e407]:
+                    - paragraph [ref=e408]: Engagement
+                    - paragraph [ref=e409]: "0"
+                  - generic [ref=e410]:
+                    - paragraph [ref=e411]: Avg ER
+                    - paragraph [ref=e412]: 0.0%
+          - generic [ref=e413]:
+            - generic [ref=e416]:
+              - heading "Format Mix — Post counts by content type" [level=3] [ref=e417]
+              - img [ref=e420]:
+                - generic [ref=e425]:
+                  - generic [ref=e427]: Image
+                  - generic [ref=e429]: Video
+                  - generic [ref=e431]: True view
+            - generic [ref=e434]:
+              - heading "Posting Cadence — Weekly posting frequency" [level=3] [ref=e435]
+              - generic [ref=e437]:
+                - img [ref=e438]:
+                  - generic [ref=e443]:
+                    - generic [ref=e445]: W46
+                    - generic [ref=e447]: W47
+                    - generic [ref=e449]: W48
+                    - generic [ref=e451]: W49
+                    - generic [ref=e453]: W50
+                    - generic [ref=e455]: W51
+                    - generic [ref=e457]: W52
+                    - generic [ref=e459]: W1
+                  - generic [ref=e461]:
+                    - generic [ref=e463]: "0"
+                    - generic [ref=e465]: "15"
+                    - generic [ref=e467]: "30"
+                    - generic [ref=e469]: "45"
+                    - generic [ref=e471]: "60"
+                - list [ref=e506]:
+                  - listitem [ref=e507]:
+                    - img [ref=e508]
+                    - text: YouTube
+                  - listitem [ref=e510]:
+                    - img [ref=e511]
+                    - text: Facebook
+                  - listitem [ref=e513]:
+                    - img [ref=e514]
+                    - text: TikTok
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e11] [cursor=pointer]:
+    - img [ref=e12]
+  - alert [ref=e15]
+  - generic [ref=e516]: "0"

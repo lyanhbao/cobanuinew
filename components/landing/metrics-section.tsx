@@ -118,7 +118,7 @@ export function MetricsSection() {
               Live
             </span>
             <span className="text-foreground/30">|</span>
-            <span>{time.toLocaleTimeString()}</span>
+            <span suppressHydrationWarning>{time.toLocaleTimeString('en-GB')}</span>
           </div>
         </div>
 

@@ -1,0 +1,84 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e70]:
+    - complementary [ref=e72]:
+      - link "COBAN Intelligence Platform" [ref=e73] [cursor=pointer]:
+        - /url: /
+        - heading "COBAN" [level=1] [ref=e74]
+        - paragraph [ref=e75]: Intelligence Platform
+      - navigation [ref=e76]:
+        - link "Overview" [ref=e77] [cursor=pointer]:
+          - /url: /dashboard/overview
+          - img [ref=e78]
+          - generic [ref=e83]: Overview
+        - link "Rankings" [ref=e84] [cursor=pointer]:
+          - /url: /dashboard/rankings
+          - img [ref=e85]
+          - generic [ref=e87]: Rankings
+        - link "Channel" [ref=e88] [cursor=pointer]:
+          - /url: /dashboard/channel
+          - img [ref=e89]
+          - generic [ref=e91]: Channel
+        - link "Content" [ref=e92] [cursor=pointer]:
+          - /url: /dashboard/content
+          - img [ref=e93]
+          - generic [ref=e95]: Content
+        - link "Benchmark" [ref=e96] [cursor=pointer]:
+          - /url: /dashboard/benchmark
+          - img [ref=e97]
+          - generic [ref=e99]: Benchmark
+        - link "Trends" [ref=e100] [cursor=pointer]:
+          - /url: /dashboard/trends
+          - img [ref=e101]
+          - generic [ref=e103]: Trends
+        - paragraph [ref=e105]: Management
+        - link "Groups" [ref=e106] [cursor=pointer]:
+          - /url: /dashboard/groups
+          - img [ref=e107]
+          - generic [ref=e109]: Groups
+        - link "Alerts" [ref=e110] [cursor=pointer]:
+          - /url: /dashboard/alerts
+          - img [ref=e111]
+          - generic [ref=e113]: Alerts
+        - link "Team" [ref=e114] [cursor=pointer]:
+          - /url: /dashboard/team
+          - img [ref=e115]
+          - generic [ref=e120]: Team
+        - link "Settings" [ref=e121] [cursor=pointer]:
+          - /url: /dashboard/settings
+          - img [ref=e122]
+          - generic [ref=e125]: Settings
+      - generic [ref=e127]:
+        - paragraph [ref=e128]: Logged in as
+        - paragraph [ref=e129]: demo@dairyinsights.vn
+    - generic [ref=e130]:
+      - banner [ref=e132]:
+        - generic [ref=e133]:
+          - button "Vietnamese Dairy Competitors" [ref=e134]:
+            - generic [ref=e135]: Vietnamese Dairy Competitors
+            - img
+          - combobox [ref=e136]:
+            - img
+        - generic [ref=e137]:
+          - button [ref=e138]:
+            - img
+          - button "demo@dairyinsights.vn" [ref=e140]:
+            - generic [ref=e141]:
+              - img
+            - generic [ref=e142]: demo@dairyinsights.vn
+            - img
+      - button "Filters" [ref=e146]:
+        - img
+        - text: Filters
+      - tablist [ref=e150]:
+        - tab "Overview" [selected] [ref=e151]
+        - tab "Rankings" [ref=e152]
+        - tab "Channel" [ref=e153]
+        - tab "Content" [ref=e154]
+        - tab "Benchmark" [ref=e155]
+        - tab "Trends" [ref=e156]
+      - main [ref=e157]:
+        - paragraph [ref=e161]: No data for this week
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e26] [cursor=pointer]:
+    - img [ref=e27]
+  - alert [ref=e30]

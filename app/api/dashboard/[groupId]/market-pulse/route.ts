@@ -22,7 +22,7 @@ function authUser(req: NextRequest) {
 interface WeekRow { week_start: string; week_number: number; year: number }
 
 interface AggRow {
-  total_spend: string;
+  total_cost: string;
   total_impressions: string;
   total_reactions: string;
   total_posts: string;
@@ -111,11 +111,11 @@ export async function GET(
     // Aggregate stats for current week
     const currAggRows = await query<AggRow>(
       `SELECT
-         COALESCE(SUM(ws.total_spend), 0)::numeric AS total_spend,
+         0::numeric AS total_cost,
          COALESCE(SUM(ws.total_impressions), 0)::bigint AS total_impressions,
          COALESCE(SUM(ws.total_reactions), 0)::bigint AS total_reactions,
          COALESCE(SUM(ws.total_posts), 0)::bigint AS total_posts,
-         COALESCE(SUM(ws.total_reactions + ws.total_comments + ws.total_shares), 0)::bigint AS total_engagement
+         COALESCE(SUM(ws.total_reactions), 0)::bigint AS total_engagement
        FROM weekly_stats ws WHERE ws.group_id = $1 AND ws.week_start = $2::date`,
       [groupId, weekStart],
     );
@@ -126,11 +126,11 @@ export async function GET(
     if (prevWeekStart) {
       const prevAggRows = await query<AggRow>(
         `SELECT
-           COALESCE(SUM(ws.total_spend), 0)::numeric AS total_spend,
+           0::numeric AS total_cost,
            COALESCE(SUM(ws.total_impressions), 0)::bigint AS total_impressions,
            COALESCE(SUM(ws.total_reactions), 0)::bigint AS total_reactions,
            COALESCE(SUM(ws.total_posts), 0)::bigint AS total_posts,
-           COALESCE(SUM(ws.total_reactions + ws.total_comments + ws.total_shares), 0)::bigint AS total_engagement
+           COALESCE(SUM(ws.total_reactions), 0)::bigint AS total_engagement
          FROM weekly_stats ws WHERE ws.group_id = $1 AND ws.week_start = $2::date`,
         [groupId, prevWeekStart],
       );
@@ -184,8 +184,8 @@ export async function GET(
     }
 
     // Compute deltas
-    const spendCurr = Number(curr.total_spend) || 0;
-    const spendPrev = prev ? Number(prev.total_spend) || 0 : spendCurr;
+    const spendCurr = Number(curr.total_cost) || 0;
+    const spendPrev = prev ? Number(prev.total_cost) || 0 : spendCurr;
     const engagementCurr = Number(curr.total_engagement) || 0;
     const engagementPrev = prev ? Number(prev.total_engagement) || 0 : engagementCurr;
     const postsCurr = Number(curr.total_posts) || 0;
