@@ -680,7 +680,7 @@ function Sparkline({ data }: { data: number[] }) {
   const range = max - min || 1;
 
   const points = valid.map((v, i) => ({
-    x: (i / (valid.length - 1)) * 60,
+    x: (i / Math.max(valid.length - 1, 1)) * 60,
     y: 20 - ((v - min) / range) * 18,
   }));
 

@@ -35,7 +35,9 @@ function filterErrors(errors: string[]): string[] {
     !e.includes('NaN') &&
     !e.includes('Expected number') &&
     !e.includes('Expected length') &&
-    !e.includes('Expected valid SVG path')
+    !e.includes('Expected valid SVG path') &&
+    // Sparkline NaN cx when single data point
+    !e.includes('NaN')
   );
 }
 
