@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { SlidersHorizontal, X, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -31,67 +31,109 @@ const BRAND_TYPE_OPTIONS: { value: BrandType; label: string }[] = [
   { value: 'competitor', label: 'Competitor' },
 ];
 
-// ─── Time Range Pills ──────────────────────────────────────────────────────────
+// ─── Week Navigation ────────────────────────────────────────────────────────────
 
-function TimeRangePills() {
+function WeekNav() {
   const { filters, setFilters, availableWeeks, selectedWeek, setSelectedWeek } = useApp();
 
-  // When time range changes, adjust the selected week to the latest week within that range
-  const handleChange = (value: TimeRange) => {
-    setFilters({ timeRange: value });
-
-    if (value === 'all' || availableWeeks.length === 0) return;
+  // Weeks visible within the current time range filter
+  const weeksInRange = useMemo(() => {
+    if (filters.timeRange === 'all' || availableWeeks.length === 0) return availableWeeks;
 
     const latest = availableWeeks[availableWeeks.length - 1]!;
     const d = new Date(latest + 'T00:00:00Z');
-    switch (value) {
-      case '7d':
-        d.setDate(d.getDate() - 7);
-        break;
-      case '30d':
-        d.setDate(d.getDate() - 30);
-        break;
-      case '90d':
-        d.setDate(d.getDate() - 90);
-        break;
-      case '6m':
-        d.setMonth(d.getMonth() - 6);
-        break;
-      case '1y':
-        d.setFullYear(d.getFullYear() - 1);
-        break;
-      default:
-        return;
+    switch (filters.timeRange) {
+      case '7d': d.setDate(d.getDate() - 7); break;
+      case '30d': d.setDate(d.getDate() - 30); break;
+      case '90d': d.setDate(d.getDate() - 90); break;
+      case '6m': d.setMonth(d.getMonth() - 6); break;
+      case '1y': d.setFullYear(d.getFullYear() - 1); break;
     }
     const cutoff = d.toISOString().slice(0, 10);
-    const latestInRange = availableWeeks
-      .slice()
-      .reverse()
-      .find((w) => w >= cutoff);
-    if (latestInRange) {
+    return availableWeeks.filter((w) => w >= cutoff);
+  }, [availableWeeks, filters.timeRange]);
+
+  // When time range changes, auto-select the latest week within the new range
+  const handleTimeRangeChange = (value: TimeRange) => {
+    setFilters({ timeRange: value });
+
+    if (value === 'all' || weeksInRange.length === 0) return;
+
+    const latestInRange = weeksInRange[weeksInRange.length - 1]!;
+    if (selectedWeek < latestInRange) {
+      setSelectedWeek(latestInRange);
+    } else if (!weeksInRange.includes(selectedWeek)) {
       setSelectedWeek(latestInRange);
     }
   };
 
-  return (
-    <div className="flex items-center gap-1">
-      {TIME_RANGES.map((range) => {
-        const isActive = filters.timeRange === range.value;
-        return (
-          <button
-            key={range.value}
-            onClick={() => handleChange(range.value)}
-            className={cn(
-              'text-xs font-medium px-3 py-1.5 rounded-md transition-all duration-200',
-              isActive
-                ? 'bg-primary text-primary-foreground shadow-sm'
-                : 'bg-secondary/50 text-muted-foreground border border-border hover:bg-accent hover:text-foreground'
-            )}
-          >
-            {range.label}
-          </button>
+  const currentIdx = weeksInRange.indexOf(selectedWeek);
+  const canGoPrev = currentIdx > 0;
+  const canGoNext = currentIdx < weeksInRange.length - 1;
+
+  const goPrev = () => {
+    if (canGoPrev) setSelectedWeek(weeksInRange[currentIdx - 1]!);
+  };
+
+  const goNext = () => {
+    if (canGoNext) setSelectedWeek(weeksInRange[currentIdx + 1]!);
+  };
+
+  const weekLabel = selectedWeek
+    ? (() => {
+        const d = new Date(selectedWeek + 'T00:00:00Z');
+        const weekNum = Math.ceil(
+          (d.getDate() - d.getDay() + 1) / 7
         );
-      })}
+        return `W${weekNum} · ${d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}`;
+      })()
+    : '';
+
+  return (
+    <div className="flex items-center gap-1.5">
+      {/* Time range pills */}
+      <div className="flex items-center gap-1">
+        {TIME_RANGES.map((range) => {
+          const isActive = filters.timeRange === range.value;
+          return (
+            <button
+              key={range.value}
+              onClick={() => handleTimeRangeChange(range.value)}
+              className={cn(
+                'text-xs font-medium px-2.5 py-1 rounded-md transition-all duration-200',
+                isActive
+                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  : 'bg-secondary/50 text-muted-foreground border border-border hover:bg-accent hover:text-foreground'
+              )}
+            >
+              {range.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Week navigation arrows */}
+      <div className="flex items-center gap-1 ml-2 border-l border-border pl-2">
+        <button
+          onClick={goPrev}
+          disabled={!canGoPrev}
+          className="p-1 rounded text-muted-foreground hover:text-foreground hover:bg-accent disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          aria-label="Previous week"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <span className="text-xs text-foreground font-medium tabular-nums min-w-[80px] text-center">
+          {weekLabel}
+        </span>
+        <button
+          onClick={goNext}
+          disabled={!canGoNext}
+          className="p-1 rounded text-muted-foreground hover:text-foreground hover:bg-accent disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          aria-label="Next week"
+        >
+          <svg xmlns="http://www.w3.org/2003/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
     </div>
   );
 }
@@ -121,16 +163,13 @@ export default function DashboardFilterBar() {
 
   return (
     <div className="flex items-center justify-between gap-4">
-      {/* Left: Time range pills */}
-      <TimeRangePills />
+      {/* Left: Time range pills + week nav */}
+      <WeekNav />
 
       {/* Right: Filters + date display */}
       <div className="flex items-center gap-3">
         {/* Date range display */}
-        <div className="hidden sm:flex items-center gap-1.5 text-xs text-muted-foreground">
-          <Calendar className="w-3.5 h-3.5" />
-          <DateRangeDisplay />
-        </div>
+        <DateRangeDisplay />
 
         {/* Active filters badge */}
         {activeFilterCount > 0 && (
@@ -267,8 +306,9 @@ function DateRangeDisplay() {
   };
 
   return (
-    <span>
-      {fmt(earliest)} – {fmt(latest)}
-    </span>
+    <div className="hidden sm:flex items-center gap-1.5 text-xs text-muted-foreground">
+      <Calendar className="w-3.5 h-3.5" />
+      <span>{fmt(earliest)} – {fmt(latest)}</span>
+    </div>
   );
 }

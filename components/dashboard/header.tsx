@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { useApp } from '@/context/AppContext';
-import { weekLabel } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -11,13 +10,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Bell, LogOut, User, ChevronDown } from 'lucide-react';
 import type { Group } from '@/lib/types';
 import { cn } from '@/lib/utils';
@@ -29,7 +21,7 @@ interface DashboardHeaderProps {
 export default function DashboardHeader({ groups }: DashboardHeaderProps) {
   const router = useRouter();
   const { user, signOut } = useAuth();
-  const { groupId, setGroupId, selectedWeek, setSelectedWeek, availableWeeks } = useApp();
+  const { groupId, setGroupId } = useApp();
 
   const handleSignOut = async () => {
     await signOut();
@@ -41,14 +33,10 @@ export default function DashboardHeader({ groups }: DashboardHeaderProps) {
     router.push('/dashboard/overview');
   };
 
-  const handleWeekChange = (week: string) => {
-    setSelectedWeek(week);
-  };
-
   const selectedGroup = groups.find((g) => g.id === groupId);
 
   return (
-    <header className="px-6 flex items-center justify-between gap-4">
+    <header className="flex items-center justify-between gap-4">
       <div className="flex items-center gap-3 flex-wrap">
         {/* Group selector */}
         <DropdownMenu>
@@ -87,25 +75,6 @@ export default function DashboardHeader({ groups }: DashboardHeaderProps) {
             )}
           </DropdownMenuContent>
         </DropdownMenu>
-
-        {/* Week selector */}
-        <Select
-          value={selectedWeek ?? undefined}
-          onValueChange={handleWeekChange}
-        >
-          <SelectTrigger className="w-[280px] bg-secondary/50 border-border [&>span]:text-foreground">
-            <SelectValue placeholder="Select week" />
-          </SelectTrigger>
-          <SelectContent className="bg-popover border-border">
-            {availableWeeks.slice(0, 12).map((week) => {
-              return (
-                <SelectItem key={week} value={week}>
-                  {weekLabel(week)}
-                </SelectItem>
-              );
-            })}
-          </SelectContent>
-        </Select>
       </div>
 
       <div className="flex items-center gap-1">
