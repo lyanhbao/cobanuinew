@@ -315,6 +315,7 @@ function RadarChartSection({ data, primaryName, competitorName }: RadarChartSect
             isAnimationActive
             animationDuration={900}
             animationEasing="ease-out"
+            connectNulls
           />
           <Radar
             name={competitorName}
@@ -325,6 +326,7 @@ function RadarChartSection({ data, primaryName, competitorName }: RadarChartSect
             isAnimationActive
             animationDuration={900}
             animationEasing="ease-out"
+            connectNulls
           />
           <Tooltip
             contentStyle={{
