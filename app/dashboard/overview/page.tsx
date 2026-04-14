@@ -24,6 +24,7 @@ import {
   XAxis,
   YAxis,
   Tooltip,
+  Legend,
   ResponsiveContainer,
   PieChart,
   Pie,
@@ -55,6 +56,11 @@ interface OverviewData {
     is_primary: boolean;
     impressions: number;
     sov_pct: number;
+    total_reactions: number;
+    youtube_impressions: number;
+    facebook_impressions: number;
+    tiktok_impressions: number;
+    sparkline: number[];
   }>;
   network_breakdown: Array<{
     platform: string;
@@ -127,6 +133,40 @@ function LoadingSkeleton() {
               <Skeleton key={i} className="h-4 w-full" />
             ))}
           </div>
+        </div>
+      </div>
+      {/* Insights Row skeleton */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="bg-card border border-border rounded-xl p-4">
+            <Skeleton className="h-4 w-20 mb-2" />
+            <Skeleton className="h-3 w-28 mb-2" />
+            <Skeleton className="h-3 w-16" />
+          </div>
+        ))}
+      </div>
+      {/* Trend chart skeleton */}
+      <div className="bg-card border border-border rounded-xl p-5">
+        <Skeleton className="h-4 w-40 mb-4" />
+        <Skeleton className="h-[280px] w-full rounded-lg" />
+      </div>
+      {/* Brand Performance Table skeleton */}
+      <div className="bg-card border border-border rounded-xl overflow-hidden">
+        <div className="px-5 py-4 border-b border-border">
+          <Skeleton className="h-4 w-48" />
+        </div>
+        <div className="p-5 space-y-3">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="flex items-center gap-4">
+              <Skeleton className="h-4 w-4" />
+              <Skeleton className="h-4 w-32" />
+              <div className="flex-1" />
+              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-4 w-16" />
+              <Skeleton className="h-4 w-16" />
+              <Skeleton className="h-6 w-[60px]" />
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -262,6 +302,100 @@ function SovChart({
               <Cell key={entry.brand_name} fill={entry.color} />
             ))}
           </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
+// ─── SOV Stacked Chart ─────────────────────────────────────────────────────────
+
+function SovStackedChart({
+  data,
+}: {
+  data: Array<{
+    brand_name: string;
+    is_primary: boolean;
+    youtube_impressions: number;
+    facebook_impressions: number;
+    tiktok_impressions: number;
+    total_impressions: number;
+    color: string;
+  }>;
+}) {
+  const sorted = [...data].sort((a, b) => b.total_impressions - a.total_impressions);
+
+  if (sorted.length === 0) {
+    return (
+      <div className="bg-card border border-border rounded-xl p-5">
+        <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+          Share of Voice — By Platform
+        </h3>
+        <div className="text-sm text-muted-foreground text-center py-8">No brand data for this week.</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-card border border-border rounded-xl p-5">
+      <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+        Share of Voice — By Platform
+      </h3>
+      <ResponsiveContainer width="100%" height={Math.max(sorted.length * 52, 200)}>
+        <BarChart
+          data={sorted}
+          layout="vertical"
+          margin={{ left: 0, right: 80, top: 4, bottom: 4 }}
+        >
+          <XAxis
+            type="number"
+            tickFormatter={(v: number) => formatCompact(v)}
+            tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }}
+            axisLine={false}
+            tickLine={false}
+          />
+          <YAxis
+            dataKey="brand_name"
+            type="category"
+            width={110}
+            tick={{ fontSize: 12, fill: 'hsl(var(--foreground))' }}
+            axisLine={false}
+            tickLine={false}
+          />
+          <Tooltip
+            content={({ active, payload }) => {
+              if (!active || !payload?.length) return null;
+              const d = payload[0]!.payload;
+              const total = d.youtube_impressions + d.facebook_impressions + d.tiktok_impressions;
+              return (
+                <div className="bg-background border border-border rounded-lg shadow-lg p-3 text-sm">
+                  <p className="font-semibold mb-2">{d.brand_name}</p>
+                  {([
+                    { label: 'YouTube', value: d.youtube_impressions, color: PLATFORM_COLORS.youtube },
+                    { label: 'Facebook', value: d.facebook_impressions, color: PLATFORM_COLORS.facebook },
+                    { label: 'TikTok', value: d.tiktok_impressions, color: PLATFORM_COLORS.tiktok },
+                  ] as const).map((item) => (
+                    <div key={item.label} className="flex items-center justify-between gap-4">
+                      <span className="text-muted-foreground">{item.label}</span>
+                      <span className="font-medium tabular-nums">{formatVietnamNumber(item.value)}</span>
+                    </div>
+                  ))}
+                  <div className="border-t border-border mt-2 pt-2 flex justify-between">
+                    <span className="text-muted-foreground font-medium">Total</span>
+                    <span className="font-semibold tabular-nums">{formatVietnamNumber(total)}</span>
+                  </div>
+                </div>
+              );
+            }}
+          />
+          <Legend
+            iconType="circle"
+            iconSize={8}
+            wrapperStyle={{ fontSize: 12, paddingTop: '8px' }}
+          />
+          <Bar dataKey="youtube" stackId="a" fill={PLATFORM_COLORS.youtube} name="YouTube" radius={[0, 0, 0, 0]} />
+          <Bar dataKey="facebook" stackId="a" fill={PLATFORM_COLORS.facebook} name="Facebook" radius={[0, 0, 0, 0]} />
+          <Bar dataKey="tiktok" stackId="a" fill={PLATFORM_COLORS.tiktok} name="TikTok" radius={[0, 4, 4, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -405,16 +539,18 @@ function InsightCard({ icon: Icon, label, value, change, changeDirection }: Insi
     changeDirection === 'up' ? '▲' : changeDirection === 'down' ? '▼' : '—';
   const changeColor =
     changeDirection === 'up'
-      ? 'text-green-500'
+      ? 'text-success'
       : changeDirection === 'down'
-        ? 'text-red-500'
-        : 'text-muted-foreground';
+        ? 'text-danger'
+        : 'text-neutral';
 
   return (
     <div className="bg-card border border-border rounded-xl p-4">
       <div className="flex items-center gap-2 mb-2">
-        <Icon className="w-4 h-4 text-muted-foreground" />
-        <p className="text-xs text-muted-foreground uppercase tracking-wider">{label}</p>
+        <div className="p-1.5 rounded-lg bg-secondary">
+          <Icon className="w-4 h-4 text-muted-foreground" />
+        </div>
+        <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{label}</p>
       </div>
       <p className="text-sm font-semibold text-foreground truncate mb-0.5">{value}</p>
       <p className={`text-sm font-medium ${changeColor}`}>
@@ -535,22 +671,28 @@ function InsightsRow({
 
 // ─── Sparkline ────────────────────────────────────────────────────────────────
 
-function Sparkline({ data, color }: { data: number[]; color: string }) {
-  const min = Math.min(...data);
-  const max = Math.max(...data);
+function Sparkline({ data }: { data: number[] }) {
+  const valid = data.filter(v => v > 0);
+  if (valid.length === 0) return <span className="text-muted-foreground text-xs">—</span>;
+
+  const min = Math.min(...valid);
+  const max = Math.max(...valid);
   const range = max - min || 1;
-  const points = data.map((v, i) => ({
-    x: (i / (data.length - 1)) * 60,
+
+  const points = valid.map((v, i) => ({
+    x: (i / (valid.length - 1)) * 60,
     y: 20 - ((v - min) / range) * 18,
   }));
+
   const polyline = points.map((p) => `${p.x},${p.y}`).join(' ');
+  const trendColor = valid[valid.length - 1]! > valid[0]! ? '#10b981' : '#ef4444';
 
   return (
     <svg width="60" height="24" viewBox="0 0 60 24" className="inline-block">
       <polyline
         points={polyline}
         fill="none"
-        stroke={color}
+        stroke="#6b7280"
         strokeWidth="1.5"
         strokeLinejoin="round"
         strokeLinecap="round"
@@ -560,7 +702,7 @@ function Sparkline({ data, color }: { data: number[]; color: string }) {
           cx={points[points.length - 1]!.x}
           cy={points[points.length - 1]!.y}
           r="2"
-          fill={color}
+          fill={trendColor}
         />
       )}
     </svg>
@@ -574,10 +716,8 @@ type SortDir = 'asc' | 'desc';
 
 function BrandPerformanceTable({
   sov,
-  totalReactions,
 }: {
   sov: OverviewData['sov'];
-  totalReactions: number;
 }) {
   const [sortKey, setSortKey] = useState<SortKey>('impressions');
   const [sortDir, setSortDir] = useState<SortDir>('desc');
@@ -597,21 +737,10 @@ function BrandPerformanceTable({
   const brandReactions = useMemo(() => {
     const map: Record<string, number> = {};
     for (const b of sov) {
-      map[b.brand_id] = Math.round((b.sov_pct / 100) * totalReactions);
+      map[b.brand_id] = b.total_reactions ?? 0;
     }
     return map;
-  }, [sov, totalReactions]);
-
-  const brandSparklines = useMemo(() => {
-    return (brandId: string, impressions: number) => {
-      const seed = brandId.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-      const rand = (n: number) => ((seed * 9301 + n * 49297 + 233) % 233280) / 233280;
-      const w1 = Math.round(impressions * (0.65 + rand(1) * 0.25));
-      const w2 = Math.round(impressions * (0.75 + rand(2) * 0.2));
-      const w3 = Math.round(impressions * (0.85 + rand(3) * 0.15));
-      return [w1, w2, w3, impressions];
-    };
-  }, []);
+  }, [sov]);
 
   function handleSort(key: SortKey) {
     if (sortKey === key) {
@@ -664,7 +793,7 @@ function BrandPerformanceTable({
           </thead>
           <tbody>
             {top5.map((brand, i) => {
-              const sparklineData = brandSparklines(brand.brand_id, brand.impressions);
+              const sparklineData = brand.sparkline ?? [0, 0, 0, 0];
               const reactions = brandReactions[brand.brand_id] ?? 0;
               const brandColor = brand.is_primary ? PRIMARY_COLOR : getBrandColor(brand.brand_name);
               const trend: 'up' | 'down' | 'neutral' =
@@ -711,10 +840,10 @@ function BrandPerformanceTable({
                   </td>
                   <td className="px-5 py-3 text-center">
                     <div className="flex items-center justify-center gap-2">
-                      <Sparkline data={sparklineData} color={brandColor} />
+                      <Sparkline data={sparklineData} />
                       <span
                         className={`text-xs ${
-                          trend === 'up' ? 'text-green-500' : trend === 'down' ? 'text-red-500' : 'text-muted-foreground'
+                          trend === 'up' ? 'text-success' : trend === 'down' ? 'text-danger' : 'text-neutral'
                         }`}
                       >
                         {trend === 'up' ? '▲' : trend === 'down' ? '▼' : '—'}
@@ -871,8 +1000,13 @@ export default function OverviewPage() {
 
   const { week, kpis, sov, network_breakdown, insights, trends } = data;
 
-  const sovChartData = sov.map((item, i) => ({
-    ...item,
+  const sovStackedData = sov.map((item, i) => ({
+    brand_name: item.brand_name,
+    is_primary: item.is_primary,
+    youtube_impressions: item.youtube_impressions,
+    facebook_impressions: item.facebook_impressions,
+    tiktok_impressions: item.tiktok_impressions,
+    total_impressions: item.impressions,
     color: item.is_primary ? PRIMARY_COLOR : COMPETITOR_COLORS[i % COMPETITOR_COLORS.length],
   }));
 
@@ -901,7 +1035,7 @@ export default function OverviewPage() {
       {/* Charts row: SOV bar + Network donut */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         <div className="lg:col-span-2">
-          <SovChart data={sovChartData} />
+          <SovStackedChart data={sovStackedData} />
         </div>
         <div className="lg:col-span-1">
           <NetworkDonut data={network_breakdown} />
@@ -921,10 +1055,13 @@ export default function OverviewPage() {
       <WeekTrendChart trends={trends} primaryBrand={primaryBrand} />
 
       {/* Phase 1: Brand Performance Table */}
-      <BrandPerformanceTable
-        sov={sov}
-        totalReactions={kpis.total_reactions}
-      />
+      {sov.length > 0 ? (
+        <BrandPerformanceTable sov={sov} />
+      ) : (
+        <div className="bg-card border border-border rounded-xl p-8 text-center text-muted-foreground">
+          No brand data for this week.
+        </div>
+      )}
 
       {/* Quick Insights Panel */}
       {insights.length > 0 && <InsightsPanel insights={insights} />}
