@@ -598,13 +598,13 @@ export default function ChannelPage() {
   return (
     <div className="p-6 space-y-5">
       {/* Page header + week nav */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="dashboard-reveal flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <h1 className="text-xl font-bold text-foreground">Channel Performance</h1>
         <WeekNav weekLabel={week.label} />
       </div>
 
       {/* Platform tabs */}
-      <div className="flex gap-2 border-b border-border pb-0">
+      <div className="dashboard-reveal flex gap-2 border-b border-border pb-0">
         {PLATFORMS.map((p) => (
           <button
             key={p}
@@ -630,7 +630,7 @@ export default function ChannelPage() {
 
       {/* Platform KPIs */}
       {activeEntry ? (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="dashboard-reveal grid grid-cols-2 md:grid-cols-4 gap-4">
           <KpiCard
             icon={Eye}
             label="Impressions"
@@ -672,7 +672,7 @@ export default function ChannelPage() {
       )}
 
       {/* Charts row: Format Mix + Cadence */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="dashboard-reveal grid grid-cols-1 lg:grid-cols-2 gap-5">
         {activeEntry ? (
           <FormatMixChart
             formats={activeEntry.format_mix}
@@ -689,11 +689,15 @@ export default function ChannelPage() {
       </div>
 
       {/* Platform comparison table */}
-      {platforms.length > 0 && <PlatformComparisonTable platforms={platforms} />}
+      {platforms.length > 0 && (
+        <div className="dashboard-reveal">
+          <PlatformComparisonTable platforms={platforms} />
+        </div>
+      )}
 
       {/* YouTube details (only when YT is selected) */}
       {activePlatform === 'youtube' && activeEntry?.yt_details && (
-        <div className="bg-card border border-border rounded-xl p-5">
+        <div className="dashboard-reveal bg-card border border-border rounded-xl p-5">
           <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
             YouTube Format Details
           </h3>

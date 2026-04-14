@@ -316,9 +316,9 @@ function SovStackedChart({
   data: Array<{
     brand_name: string;
     is_primary: boolean;
-    youtube_impressions: number;
-    facebook_impressions: number;
-    tiktok_impressions: number;
+    youtube: number;
+    facebook: number;
+    tiktok: number;
     total_impressions: number;
     color: string;
   }>;
@@ -366,14 +366,14 @@ function SovStackedChart({
             content={({ active, payload }) => {
               if (!active || !payload?.length) return null;
               const d = payload[0]!.payload;
-              const total = d.youtube_impressions + d.facebook_impressions + d.tiktok_impressions;
+              const total = (d.youtube ?? 0) + (d.facebook ?? 0) + (d.tiktok ?? 0);
               return (
                 <div className="bg-background border border-border rounded-lg shadow-lg p-3 text-sm">
                   <p className="font-semibold mb-2">{d.brand_name}</p>
                   {([
-                    { label: 'YouTube', value: d.youtube_impressions, color: PLATFORM_COLORS.youtube },
-                    { label: 'Facebook', value: d.facebook_impressions, color: PLATFORM_COLORS.facebook },
-                    { label: 'TikTok', value: d.tiktok_impressions, color: PLATFORM_COLORS.tiktok },
+                    { label: 'YouTube', value: d.youtube ?? 0, color: PLATFORM_COLORS.youtube },
+                    { label: 'Facebook', value: d.facebook ?? 0, color: PLATFORM_COLORS.facebook },
+                    { label: 'TikTok', value: d.tiktok ?? 0, color: PLATFORM_COLORS.tiktok },
                   ] as const).map((item) => (
                     <div key={item.label} className="flex items-center justify-between gap-4">
                       <span className="text-muted-foreground">{item.label}</span>
@@ -1003,9 +1003,9 @@ export default function OverviewPage() {
   const sovStackedData = sov.map((item, i) => ({
     brand_name: item.brand_name,
     is_primary: item.is_primary,
-    youtube_impressions: item.youtube_impressions,
-    facebook_impressions: item.facebook_impressions,
-    tiktok_impressions: item.tiktok_impressions,
+    youtube: item.youtube_impressions,
+    facebook: item.facebook_impressions,
+    tiktok: item.tiktok_impressions,
     total_impressions: item.impressions,
     color: item.is_primary ? PRIMARY_COLOR : COMPETITOR_COLORS[i % COMPETITOR_COLORS.length],
   }));
@@ -1015,10 +1015,12 @@ export default function OverviewPage() {
   return (
     <div className="p-6 space-y-5">
       {/* Week navigation */}
-      <WeekNav weekLabel={week.label} />
+      <div className="dashboard-reveal">
+        <WeekNav weekLabel={week.label} />
+      </div>
 
       {/* 6 KPI Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 stagger-children">
         <KpiCard icon={Eye} label="Impressions" value={kpis.total_impressions} format="compact" />
         <KpiCard icon={TrendingUp} label="Views" value={kpis.total_views} format="compact" />
         <KpiCard icon={ThumbsUp} label="Reactions" value={kpis.total_reactions} format="compact" />
@@ -1034,29 +1036,35 @@ export default function OverviewPage() {
 
       {/* Charts row: SOV bar + Network donut */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 dashboard-reveal">
           <SovStackedChart data={sovStackedData} />
         </div>
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 dashboard-reveal">
           <NetworkDonut data={network_breakdown} />
         </div>
       </div>
 
       {/* Phase 1: Insights Row — 4 mini cards */}
-      <InsightsRow
-        insights={insights}
-        network_breakdown={network_breakdown}
-        sov={sov}
-        totalReactions={kpis.total_reactions}
-        totalImpressions={kpis.total_impressions}
-      />
+      <div className="dashboard-reveal">
+        <InsightsRow
+          insights={insights}
+          network_breakdown={network_breakdown}
+          sov={sov}
+          totalReactions={kpis.total_reactions}
+          totalImpressions={kpis.total_impressions}
+        />
+      </div>
 
       {/* Phase 2: Week-over-Week Trend Line Chart */}
-      <WeekTrendChart trends={trends} primaryBrand={primaryBrand} />
+      <div className="dashboard-reveal">
+        <WeekTrendChart trends={trends} primaryBrand={primaryBrand} />
+      </div>
 
       {/* Phase 1: Brand Performance Table */}
       {sov.length > 0 ? (
-        <BrandPerformanceTable sov={sov} />
+        <div className="dashboard-reveal">
+          <BrandPerformanceTable sov={sov} />
+        </div>
       ) : (
         <div className="bg-card border border-border rounded-xl p-8 text-center text-muted-foreground">
           No brand data for this week.
@@ -1064,7 +1072,11 @@ export default function OverviewPage() {
       )}
 
       {/* Quick Insights Panel */}
-      {insights.length > 0 && <InsightsPanel insights={insights} />}
+      {insights.length > 0 && (
+        <div className="dashboard-reveal">
+          <InsightsPanel insights={insights} />
+        </div>
+      )}
     </div>
   );
 }

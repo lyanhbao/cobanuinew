@@ -606,7 +606,7 @@ export default function BenchmarkPage() {
   return (
     <div className="p-6 space-y-5">
       {/* Page header + WeekNav */}
-      <div className="flex items-center justify-between">
+      <div className="dashboard-reveal flex items-center justify-between">
         <div>
           <h1 className="text-lg font-bold text-foreground">Benchmark Analysis</h1>
           <p className="text-xs text-muted-foreground mt-0.5">
@@ -617,7 +617,7 @@ export default function BenchmarkPage() {
       </div>
 
       {/* Brand Comparison Cards — side by side */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="dashboard-reveal grid grid-cols-1 md:grid-cols-2 gap-4">
         <BrandComparisonCard
           brandName={primaryName}
           isPrimary
@@ -631,7 +631,7 @@ export default function BenchmarkPage() {
       </div>
 
       {/* Radar + Head-to-Head charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="dashboard-reveal grid grid-cols-1 lg:grid-cols-2 gap-5">
         <RadarChartSection
           data={radar}
           primaryName={primaryName}
@@ -645,7 +645,9 @@ export default function BenchmarkPage() {
       </div>
 
       {/* Gap Analysis */}
-      <GapAnalysisChart data={gap_analysis} />
+      <div className="dashboard-reveal">
+        <GapAnalysisChart data={gap_analysis} />
+      </div>
     </div>
   );
 }

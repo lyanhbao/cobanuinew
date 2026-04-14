@@ -471,27 +471,33 @@ export default function TrendsPage() {
   return (
     <div className="p-6 space-y-5">
       {/* Week nav header */}
-      <WeekNav weekLabel={weekLabel} />
+      <div className="dashboard-reveal">
+        <WeekNav weekLabel={weekLabel} />
+      </div>
 
       {/* Brand selector */}
       {brands.length > 0 && (
-        <BrandSelector
-          brands={brands}
-          selected={selectedBrands}
-          onToggle={toggleBrand}
-          showAverage={showAverage}
-          onToggleAverage={() => setShowAverage((v) => !v)}
-        />
+        <div className="dashboard-reveal">
+          <BrandSelector
+            brands={brands}
+            selected={selectedBrands}
+            onToggle={toggleBrand}
+            showAverage={showAverage}
+            onToggleAverage={() => setShowAverage((v) => !v)}
+          />
+        </div>
       )}
 
       {/* Main trend line chart */}
       {trendData.length > 0 ? (
-        <TrendLineChart
-          trendData={trendData}
-          selectedBrands={selectedBrands}
-          showAverage={showAverage}
-          average={data.average}
-        />
+        <div className="dashboard-reveal">
+          <TrendLineChart
+            trendData={trendData}
+            selectedBrands={selectedBrands}
+            showAverage={showAverage}
+            average={data.average}
+          />
+        </div>
       ) : (
         <div className="bg-card border border-border rounded-xl p-8 text-center text-muted-foreground">
           No trend data for the selected period.
@@ -499,7 +505,7 @@ export default function TrendsPage() {
       )}
 
       {/* Two-column row: anomalies + summary */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="dashboard-reveal grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* Anomaly Alerts */}
         <div>
           <div className="flex items-center gap-2 mb-4">

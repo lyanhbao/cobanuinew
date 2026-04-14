@@ -669,10 +669,12 @@ export default function RankingsPage() {
   return (
     <div className="p-6 space-y-5">
       {/* Week navigation + page title */}
-      <WeekNav weekLabel={week.label} />
+      <div className="dashboard-reveal">
+        <WeekNav weekLabel={week.label} />
+      </div>
 
       {/* KPI Summary Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 stagger-children">
         <KpiCard
           icon={Eye}
           label="Total Market Impressions"
@@ -692,12 +694,18 @@ export default function RankingsPage() {
       </div>
 
       {/* Rankings Table */}
-      <RankingsTable brands={brands} />
+      <div className="dashboard-reveal">
+        <RankingsTable brands={brands} />
+      </div>
 
       {/* SOV and SOS Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <SovBarChart brands={brands} />
-        <SosBarChart brands={brands} />
+        <div className="dashboard-reveal">
+          <SovBarChart brands={brands} />
+        </div>
+        <div className="dashboard-reveal">
+          <SosBarChart brands={brands} />
+        </div>
       </div>
     </div>
   );

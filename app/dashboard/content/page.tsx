@@ -628,13 +628,17 @@ export default function ContentPage() {
 
   return (
     <div className="p-6 space-y-5">
-      <WeekNav weekLabel={week.label} />
+      <div className="dashboard-reveal">
+        <WeekNav weekLabel={week.label} />
+      </div>
 
       {/* Format Performance Chart */}
-      <FormatPerformanceChart data={format_performance} />
+      <div className="dashboard-reveal">
+        <FormatPerformanceChart data={format_performance} />
+      </div>
 
       {/* Top Keywords + stats row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <div className="dashboard-reveal grid grid-cols-1 lg:grid-cols-3 gap-5">
         <div className="lg:col-span-2">
           <TopKeywordsPanel keywords={top_keywords} />
         </div>
@@ -717,7 +721,9 @@ export default function ContentPage() {
       </div>
 
       {/* Top Posts Table */}
-      <TopPostsTable posts={top_posts} />
+      <div className="dashboard-reveal">
+        <TopPostsTable posts={top_posts} />
+      </div>
     </div>
   );
 }

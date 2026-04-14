@@ -7,6 +7,7 @@ import { useApp } from '@/context/AppContext';
 import DashboardSidebar from '@/components/dashboard/sidebar';
 import DashboardHeader from '@/components/dashboard/header';
 import DashboardFilterBar from '@/components/dashboard/filter-bar';
+import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 import type { Group, WeekStart } from '@/lib/types';
 import { toWeekStart } from '@/lib/types';
 
@@ -94,6 +95,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const { groups, bootstrapLoading } = useDashboardBootstrap();
   const mainRef = useRef<HTMLDivElement>(null);
   const [headerScrolled, setHeaderScrolled] = useState(false);
+  useScrollReveal(mainRef as React.RefObject<HTMLElement>);
 
   useEffect(() => {
     const main = mainRef.current;

@@ -14,7 +14,21 @@ export type BrandType = 'all' | 'primary' | 'competitor';
 export interface DashboardFilters {
   platform: Platform;
   brandType: BrandType;
+  timeRange: TimeRange;
 }
+
+export type TimeRange = '7d' | '30d' | '90d' | '6m' | '1y' | 'all';
+
+const TIME_RANGE_MONTHS: Record<TimeRange, number | null> = {
+  '7d': 0.5,
+  '30d': 1,
+  '90d': 3,
+  '6m': 6,
+  '1y': 12,
+  'all': null,
+};
+
+export { TIME_RANGE_MONTHS };
 
 // ─── App State ──────────────────────────────────────────────────────────────────
 
@@ -45,7 +59,7 @@ const defaultState: AppState = {
   selectedWeek: null,
   availableWeeks: [],
   isReady: false,
-  filters: { platform: 'all', brandType: 'all' },
+  filters: { platform: 'all', brandType: 'all', timeRange: '6m' as TimeRange },
 };
 
 function buildDefaultState(): AppState {
@@ -150,7 +164,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       groupId: null,
       selectedWeek: null,
       isReady: false,
-      filters: { platform: 'all', brandType: 'all' },
+      filters: { platform: 'all', brandType: 'all', timeRange: '6m' as TimeRange },
     }));
   }, []);
 
