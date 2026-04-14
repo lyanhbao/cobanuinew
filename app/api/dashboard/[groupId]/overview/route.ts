@@ -28,6 +28,10 @@ interface SovRow {
   brand_name: string;
   is_primary: boolean | string;
   total_impressions: string;
+  total_reactions: string;
+  youtube_impressions: string;
+  facebook_impressions: string;
+  tiktok_impressions: string;
 }
 
 export async function GET(
@@ -40,7 +44,7 @@ export async function GET(
   }
 
   try {
-    const { groupId, week: requestedWeek, platform, brandType } = paramsSchema.parse({
+    const { groupId, week: requestedWeek } = paramsSchema.parse({
       ...Object.fromEntries(req.nextUrl.searchParams),
       ...await params,
     });
@@ -136,29 +140,70 @@ export async function GET(
     );
     const totalPosts = postCountRows.rows[0]?.count ?? 0;
 
-    // SOV: impressions per brand from weekly_stats
+    // SOV: impressions per brand from post table with platform breakdown + reactions
     const sovRows = await query<SovRow>(
       `SELECT
          b.id AS brand_id,
          cb.name AS brand_name,
          b.is_primary,
-         COALESCE(SUM(ws.total_impressions), 0) AS total_impressions
+         COALESCE(SUM(p.impressions), 0)::bigint AS total_impressions,
+         COALESCE(SUM(p.reactions), 0)::bigint AS total_reactions,
+         COALESCE(SUM(CASE WHEN p.platform = 'youtube' THEN p.impressions ELSE 0 END), 0)::bigint AS youtube_impressions,
+         COALESCE(SUM(CASE WHEN p.platform = 'facebook' THEN p.impressions ELSE 0 END), 0)::bigint AS facebook_impressions,
+         COALESCE(SUM(CASE WHEN p.platform = 'tiktok' THEN p.impressions ELSE 0 END), 0)::bigint AS tiktok_impressions
        FROM brand b
        JOIN curated_brand cb ON cb.id = b.curated_brand_id
-       LEFT JOIN weekly_stats ws ON ws.brand_id = b.id AND ws.week_start = $2::date
+       LEFT JOIN post p ON p.curated_brand_id = b.curated_brand_id AND p.week_start = $2::date
        WHERE b.group_id = $1
        GROUP BY b.id, cb.name, b.is_primary
-       ORDER BY SUM(ws.total_impressions) DESC NULLS LAST`,
+       ORDER BY total_impressions DESC NULLS LAST`,
       [groupId, weekStart],
     );
 
-    const sov = sovRows.rows.map((r) => ({
-      brand_id: r.brand_id,
-      brand_name: r.brand_name,
-      is_primary: r.is_primary === 't' || r.is_primary === true,
-      impressions: Number(r.total_impressions),
-      sov_pct: Math.round((Number(r.total_impressions) / totalImpressions) * 1000) / 10,
-    }));
+    // Per-brand 4-week sparkline
+    const sparklineQuery = await query<{ brand_id: string; week_start: string; total_impressions: string }>(
+      `SELECT
+         b.id AS brand_id,
+         ws.week_start::text AS week_start,
+         COALESCE(ws.total_impressions, 0)::bigint AS total_impressions
+       FROM brand b
+       CROSS JOIN LATERAL (
+         SELECT week_start FROM weekly_stats
+         WHERE group_id = $1
+         GROUP BY week_start
+         ORDER BY week_start DESC
+         LIMIT 4
+       ) weeks
+       LEFT JOIN weekly_stats ws ON ws.brand_id = b.id AND ws.week_start = weeks.week_start
+       WHERE b.group_id = $1
+       ORDER BY b.id, weeks.week_start`,
+      [groupId],
+    );
+
+    // Group by brand_id (oldest → newest)
+    const sparklineMap = new Map<string, number[]>();
+    for (const row of sparklineQuery.rows) {
+      if (!sparklineMap.has(row.brand_id)) {
+        sparklineMap.set(row.brand_id, []);
+      }
+      sparklineMap.get(row.brand_id)!.push(Number(row.total_impressions));
+    }
+
+    const sov = sovRows.rows.map((r) => {
+      const sparkline = sparklineMap.get(r.brand_id) ?? [0, 0, 0, 0];
+      return {
+        brand_id: r.brand_id,
+        brand_name: r.brand_name,
+        is_primary: r.is_primary === 't' || r.is_primary === true,
+        impressions: Number(r.total_impressions),
+        sov_pct: Math.round((Number(r.total_impressions) / totalImpressions) * 1000) / 10,
+        total_reactions: Number(r.total_reactions),
+        youtube_impressions: Number(r.youtube_impressions),
+        facebook_impressions: Number(r.facebook_impressions),
+        tiktok_impressions: Number(r.tiktok_impressions),
+        sparkline,
+      };
+    });
 
     const primarySov = sov.find((s) => s.is_primary)?.sov_pct ?? null;
 
