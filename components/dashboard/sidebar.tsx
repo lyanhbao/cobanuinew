@@ -5,14 +5,22 @@ import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import {
   LayoutDashboard,
+  BarChart3,
   Users,
   Settings,
   FolderOpen,
   AlertCircle,
+  Swords,
 } from 'lucide-react';
 
 const navItems = [
   { label: 'Overview', href: '/dashboard/overview', icon: LayoutDashboard },
+  { label: 'Rankings', href: '/dashboard/rankings', icon: BarChart3 },
+  { label: 'Channel', href: '/dashboard/channel', icon: BarChart3 },
+  { label: 'Content', href: '/dashboard/content', icon: BarChart3 },
+  { label: 'Benchmark', href: '/dashboard/benchmark', icon: BarChart3 },
+  { label: 'Trends', href: '/dashboard/trends', icon: BarChart3 },
+  { label: 'Battle Mode', href: '/dashboard/battle', icon: Swords },
 ];
 
 const subNavItems = [

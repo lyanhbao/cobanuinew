@@ -46,3 +46,216 @@
 [  750871ms] [LOG] [Fast Refresh] done in 216ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
 [  757209ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
 [  757281ms] [LOG] [Fast Refresh] done in 175ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  829737ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  829789ms] [LOG] [Fast Refresh] done in 130ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  830804ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  830832ms] [LOG] [Fast Refresh] done in 93ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  838432ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  838466ms] [LOG] [Fast Refresh] done in 96ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  848242ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  848353ms] [LOG] [Fast Refresh] done in 145ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  862740ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  862799ms] [LOG] [Fast Refresh] done in 107ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  954766ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  954804ms] [LOG] [Fast Refresh] done in 45ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  964498ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  964537ms] [LOG] [Fast Refresh] done in 69ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  980191ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[  980225ms] [LOG] [Fast Refresh] done in 89ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1056609ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1056921ms] ReferenceError: InsightsPanel is not defined
+    at OverviewPage (http://localhost:3000/_next/static/chunks/_3900d7fe._.js?id=%255Bproject%255D%252Fapp%252Fdashboard%252Foverview%252Fpage.tsx+%255Bapp-client%255D+%2528ecmascript%2529:1804:443)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:14816:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:4645:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:6106:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:6702:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:959:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9556:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9450:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9434:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9099:47)
+    at performSyncWorkOnRoot (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:10232:9)
+    at flushSyncWorkAcrossRoots_impl (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:10148:316)
+    at flushSyncWork$1 (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9231:86)
+    at Object.scheduleRefresh (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:294:13)
+    at http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_48767191._.js:391:33
+    at Set.forEach (<anonymous>)
+    at Object.performReactRefresh (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_48767191._.js:384:38)
+    at applyUpdate (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_48767191._.js:878:31)
+    at http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_48767191._.js:886:13
+[ 1056802ms] [LOG] [Fast Refresh] done in 249ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1056954ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1056960ms] [LOG] [Fast Refresh] done in 127ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1079908ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1079914ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1079934ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/overview color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/overview, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776101410796} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1079941ms] [LOG] [Fast Refresh] done in 59ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1080205ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1080250ms] [LOG] [Fast Refresh] done in 148ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1080592ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1080609ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1080769ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1080769ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /dashboard/overview, path: /dashboard/overview} @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1080769ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/overview color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/overview, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776101411633} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1080859ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1080890ms] [LOG] [Fast Refresh] done in 167ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1080996ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1081017ms] [LOG] [Fast Refresh] done in 123ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1081082ms] ReferenceError: InsightsPanel is not defined
+    at OverviewPage (http://localhost:3000/_next/static/chunks/_3900d7fe._.js:2014:443)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:14816:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:4645:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:6106:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:6702:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:959:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9556:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9450:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9434:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9099:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:10224:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_48767191._.js:2647:64)
+[ 1161024ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1161037ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1161048ms] [LOG] [Fast Refresh] done in 58ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1161284ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1161304ms] [LOG] [Fast Refresh] done in 121ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1161583ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1161601ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1161789ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1161789ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /dashboard/overview, path: /dashboard/overview} @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1161789ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/overview color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/overview, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776101492653} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1161855ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1161906ms] [LOG] [Fast Refresh] done in 152ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1162161ms] ReferenceError: InsightsPanel is not defined
+    at OverviewPage (http://localhost:3000/_next/static/chunks/_3900d7fe._.js:2014:443)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:14816:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:4645:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:6106:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:6702:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:959:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9556:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9450:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9434:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:9099:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_react-dom_18dd40c7._.js:10224:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/1d4a1_next_dist_compiled_48767191._.js:2647:64)
+[ 1212595ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1212603ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1212611ms] [LOG] [Fast Refresh] done in 101ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1212834ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1212853ms] [LOG] [Fast Refresh] done in 121ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1213121ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1213143ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1213452ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1213453ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /dashboard/overview, path: /dashboard/overview} @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1213453ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard/overview color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/dashboard/overview, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.3.1, ts: 1776101544316} /_vercel/insights/view @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1594861ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1594899ms] [LOG] [Fast Refresh] done in 138ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1595001ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1595129ms] [LOG] [Fast Refresh] done in 229ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1598888ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1598910ms] [LOG] [Fast Refresh] done in 123ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1609802ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1609922ms] [LOG] [Fast Refresh] done in 221ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1620718ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1620846ms] [LOG] [Fast Refresh] done in 229ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1631651ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1631780ms] [LOG] [Fast Refresh] done in 230ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1642518ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1642649ms] [LOG] [Fast Refresh] done in 232ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1653385ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1653512ms] [LOG] [Fast Refresh] done in 228ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1697168ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1697289ms] [LOG] [Fast Refresh] done in 223ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1708133ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1708255ms] [LOG] [Fast Refresh] done in 223ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1904312ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1904337ms] [LOG] [Fast Refresh] done in 128ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1920660ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 1920773ms] [LOG] [Fast Refresh] done in 215ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2255858ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2256214ms] [LOG] [Fast Refresh] done in 458ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2257001ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2257121ms] [LOG] [Fast Refresh] done in 221ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2257493ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2257573ms] [LOG] [Fast Refresh] done in 183ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2257675ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2257682ms] [LOG] [Fast Refresh] done in 109ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2258250ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2258355ms] [LOG] [Fast Refresh] done in 208ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2468982ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2469001ms] [LOG] [Fast Refresh] done in 121ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2469393ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2469510ms] [LOG] [Fast Refresh] done in 219ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2469709ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2469852ms] [LOG] [Fast Refresh] done in 245ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2475593ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2475707ms] [LOG] [Fast Refresh] done in 215ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2475925ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2475943ms] [LOG] [Fast Refresh] done in 118ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2480077ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2480182ms] [LOG] [Fast Refresh] done in 207ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2484508ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2484613ms] [LOG] [Fast Refresh] done in 207ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2550962ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2551093ms] [LOG] [Fast Refresh] done in 233ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2551305ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2551307ms] [LOG] [Fast Refresh] done in 103ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2672213ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2672337ms] [LOG] [Fast Refresh] done in 226ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2672589ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2672608ms] [LOG] [Fast Refresh] done in 119ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2702308ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2702420ms] [LOG] [Fast Refresh] done in 214ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2702700ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2702709ms] [LOG] [Fast Refresh] done in 109ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2705803ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2705906ms] [LOG] [Fast Refresh] done in 206ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2710283ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2710389ms] [LOG] [Fast Refresh] done in 207ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2710584ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2710611ms] [LOG] [Fast Refresh] done in 128ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2729605ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2729712ms] [LOG] [Fast Refresh] done in 210ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2733000ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2733106ms] [LOG] [Fast Refresh] done in 208ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2737135ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2737243ms] [LOG] [Fast Refresh] done in 210ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2737622ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2737721ms] [LOG] [Fast Refresh] done in 199ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2741066ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2741170ms] [LOG] [Fast Refresh] done in 206ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2741432ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2741495ms] [LOG] [Fast Refresh] done in 165ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2744869ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2744974ms] [LOG] [Fast Refresh] done in 208ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2745227ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2745370ms] [LOG] [Fast Refresh] done in 246ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2748701ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2748808ms] [LOG] [Fast Refresh] done in 209ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2749100ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2749180ms] [LOG] [Fast Refresh] done in 181ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2752519ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2752629ms] [LOG] [Fast Refresh] done in 212ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2752889ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2752913ms] [LOG] [Fast Refresh] done in 126ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2756232ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2756337ms] [LOG] [Fast Refresh] done in 206ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2760750ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2760864ms] [LOG] [Fast Refresh] done in 216ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2765234ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2765338ms] [LOG] [Fast Refresh] done in 206ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2769734ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[ 2769843ms] [LOG] [Fast Refresh] done in 211ms @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_0c466df3._.js:2287
+[45018949ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=f8GvRlXXWixG0K8qfq3HC' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[45019952ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=f8GvRlXXWixG0K8qfq3HC' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[45020955ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=f8GvRlXXWixG0K8qfq3HC' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[45021959ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=f8GvRlXXWixG0K8qfq3HC' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[45022962ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=f8GvRlXXWixG0K8qfq3HC' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[45027966ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=f8GvRlXXWixG0K8qfq3HC' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[45032976ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=f8GvRlXXWixG0K8qfq3HC' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[45037998ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=f8GvRlXXWixG0K8qfq3HC' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[45043021ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=f8GvRlXXWixG0K8qfq3HC' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[45048088ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=f8GvRlXXWixG0K8qfq3HC' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[45053194ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=f8GvRlXXWixG0K8qfq3HC' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116
+[45058507ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=f8GvRlXXWixG0K8qfq3HC' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1d4a1_next_dist_client_2cb92f85._.js:10116

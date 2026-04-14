@@ -51,10 +51,22 @@ test.describe('Auth Flow', () => {
   });
 
   test('Login with valid account redirects to /select-client', async ({ page }) => {
+    // Create a fresh account in this test so login is fully self-contained
+    const loginEmail = `coban_login_${ts}@test.com`;
+    await page.goto(`${BASE}/auth/signup`);
+    await page.waitForLoadState('domcontentloaded');
+    await page.locator('#accountName').fill(`coban_login_${ts}`);
+    await page.locator('#fullName').fill('Login Test');
+    await page.locator('#email').fill(loginEmail);
+    await page.locator('#password').fill(TEST_PASSWORD);
+    await page.locator('#confirmPassword').fill(TEST_PASSWORD);
+    await page.locator('button[type="submit"]').click();
+    await page.waitForURL(/\/select-client/, { timeout: 10_000 });
+
+    // Now test login with those credentials
     await page.goto(`${BASE}/auth/login`);
     await page.waitForLoadState('domcontentloaded');
-
-    await page.locator('#email').fill(TEST_EMAIL);
+    await page.locator('#email').fill(loginEmail);
     await page.locator('#password').fill(TEST_PASSWORD);
     await page.locator('button[type="submit"]').click();
 
