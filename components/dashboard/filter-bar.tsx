@@ -57,17 +57,26 @@ function WeekNav() {
   const handleTimeRangeChange = (value: TimeRange) => {
     setFilters({ timeRange: value });
 
-    if (value === 'all' || weeksInRange.length === 0) return;
+    if (weeksInRange.length === 0) return;
 
     const latestInRange = weeksInRange[weeksInRange.length - 1]!;
-    if (selectedWeek < latestInRange) {
+
+    // When switching to ALL, always jump to latest week
+    if (value === 'all') {
+      if (selectedWeek !== latestInRange) {
+        setSelectedWeek(latestInRange);
+      }
+      return;
+    }
+
+    if (selectedWeek! < latestInRange) {
       setSelectedWeek(latestInRange);
-    } else if (!weeksInRange.includes(selectedWeek)) {
+    } else if (!weeksInRange.includes(selectedWeek!)) {
       setSelectedWeek(latestInRange);
     }
   };
 
-  const currentIdx = weeksInRange.indexOf(selectedWeek);
+  const currentIdx = selectedWeek ? weeksInRange.indexOf(selectedWeek) : -1;
   const canGoPrev = currentIdx > 0;
   const canGoNext = currentIdx < weeksInRange.length - 1;
 
