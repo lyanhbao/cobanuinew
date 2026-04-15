@@ -35,6 +35,14 @@ export interface PostUpsert {
   link: string | null;
   post_type?: 'ad' | 'seeding' | null;
   campaign_name?: string | null;
+  // Content analysis (optional — filled after step 3/4)
+  mood?: string | null;
+  tone?: string | null;
+  info_type?: string | null;
+  target?: string | null;
+  content_format?: string | null;
+  key_message?: string | null;
+  analysis_confidence?: 'high' | 'medium' | 'low' | null;
   raw?: unknown;
 }
 
@@ -131,8 +139,9 @@ export async function upsertPost(p: PostUpsert): Promise<'created' | 'updated' |
       curated_brand_id, platform, post_id, profile, content,
       posted_at, week_start, week_number, year,
       views, impressions, reactions, comments, shares, link,
-      post_type, campaign_name
-    ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17)
+      post_type, campaign_name,
+      mood, tone, info_type, target, content_format, key_message, analysis_confidence
+    ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24)
     ON CONFLICT (platform, post_id) DO UPDATE SET
       profile       = EXCLUDED.profile,
       content       = EXCLUDED.content,
@@ -144,6 +153,14 @@ export async function upsertPost(p: PostUpsert): Promise<'created' | 'updated' |
       link          = EXCLUDED.link,
       post_type     = COALESCE(EXCLUDED.post_type, post_type),
       campaign_name = COALESCE(EXCLUDED.campaign_name, campaign_name),
+      mood          = COALESCE(EXCLUDED.mood, post.mood),
+      tone          = COALESCE(EXCLUDED.tone, post.tone),
+      info_type     = COALESCE(EXCLUDED.info_type, post.info_type),
+      target        = COALESCE(EXCLUDED.target, post.target),
+      content_format = COALESCE(EXCLUDED.content_format, post.content_format),
+      key_message   = COALESCE(EXCLUDED.key_message, post.key_message),
+      analysis_confidence = COALESCE(EXCLUDED.analysis_confidence, post.analysis_confidence),
+      analyzed_at   = CASE WHEN EXCLUDED.mood IS NOT NULL THEN NOW() ELSE post.analyzed_at END,
       updated_at    = NOW()
     RETURNING id
   `, [
@@ -164,6 +181,13 @@ export async function upsertPost(p: PostUpsert): Promise<'created' | 'updated' |
     p.link ?? null,
     p.post_type ?? null,
     p.campaign_name ?? null,
+    p.mood ?? null,
+    p.tone ?? null,
+    p.info_type ?? null,
+    p.target ?? null,
+    p.content_format ?? null,
+    p.key_message ?? null,
+    p.analysis_confidence ?? null,
   ]);
 
   return result.rows.length > 0 ? 'created' : 'skipped';
@@ -199,8 +223,9 @@ export async function upsertPostsBatch(
               curated_brand_id, platform, post_id, profile, content,
               posted_at, week_start, week_number, year,
               views, impressions, reactions, comments, shares, link,
-              post_type, campaign_name
-            ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17)
+              post_type, campaign_name,
+              mood, tone, info_type, target, content_format, key_message, analysis_confidence
+            ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24)
             ON CONFLICT (platform, post_id) DO UPDATE SET
               profile       = EXCLUDED.profile,
               content       = EXCLUDED.content,
@@ -212,6 +237,14 @@ export async function upsertPostsBatch(
               link          = EXCLUDED.link,
               post_type     = COALESCE(EXCLUDED.post_type, post_type),
               campaign_name = COALESCE(EXCLUDED.campaign_name, campaign_name),
+              mood          = COALESCE(EXCLUDED.mood, post.mood),
+              tone          = COALESCE(EXCLUDED.tone, post.tone),
+              info_type     = COALESCE(EXCLUDED.info_type, post.info_type),
+              target        = COALESCE(EXCLUDED.target, post.target),
+              content_format = COALESCE(EXCLUDED.content_format, post.content_format),
+              key_message   = COALESCE(EXCLUDED.key_message, post.key_message),
+              analysis_confidence = COALESCE(EXCLUDED.analysis_confidence, post.analysis_confidence),
+              analyzed_at   = CASE WHEN EXCLUDED.mood IS NOT NULL THEN NOW() ELSE post.analyzed_at END,
               updated_at    = NOW()
           `, [
             p.curated_brand_id,
@@ -231,6 +264,13 @@ export async function upsertPostsBatch(
             p.link ?? null,
             p.post_type ?? null,
             p.campaign_name ?? null,
+            p.mood ?? null,
+            p.tone ?? null,
+            p.info_type ?? null,
+            p.target ?? null,
+            p.content_format ?? null,
+            p.key_message ?? null,
+            p.analysis_confidence ?? null,
           ]);
 
           if (existing.rows.length > 0) updated++;
