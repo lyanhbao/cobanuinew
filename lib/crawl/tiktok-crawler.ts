@@ -193,13 +193,15 @@ export async function crawlProfile(
 
 // ─── Core: Search Crawl ─────────────────────────────────────────────────────
 
-const SEARCH_API = '/api/search/item/full/';
+// Tag pages use /api/item/detail/ and /api/comment/list/ for lazy loading
+const SEARCH_API_PATTERNS = ['/api/challenge/item_list/'];
 const SEARCH_SCROLL_MAX = 20;
 
 /**
- * Crawl TikTok search results for a keyword/hashtag.
+ * Crawl TikTok tag page (e.g. #khaixuanbanlinh → /tag/khaixuanbanlinh).
+ * Falls back to /search/video?q= for plain keywords.
  *
- * @param keyword  TikTok search term (e.g. "#khaixuanbanlinh", "bia tiger")
+ * @param keyword  Tag or search term (e.g. "#khaixuanbanlinh", "bia tiger")
  */
 export async function crawlSearch(
   keyword: string,
@@ -220,10 +222,16 @@ export async function crawlSearch(
   const seen = new Set<string>();
 
   page.on('response', (resp: import('playwright').Response) => {
-    if (!resp.url().includes(SEARCH_API)) return;
+    if (!resp.url().includes('/api/challenge/item_list/')) return;
     resp.json().then((json) => {
-      const data = json as { item_list?: TikTokVideoItem[] };
-      const items = data?.item_list || [];
+      // /api/challenge/item_list/ — has itemList (not item_list)
+      const data = json as {
+        itemList?: TikTokVideoItem[];
+        items?: TikTokVideoItem[];
+        hasMore?: boolean;
+        cursor?: number;
+      };
+      const items = data?.itemList || data?.items || [];
       for (const v of items as Array<{ id?: string }>) {
         if (v?.id && !seen.has(v.id)) {
           seen.add(v.id);
@@ -233,8 +241,9 @@ export async function crawlSearch(
     }).catch(() => {});
   });
 
-  const encoded = encodeURIComponent(keyword);
-  const searchUrl = `https://www.tiktok.com/search/video?q=${encoded}`;
+  const tagClean = keyword.startsWith('#') ? keyword.slice(1) : keyword;
+  const encoded = encodeURIComponent(tagClean);
+  const searchUrl = `https://www.tiktok.com/tag/${encoded}`;
   console.log(`[*] Search: "${keyword}" → ${searchUrl}`);
 
   await page.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 60_000 });
@@ -279,13 +288,13 @@ export async function crawlSearch(
   // De-duplicate: only keep the response that contains each unique post
   const uniquePosts = new Map<string, unknown>();
   for (const resp of collected) {
-    const data = resp as { item_list?: Array<{ id?: string }> };
-    for (const v of data?.item_list || []) {
+    const data = resp as { itemList?: Array<{ id?: string }>; item_list?: Array<{ id?: string }> };
+    for (const v of (data?.itemList || data?.item_list || [])) {
       if (v?.id) uniquePosts.set(v.id, resp);
     }
   }
 
-  return parseResponses(Array.from(uniquePosts.values()));
+  return parseTikTokResponses(Array.from(uniquePosts.values()), keyword);
 }
 
 /**
@@ -295,20 +304,30 @@ export const crawlTikTokSearch = crawlSearch;
 
 // ─── Parse raw API → CrawledPost[] ─────────────────────────────────────────
 
-export function parseTikTokResponses(responses: unknown[]): CrawledPost[] {
+export function parseTikTokResponses(responses: unknown[], targetHashtag?: string): CrawledPost[] {
+  const normTag = targetHashtag ? targetHashtag.replace(/^#+/, '').toLowerCase() : null;
   const posts: CrawledPost[] = [];
+  let skippedNoTag = 0;
   for (const resp of responses) {
     const data = resp as { itemList?: TikTokVideoItem[]; item_list?: TikTokVideoItem[] };
     for (const v of data?.itemList || data?.item_list || []) {
-      posts.push(videoToPost(v));
+      const post = videoToPost(v);
+      // Filter: skip posts that DON'T contain the target hashtag (wrong recommendations)
+      if (normTag) {
+        const postTags = (post.content ?? '').match(/#[\p{L}0-9_À-ỹ]+/gu) ?? [];
+        const postTagsNorm = postTags.map(t => t.replace(/^#+/, '').toLowerCase());
+        if (!postTagsNorm.includes(normTag)) {
+          skippedNoTag++;
+          continue; // discard wrong posts
+        }
+      }
+      posts.push(post);
     }
   }
+  if (skippedNoTag > 0) {
+    console.log(`    [filtered: ${skippedNoTag} posts without #${normTag} — discarded]`);
+  }
   return posts;
-}
-
-/** @deprecated alias */
-export function parseResponses(responses: unknown[]): CrawledPost[] {
-  return parseTikTokResponses(responses);
 }
 
 function videoToPost(video: TikTokVideoItem): CrawledPost {
